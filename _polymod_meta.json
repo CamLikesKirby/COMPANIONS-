@@ -1,0 +1,11 @@
+{
+  "title": "COMPANIONS!!! (V-Slice)",
+  "description": "ADDS AN EPIC COMPAION NEXT TO YOUR PLAYER WITH VOCALS AND CHARTS!!!!.",
+  "contributors": [
+    { "name": "Gurt" },
+    { "name": "CamlikesKirby" }
+  ],
+  "api_version": "0.8.5",
+  "mod_version": "1.2.0",
+  "license": "Apache-2.0"
+}
