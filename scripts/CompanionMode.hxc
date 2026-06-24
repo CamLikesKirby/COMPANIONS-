@@ -491,7 +491,7 @@ class CompanionMode extends Module
       var playerChar = PlayState.instance.currentStage.getBoyfriend();
       if (playerChar?.scale?.x > 0)
       {
-        companionChar.setScale(playerChar.scale.x);
+      if (!globalData.nonResizePlayer.contains(playerChar.characterId) && (CompanionHelper.currentCompanionJson.reSize == null || CompanionHelper.currentCompanionJson.reSize)) companionChar.setScale(playerChar.scale.x);
         scaleSet = true;
         trace("[CompanionMode] Matched companion scale to player: " + playerChar.scale.x);
       }
@@ -501,7 +501,7 @@ class CompanionMode extends Module
     if (!scaleSet)
     {
       var stageScale = (stageCharData.scale != null && stageCharData.scale > 0) ? stageCharData.scale : 1.0;
-      companionChar.setScale(companionChar.getBaseScale() * stageScale);
+      companionChar.setScale((companionChar.getBaseScale() * stageScale));
     }
 
     companionChar.originalPosition.set(companionChar.x, companionChar.y);
@@ -983,6 +983,7 @@ class CompanionMode extends Module
     // Health icon: follow player icon + handle pulse animation + losing frame.
     if (companionHealthIcon != null)
     {
+      if (CompanionHelper.currentCompanionJson.icon.flipX != null) companionHealthIcon.flipX = CompanionHelper.currentCompanionJson.icon.flipX;
       // Only reposition every 2 frames — icon moves slowly enough that this is imperceptible.
       _iconUpdateFrame++;
       if (_iconUpdateFrame % 2 == 0) _updateCompanionIconPos();
@@ -1013,7 +1014,6 @@ class CompanionMode extends Module
     if (isPixelStage) muti = 5;
 
       // Decay pulse scale back to 1.
-      // yooo
       if (iconPulseTimer > 0)
       {
         iconPulseTimer = Math.max(0, iconPulseTimer - dt);
