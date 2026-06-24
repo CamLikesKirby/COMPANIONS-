@@ -264,9 +264,10 @@ class CompanionSelector extends Module
     freeplayState = state;
 
     // Save the current freeplay player character so CompanionMode can read it.
+    var opts = {};
     try
     {
-      var opts = Save.instance.getModOptions("COMPANION-2P");
+      opts = Save.instance.getModOptions("COMPANION-2P");
       if (opts == null) opts = {};
       opts.freeplayPlayerId = Std.string(state.currentCharacterId ?? "");
       Save.instance.setModOptions("COMPANION-2P", opts);
@@ -277,7 +278,8 @@ class CompanionSelector extends Module
     _buildInstalledList();
 
     loadSavedSelection();
-    defaultToPlayer(state);
+    if (opts.switchToDefault == null) opts = Save.instance.getModOptions("COMPANION-2P");
+    if (opts.switchToDefault) defaultToPlayer(state);
 
     dots = new FlxTypedSpriteGroup();
 

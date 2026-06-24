@@ -13,11 +13,7 @@ class CompanionOptionsMenu extends Module
     super.onCreate(event);
     var opts = Save.instance.getModOptions("COMPANION-2P");
     if (opts == null) opts = {};
-    var dirty = false;
-    var showNotes:Dynamic = null;
-    try { showNotes = opts.showCompanionNotes; } catch (_:Dynamic) {trace(_);}
-    if (showNotes == null) { opts.showCompanionNotes = true; dirty = true; }
-    if (dirty) { Save.instance.setModOptions("COMPANION-2P", opts); Save.instance.flush(); }
+    saveShit();
   }
 
   override function onStateChangeEnd(event)
@@ -87,15 +83,17 @@ class CompanionOptionsMenu extends Module
 
     // ── Show Companion Notes ──────────────────────────────────────────────
     var currentNotes:Bool = true;
+    var switchDefault:Bool = true;
     try
     {
-      var v:Dynamic = Save.instance.getModOptions("COMPANION-2P").showCompanionNotes;
-      if (v != null) currentNotes = v == true;
+      if (Save.instance.getModOptions("COMPANION-2P").showCompanionNotes != null) currentNotes = Save.instance.getModOptions("COMPANION-2P").showCompanionNotes == true;
+      if (Save.instance.getModOptions("COMPANION-2P").switchToDefault != null) switchDefault = Save.instance.getModOptions("COMPANION-2P").switchToDefault == true;
     }
     catch (_:Dynamic) {trace(_);}
 
     try
     {
+
       companionsPage.createPrefItemCheckbox(
         'Show Companion Notes',
         'ON: 3 strumlines. OFF: companion animates silently.',
@@ -109,8 +107,37 @@ class CompanionOptionsMenu extends Module
         },
         currentNotes
       );
+
+        companionsPage.createPrefItemCheckbox(
+        'Switch To Default',
+        'ON: The selector always switches to the player your currently on in freeplay OFF: The selector remains untouched.',
+        function(value:Bool)
+        {
+          var opts = Save.instance.getModOptions("COMPANION-2P");
+          if (opts == null) opts = {};
+          opts.switchToDefault = value;
+          Save.instance.setModOptions("COMPANION-2P", opts);
+          Save.instance.flush();
+        },
+        switchDefault
+      );
+
     }
     catch (_:Dynamic) {trace(_);}
 
   }
+
+
+function saveShit() {
+    var dirty = false;
+    var showNotes:Dynamic = null;
+    var switchToDefault:Dynamic = null;
+    try { switchToDefault = opts.switchToDefault; } catch (_:Dynamic) {trace(_);}
+    if (switchToDefault == null) { opts.switchToDefault = true; dirty = true; }
+
+    try { showNotes = opts.showCompanionNotes; } catch (_:Dynamic) {trace(_);}
+    if (showNotes == null) { opts.showCompanionNotes = true; dirty = true; }
+
+    if (dirty) { Save.instance.setModOptions("COMPANION-2P", opts); Save.instance.flush(); }
+}
 }
