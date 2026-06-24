@@ -14,7 +14,7 @@ Whenever your in the freeplay menu or storymode press R to cycle right and SHIFT
 
 # WARNING!!!
 I do not claim to own or own any of the mods shown in the images or videos!
-None of the mods in the images or videos are included in the mod! You need to download them sepratly.
+None of the mods in the images or videos are included in the mod! You need to download them separately.
 I am using no assets from their mods they are simply compatible with my mod!
 
 Compatible Mods
