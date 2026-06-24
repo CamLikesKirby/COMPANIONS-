@@ -563,7 +563,6 @@ class CompanionMode extends Module
         }
         catch (_:Dynamic) {}
         if (vd == null) continue;
-
         loadCompanionVocals(vd, tryVar);
         vocalDone = true;
       }
@@ -834,11 +833,11 @@ class CompanionMode extends Module
       var inst:String = null;
       try { inst = diff2?.characters?.instrumental; } catch (_:Dynamic) {}
       if (inst == null || inst == "") inst = variation;
-
       var candidates:Array<String> = [];
       if (variation != null && variation != "default")
       {
         candidates.push('-${inst}-${voiceChar}');
+        candidates.push('-${inst}-${inst}');
         if (inst != variation) candidates.push('-${variation}-${voiceChar}');
         candidates.push('-${voiceChar}-${inst}');
         candidates.push('-${voiceChar}-${variation}');
@@ -900,6 +899,7 @@ class CompanionMode extends Module
       if (chosen == null) return;
 
       var voicePath = Paths.voices(songId, chosen);
+   
       var vol       = (vocalsVolume > 1) ? vocalsVolume - 1.0 : vocalsVolume;
       companionVocals = FunkinSound.load(voicePath, vol, false, false, false, false, null, null, true);
       FunkinMemory.cacheSound(voicePath);
