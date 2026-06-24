@@ -16,39 +16,39 @@
     "hideWhenPlayer":[],
 
     "variants": {
-    "songsInOrder": ["cocoa"],
-    
-    "variantsInOrder": ["krima-bambi"]
+    "songsInOrder": ["dadbattle", "satin-panties", "high", "milf", "cocoa", "eggnog", "winter-horrorland", "senpai", "roses", "thorns", "blazin", "spookeez", "south", "winter-horrorland"],
+    "variantsInOrder": ["bambi-mad", "bambi-car", "bambi-car", "bambi-car", "krima-bambi", "krima-bambi", "krima-bambi", "bami-pixel", "bami-pixel", "bami-pixel", "bambi-playable-blazin", "bambi-dark", "bambi-dark", "bambi-dark"]
     },
 
     "icon": {
     "normal": "bambi-playable",
     "hasPixel": "bami-pixel",
-    "songsInOrder": [],
-    "uniqueIconsInOrder": []
+    "songsInOrder": ["cocoa", "eggnog", "winter-horrorland", "blazin"],
+    "uniqueIconsInOrder": ["krima-bambi", "krima-bambi", "krima-bambi", "bambi-ripple"],
+    "flipX": false
     },
 
     "offsets": {
     "normalX": 100,
-    "normalY": 5,
+    "normalY": -10,
 
-    "carX": 0,
-    "carY": 0,
+    "carX": -100,
+    "carY": 70,
 
     "pixelX": 0,
-    "pixelY": -10,
+    "pixelY": 190,
 
     "picoStageX": 0,
-    "picoStageY": 10,
+    "picoStageY": 0,
 
     "tankmanStageX": 0,
-    "tankmanStageY": 0,
+    "tankmanStageY": 10,
 
-    "christmasX": 0,
-    "christmasY": 10,
+    "christmasX": -30,
+    "christmasY": 60,
 
     "spookyX": 0,
-    "spookyY": 0,
+    "spookyY": 20,
     
     "stagesInOrder": ["example"],
     "xys": [[0,0]]

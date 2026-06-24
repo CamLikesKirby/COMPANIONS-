@@ -983,7 +983,6 @@ class CompanionMode extends Module
     // Health icon: follow player icon + handle pulse animation + losing frame.
     if (companionHealthIcon != null)
     {
-      if (CompanionHelper.currentCompanionJson.icon.flipX != null) companionHealthIcon.flipX = CompanionHelper.currentCompanionJson.icon.flipX;
       // Only reposition every 2 frames — icon moves slowly enough that this is imperceptible.
       _iconUpdateFrame++;
       if (_iconUpdateFrame % 2 == 0) _updateCompanionIconPos();
@@ -1008,6 +1007,9 @@ class CompanionMode extends Module
       isPixelStage = (noteStyle != null && noteStyle.startsWith("pixel"));
     }
     catch (_:Dynamic) {}
+
+    if (CompanionHelper.currentCompanionJson.icon.flipX != null && !isPixelStage) companionHealthIcon.flipX = CompanionHelper.currentCompanionJson.icon.flipX;
+    if (CompanionHelper.currentCompanionJson.icon.flipPixelX != null && isPixelStage) companionHealthIcon.flipX = CompanionHelper.currentCompanionJson.icon.flipPixelX;
 
     // Keeps the pixel icon at a normal size
     var muti:Int = 1;
