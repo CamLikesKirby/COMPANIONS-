@@ -11,8 +11,6 @@ class CompanionOptionsMenu extends Module
   override function onCreate(event)
   {
     super.onCreate(event);
-    var opts = Save.instance.getModOptions("COMPANION-2P");
-    if (opts == null) opts = {};
     saveShit();
   }
 
@@ -129,6 +127,9 @@ class CompanionOptionsMenu extends Module
 
 
 function saveShit() {
+    var opts = Save.instance.getModOptions("COMPANION-2P");
+    if (opts == null) opts = {};
+    
     var dirty = false;
     var showNotes:Dynamic = null;
     var switchToDefault:Dynamic = null;

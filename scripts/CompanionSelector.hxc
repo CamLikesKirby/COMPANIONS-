@@ -34,6 +34,7 @@ class CompanionSelector extends Module
   var rightArrow:FunkinSprite;
   var dots:FlxTypedSpriteGroup<FunkinSprite>;
   var tagSprite:FunkinSprite;
+  var restarted:Bool = false;
 
   // ── Nametag resolution ────────────────────────────────────────────────────
   // Tries to load the companion's charselect nametag (the same image the
@@ -209,8 +210,19 @@ class CompanionSelector extends Module
     companionToDot = [];
   }
 
-  // ── Save / load ────────────────────────────────────────────────────────────
+  override function onSongSelected(event:CapsuleScriptEvent)
+  {
+    super.onSongSelected(event);
 
+    if (!isSongCompatibleForCompanion(getCurrentSongId(FlxG.state.subState), currentCompanionId, FlxG.state.subState))
+    { 
+      // TODO: Make another way to prevent players from entering a song
+      FlxG.resetState(); 
+      restarted = true;
+    }
+  }
+
+  // ── Save / load ────────────────────────────────────────────────────────────
   function loadSavedSelection()
   {
     var options = Save.instance.getModOptions("COMPANION-2P");
@@ -262,7 +274,10 @@ class CompanionSelector extends Module
   function onCreatePost(state, add)
   {
     freeplayState = state;
-
+    if (restarted) { 
+    FunkinSound.playOnce(Paths.sound('CS_locked')); 
+    restarted = false;
+    }
     // Save the current freeplay player character so CompanionMode can read it.
     var opts = {};
     try
