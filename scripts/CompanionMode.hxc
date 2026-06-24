@@ -534,7 +534,7 @@ class CompanionMode extends Module
       var allowErectFallback = (vocalVariation == "erect" || vocalVariation == "default");
       var vocalFallbacks:Array<String> = allowErectFallback
         ? [vocalVariation, "erect", "default"]
-        : ["vocalVariation", "default"];
+        : [vocalVariation, "default"];
       var vocalDone = false;
       if (vocalVariation == "" && companionId == 'bf') vocalFallbacks.push('bf');
 
