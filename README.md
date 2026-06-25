@@ -17,7 +17,7 @@ I do not claim to own or own any of the mods shown in the images or videos!
 None of the mods in the images or videos are included in the mod! You need to download them separately.
 I am using no assets from their mods they are simply compatible with my mod!
 
-Compatible Mods
+# Compatible Mods
 
 https://gamebanana.com/mods/614615 - Philly Mix
 
