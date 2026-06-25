@@ -1,0 +1,15 @@
+import funkin.modding.module.Module;
+import funkin.save.Save;
+
+class RemnantsFix extends Module
+{
+  public function new() { super('RemnantsFix'); }
+
+  override function onStateChangeBegin(event:ScriptEvent):Void
+  {
+    // The remants Bumper causes promblems on base/mods, so forcefully turning it off should fix it.
+    try {
+    Save.instance.modOptions.set('remnantsBumpers', false);
+    } catch (_:Dynamic) {}
+  }
+}

@@ -63,7 +63,9 @@ https://gamebanana.com/wips/96543 - Bambi Mixes - The FULL "Corny" Mod
 
 https://gamebanana.com/mods/620262 - Girlfriend Mix
 
+https://gamebanana.com/mods/653229 - Friday Night Funkin': Remnants
+
 Make sure to support the mod creators!
 
 ## TODO
-https://gamebanana.com/mods/653229 - Friday Night Funkin': Remnants
+No requests currently

@@ -5,6 +5,7 @@
     "picoStageSongs": ["pico", "philly-nice", "blammed", "lit-up"],
     "tankmanStageSongs": ["ugh", "guns", "stress"],
     "christmasSongs": ["cocoa", "eggnog", "winter-horrorland"],
+    "spookySongs": ["spookeez", "south", "monster"],
 
     "nonResizePlayer": ["baldi"]
 }

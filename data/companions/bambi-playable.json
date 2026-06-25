@@ -12,8 +12,6 @@
 
     "compatibleSongs": ["2hot","blammed","blazin","bopeebo","cocoa","dadbattle","darnell","eggnog","flippin-stealer","fresh","guns","high","holy-theft","lit-up","milf","monster","philly-nice","pico","roses","satin-panties","senpai","south","spookeez","stress","supernovae","sussus-moogus","test","thorns","tutorial","ugh","winter-horrorland"],
 
-    "hideWhenPlayer":[],
-
     "variants": {
     "songsInOrder": ["dadbattle", "satin-panties", "high", "milf", "cocoa", "eggnog", "winter-horrorland", "senpai", "roses", "thorns", "blazin", "spookeez", "south", "winter-horrorland"],
     "variantsInOrder": ["bambi-mad", "bambi-car", "bambi-car", "bambi-car", "krima-bambi", "krima-bambi", "krima-bambi", "bami-pixel", "bami-pixel", "bami-pixel", "bambi-playable-blazin", "bambi-dark", "bambi-dark", "bambi-dark"]

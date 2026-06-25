@@ -241,27 +241,14 @@ class CompanionMode extends Module
     // Skip spawning if the companion is the same character as the main player.
     try
     {
-      var variation  = PlayState.instance.currentVariation;
-      var difficulty = PlayState.instance.currentDifficulty;
-      if (variation == null) variation = "default";
-      if (difficulty == null) difficulty = "normal";
-      var diff = PlayState.instance.currentSong.getDifficulty(difficulty, variation);
-      if (diff != null)
-      {
-        var chartPlayer:String = "";
-        try { chartPlayer = diff.characters.player; } catch (_:Dynamic) {}
-        var savedRoot = _charRootId(_readSavedCompanionId());
-        var chartRoot = _charRootId(chartPlayer);
-
-        var companionPlayer = CompanionHelper.currentCompanionJson.freePlayId;
-        var player = CompanionHelper.currentPlayer;
-        
-        if (companionPlayer == player || CompanionHelper.currentCompanionJson.hideWhenPlayer.contains(chartPlayer))
+      var companionPlayer = CompanionHelper.currentCompanionJson.freePlayId;
+      var player = CompanionHelper.currentPlayer;
+       
+        if (companionPlayer == player)
         {
           trace("[CompanionMode] Companion root matches chart player — skipping spawn.");
           companionId = "__none__";
         }
-      }
     }
     catch (_:Dynamic) {}
 
@@ -399,7 +386,6 @@ class CompanionMode extends Module
     var sid:String = "";
     try
     {
-      sid = PlayState.instance.currentStageId;
       _isDarkStage = globalData.isDarkStage.contains(sid);
     } catch (_:Dynamic) {trace('Couldn\'t get Dark Stages: ' + _);}
     
@@ -410,6 +396,7 @@ class CompanionMode extends Module
     var picoStageSongs:Array<String> = globalData.picoStageSongs;
     var tankmanStageSongs:Array<String> = globalData.tankmanStageSongs;
     var christmasSongs:Array<String> = globalData.christmasSongs;
+    var spookySongs:Array<String> = globalData.spookySongs;
 
     var currentSongId:String = "";
     try { currentSongId = PlayState.instance.currentSong.id.toLowerCase(); } catch (_:Dynamic) {}
@@ -417,9 +404,9 @@ class CompanionMode extends Module
     var extraXoffset:Float = 0;
     var extraYoffset:Float = 0;
 
-     var stages:Map<String, String> = [];
+    var stages:Map<String, String> = [];
      
-     var companionIdJson = CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion);
+    var companionIdJson = CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion);
 
     for (i in 0...companionIdJson.offsets.stagesInOrder.length) {
         stages.set(companionIdJson.offsets.stagesInOrder[i], companionIdJson.offsets.xys[i]);
@@ -456,7 +443,7 @@ class CompanionMode extends Module
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.christmasY;
     }
 
-    if (_isDarkStage) {
+    if (spookySongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.spookyX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.spookyY;
     }
@@ -522,7 +509,6 @@ class CompanionMode extends Module
         : [vocalVariation, "default"];
       var vocalDone = false;
       if (vocalVariation == "" && companionId == 'bf') vocalFallbacks.push('bf');
-
       for (tryVar in vocalFallbacks)
       {
         if (tryVar == null || vocalDone) continue;
