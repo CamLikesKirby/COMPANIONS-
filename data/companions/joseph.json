@@ -1,0 +1,52 @@
+{
+    "baseCharacter": "joseph",
+    "nameTagPath": "charSelect/averageNametag",
+    "songVariationName": "average",
+    "freePlayId": "average",
+    "specificPlayerName": "average",
+    "baseGameAndModFile": false,
+    "skipDance": false,
+    "modFolder": "",
+    "playerFileReplacement": "",
+    "playableVerifiactionCheck": false,
+
+    "compatibleSongs": ["tutorial", "bopeebo","fresh","dadbattle","spookeez","satin-panties","high","ugh","guns","darnell"],
+
+    "variants": {
+    "songsInOrder": ["spookeez","satin-panties","high","ugh","guns","darnell"],
+    "variantsInOrder": ["bruce","rose-car","rose-car","chuck-playable","chuck-playable","gerald"]
+    },
+
+    "icon": {
+    "normal": "joseph",
+    "hasPixel": false,
+    "songsInOrder": ["spookeez","satin-panties","high","ugh","guns","darnell"],
+    "uniqueIconsInOrder": ["bruce","rose","rose","chuck-playable","chuck-playable","gerald"]
+    },
+
+    "offsets": {
+    "normalX": 100,
+    "normalY": 20,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": -10,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0,
+    
+    "stagesInOrder": ["example"],
+    "xys": [[0,0]]
+    }
+}

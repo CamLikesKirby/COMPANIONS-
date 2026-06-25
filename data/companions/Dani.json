@@ -1,0 +1,53 @@
+{
+    "baseCharacter": "Dani",
+    "nameTagPath": "charSelect/daniNametag",
+    "songVariationName": "dani",
+    "freePlayId": "dani",
+    "specificPlayerName": "dani",
+    "baseGameAndModFile": false,
+    "skipDance": true,
+    "modFolder": "",
+    "playerFileReplacement": "",
+    "playableVerifiactionCheck": false,
+    "defaultVocalVolume": 0.55,
+
+    "compatibleSongs": ["tutorial","fresh","pico","satin-panties","high","eggnog","senpai","ugh","guns","darnell"],
+
+    "variants": {
+    "songsInOrder": ["satin-panties","high","eggnog","senpai"],
+    "variantsInOrder": ["Dani-Car","Dani-Car","Dani-Christmas","Dani-Pixel"]
+    },
+
+    "icon": {
+    "normal": "Dani",
+    "hasPixel": "DaniPixel",
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 100,
+    "normalY": 10,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 100,
+    "pixelY": -10,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 0,
+
+    "spookyX": 0,
+    "spookyY": 0,
+    
+    "stagesInOrder": ["example"],
+    "xys": [[0,0]]
+    }
+}

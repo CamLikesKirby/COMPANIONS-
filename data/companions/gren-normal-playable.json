@@ -1,0 +1,53 @@
+{
+    "baseCharacter": "gren-normal-playable",
+    "nameTagPath": "charSelect/grenNametag",
+    "songVariationName": "gren",
+    "freePlayId": "gren",
+    "specificPlayerName": "gren",
+    "baseGameAndModFile": false,
+    "skipDance": false,
+    "modFolder": "",
+    "playerFileReplacement": "",
+    "playableVerifiactionCheck": false,
+    "reSize": false,
+
+    "compatibleSongs": ["blammed","bopeebo","cocoa","dadbattle","eggnog","fresh","high","milf","philly-nice","pico","roses","satin-panties","senpai","south","spookeez","thorns","tutorial"],
+
+    "variants": {
+    "songsInOrder": ["spookeez","south","satin-panties","high","milf","cocoa","eggnog","senpai","roses","thorns"],
+    "variantsInOrder": ["gren-week2-dark","gren-week2-dark","gren-car","gren-car","gren-car","gren-xmas","gren-xmas","gren-pixel","gren-pixel","gren-pixel"]
+    },
+
+    "icon": {
+    "normal": "grenn",
+    "hasPixel": true,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 150,
+    "normalY": -10,
+
+    "carX": 30,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": -10,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": -30,
+    
+    "stagesInOrder": ["example"],
+    "xys": [[0,0]]
+    }
+}

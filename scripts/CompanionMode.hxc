@@ -82,7 +82,7 @@ class CompanionMode extends Module
     super.onSongRetry(event);
     cleanup();
     
-    CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
+    if (!CompanionSelector.playerThatHasNoJson) CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
     // Immediately spawn a placeholder strumline so 3 are always visible from the start.
     _spawnPlaceholderStrumline();
     pendingSpawn = true;
@@ -151,7 +151,7 @@ class CompanionMode extends Module
 
   function _spawnPlaceholderStrumline()
   {
-    if (PlayState.instance == null) return;
+    if (PlayState.instance == null || CompanionHelper.currentCompanionJson == null) return;
     // Remove existing placeholder if any.
     if (companionStrumline != null)
     {
@@ -234,7 +234,7 @@ class CompanionMode extends Module
   function createCompanion()
   {
     if (PlayState.instance?.currentStage == null
-        || PlayState.instance?.currentSong  == null) return;
+        || PlayState.instance?.currentSong  == null || CompanionHelper.currentCompanionJson == null) return;
 
     var companionId = getSelectedCompanionId();
      
@@ -874,13 +874,14 @@ class CompanionMode extends Module
       var voicePath = Paths.voices(songId, chosen);
    
       var vol       = (vocalsVolume > 1) ? vocalsVolume - 1.0 : vocalsVolume;
+      if (CompanionHelper.currentCompanionJson.defaultVocalVolume != null) vol = CompanionHelper.currentCompanionJson.defaultVocalVolume;
       companionVocals = FunkinSound.load(voicePath, vol, false, false, false, false, null, null, true);
       FunkinMemory.cacheSound(voicePath);
       PlayState.instance.vocals.addOpponentVoice(companionVocals);
 
       if (vocalsVolume > 1)
       {
-        companionVocals2 = FunkinSound.load(voicePath, vocalsVolume - 1.0, false, false, false, false, null, null, true);
+        companionVocals2 = FunkinSound.load(voicePath, CompanionHelper.currentCompanionJson.defaultVocalVolume != null ? CompanionHelper.currentCompanionJson.defaultVocalVolume : vocalsVolume - 1.0, false, false, false, false, null, null, true);
         PlayState.instance.vocals.addOpponentVoice(companionVocals2);
       }
     }
@@ -985,9 +986,9 @@ class CompanionMode extends Module
     if (CompanionHelper.currentCompanionJson.icon.flipPixelX != null && isPixelStage) companionHealthIcon.flipX = CompanionHelper.currentCompanionJson.icon.flipPixelX;
 
     // Keeps the pixel icon at a normal size
-    var muti:Int = 1;
+    var muti:Float = 1;
     if (isPixelStage) muti = 5;
-
+    if (isPixelStage && CompanionHelper.currentCompanionJson.icon.muti != null) muti = CompanionHelper.currentCompanionJson.icon.muti;
       // Decay pulse scale back to 1.
       if (iconPulseTimer > 0)
       {
@@ -1049,6 +1050,7 @@ class CompanionMode extends Module
         agcGain  = Math.max(agcMinGain, Math.min(agcMaxGain, agcGain));
 
         companionVocals.volume = agcGain;
+        if (CompanionHelper.currentCompanionJson.defaultVocalVolume != null) companionVocals.volume = CompanionHelper.currentCompanionJson.defaultVocalVolume;
       }
       catch (_:Dynamic) {}
     }

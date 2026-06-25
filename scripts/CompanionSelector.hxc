@@ -63,6 +63,7 @@ class CompanionSelector extends Module
 
     // Then try to load the real nametag on top.
     var path = _getNametagPath(companionId);
+    if (playerThatHasNoJson && companionId == CompanionHelper.currentPlayer) path = 'companionTags/NOT_AVAILABLE';
     if (path == null) return;
     try
     {
@@ -80,6 +81,8 @@ class CompanionSelector extends Module
 
   // Built once in onSubstateOpen from ALL_COMPANIONS filtered to installed mods.
   var COMPANIONS:Array<String> = [];
+
+  public static var playerThatHasNoJson:Bool = false;
 
   // Returns a unique image path that only exists if the companion's mod is installed.
   function _isCompanionInstalled(companionId:String):Bool
@@ -113,6 +116,7 @@ class CompanionSelector extends Module
         COMPANIONS.push(id);
       }
     }
+
     trace('[CompanionSelector] Installed companions: ' + COMPANIONS);
 
     // If saved companion is no longer installed, reset to bf.
@@ -150,7 +154,7 @@ class CompanionSelector extends Module
   function isSongInList(songId:String, companionId:String):Bool
   {
     var companionIdJson = CompanionHelper.getCompanionJson(companionId);
-    if (companionId == 'bf') return true; else return _inList(songId, companionIdJson.compatibleSongs);
+    if (companionId == 'bf' || (playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return true; else return _inList(songId, companionIdJson.compatibleSongs);
   }
   // ─────────────────────────────────────────────────────────────────────────
 
@@ -232,6 +236,7 @@ class CompanionSelector extends Module
     currentIndex = savedIdx >= 0 ? savedIdx : 0;
     currentCompanionId = COMPANIONS[currentIndex];
     CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(currentCompanionId);
+    if (playerThatHasNoJson && currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
   }
 
   function saveSelection()
@@ -249,24 +254,37 @@ class CompanionSelector extends Module
   {
     var fc:String = "";
     try { fc = Std.string(state.currentCharacterId ?? "").toLowerCase(); } catch (_:Dynamic) {}
-    if (fc == "") return;
+    if (fc == "" && !playerThatHasNoJson) return;
 
     for (id in COMPANIONS)
     {
       var mc = (_getFreeplayId(id) ?? "").toLowerCase();
-      if (mc == fc)
+
+      if ((mc == fc) || (playerThatHasNoJson && id == CompanionHelper.currentPlayer))
       {
         var idx = COMPANIONS.indexOf(id);
         if (idx >= 0)
         {
+          trace(id);
           currentIndex       = idx;
           currentCompanionId = id;
           CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(currentCompanionId);
+          if (playerThatHasNoJson && state.currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
           saveSelection();
         }
         return;
       }
     }
+  }
+
+  function playerCheck(player:String) {
+     for (id in ALL_COMPANIONS) {
+    var companionIdJsons = CompanionHelper.getCompanionJson(id);
+    if (companionIdJsons.freePlayId != null && companionIdJsons.freePlayId == player) {
+    return false;
+    }
+    }
+    return true;
   }
 
   // ── UI build ───────────────────────────────────────────────────────────────
@@ -280,7 +298,6 @@ class CompanionSelector extends Module
     }
 
     CompanionHelper.currentPlayer = FreeplayState.rememberedCharacterId;
-
     // Save the current freeplay player character so CompanionMode can read it.
     var opts = {};
     try
@@ -294,6 +311,10 @@ class CompanionSelector extends Module
 
     // Build installed list FIRST before anything uses COMPANIONS.length.
     _buildInstalledList();
+
+    playerThatHasNoJson = playerCheck(CompanionHelper.currentPlayer);
+    trace("playerThatHasNoJson: " + playerThatHasNoJson);
+    if (playerThatHasNoJson) COMPANIONS.push(CompanionHelper.currentPlayer);
 
     loadSavedSelection();
     if (opts.switchToDefault == null) opts = Save.instance.getModOptions("COMPANION-2P");
@@ -558,7 +579,7 @@ class CompanionSelector extends Module
     currentCompanionId = COMPANIONS[currentIndex];
     
     CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(currentCompanionId);
-
+    if (playerThatHasNoJson && currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
     if (tagSprite != null)
     {
       _loadNametag(currentCompanionId);
@@ -579,7 +600,7 @@ class CompanionSelector extends Module
     {
       var fc  = Std.string(freeplayState?.currentCharacterId ?? "");
       var mc  = _getFreeplayId(currentCompanionId);
-      tagSprite.alpha = (mc != "" && fc == mc) ? 0.35 : 1.0;
+      tagSprite.alpha = ((mc != "" && fc == mc) || (currentCompanionId == CompanionHelper.currentPlayer && playerThatHasNoJson)) ? 0.35 : 1.0;
     }
     catch (_:Dynamic) { if (tagSprite != null) tagSprite.alpha = 1.0; }
 

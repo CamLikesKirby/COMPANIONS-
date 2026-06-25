@@ -57,6 +57,7 @@ https://gamebanana.com/mods/643431 - [FNF2 MIX] BF2 Playable Character
 
 https://gamebanana.com/mods/560777 - PTR X FNF - I SCREAM! ft. PJ & PaRappa
 
+# ONLY FOR GIBHUB VERSION
 https://gamebanana.com/mods/682129 - The Baldi-Mix Collection
 
 https://gamebanana.com/wips/96543 - Bambi Mixes - The FULL "Corny" Mod
@@ -66,6 +67,20 @@ https://gamebanana.com/mods/620262 - Girlfriend Mix
 https://gamebanana.com/mods/653229 - Friday Night Funkin': Remnants
 
 https://gamebanana.com/mods/669012 - Friday Night Funkin': Beebo Mixes
+
+https://gamebanana.com/mods/632633 - Dani Playable [PRELAUNCH] 1.10
+
+https://gamebanana.com/mods/684324 - [V-SLICE] FNF: WITCH ATSUKO KAGARI MIX
+
+https://gamebanana.com/mods/621910 - FNF: Huggy Mix
+
+https://gamebanana.com/mods/606077 - Friday Night Funkin: Vs Nonsense (v1.5)
+
+https://gamebanana.com/mods/685231 - Average Mixes
+
+https://gamebanana.com/mods/668043 - FNF: Gren Mix
+
+https://gamebanana.com/mods/668995 - FNF: Fire In The Hole (Abnormal Mix V SLICE)
 
 Make sure to support the mod creators!
 

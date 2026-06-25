@@ -1,0 +1,53 @@
+{
+    "baseCharacter": "huggy",
+    "nameTagPath": "charSelect/huggyNametag",
+    "songVariationName": "huggy",
+    "freePlayId": "huggy",
+    "specificPlayerName": "",
+    "baseGameAndModFile": false,
+    "skipDance": false,
+    "modFolder": "",
+    "playerFileReplacement": "",
+    "playableVerifiactionCheck": false,
+
+    "compatibleSongs": ["tutorial","bopeebo","fresh","dadbattle","spookeez","south","pico","philly-nice","blammed","high","cocoa","eggnog","winter-horrorland","roses","thorns","ugh","darnell","lit-up","blazin"],
+
+    "variants": {
+    "songsInOrder": ["spookeez","south","cocoa","eggnog","winter-horrorland","roses","thorns","blazin"],
+    "variantsInOrder": ["huggy-dark","huggy-dark","huggy-christmas","huggy-christmas","huggy-christmas","huggy-pixel","huggy-pixel","huggy-blazin"]
+    },
+
+    "icon": {
+    "normal": "huggy",
+    "hasPixel": true,
+    "muti": 1,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 230,
+    "normalY": 5,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": -100,
+    "pixelY": 0,
+
+    "picoStageX": -140,
+    "picoStageY": 0,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": -10,
+
+    "spookyX": 0,
+    "spookyY": 70,
+    
+    "stagesInOrder": ["example"],
+    "xys": [[0,0]]
+    }
+}
