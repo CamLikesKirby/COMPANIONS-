@@ -65,8 +65,10 @@ https://gamebanana.com/mods/620262 - Girlfriend Mix
 
 https://gamebanana.com/mods/653229 - Friday Night Funkin': Remnants
 
+https://gamebanana.com/mods/669012 - Friday Night Funkin': Beebo Mixes
+
 Make sure to support the mod creators!
 
 ## TODO
 
-https://gamebanana.com/mods/669012 - Friday Night Funkin': Beebo Mixes
+No requests currently.

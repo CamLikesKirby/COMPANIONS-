@@ -1,0 +1,52 @@
+{
+    "baseCharacter": "beebo",
+    "nameTagPath": "charSelect/beeboNametag",
+    "songVariationName": "beebo",
+    "freePlayId": "beebo",
+    "specificPlayerName": "",
+    "baseGameAndModFile": false,
+    "skipDance": false,
+    "modFolder": "",
+    "playerFileReplacement": "",
+    "playableVerifiactionCheck": false,
+
+    "compatibleSongs": ["dadbattle","pico","blammed","ugh","darnell"],
+
+    "variants": {
+    "songsInOrder": [],
+    "variantsInOrder": []
+    },
+
+    "icon": {
+    "normal": "beebo",
+    "hasPixel": false,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 90,
+    "normalY": 0,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": -10,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0,
+    
+    "stagesInOrder": ["example"],
+    "xys": [[0,0]]
+    }
+}
