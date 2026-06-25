@@ -9,7 +9,6 @@
     "modFolder": "",
     "playerFileReplacement": "assets/data/characters/tankman-playable.json",
     "playableVerifiactionCheck": false,
-    "isFNF2": false,
 
     "compatibleSongs": ["blammed","bopeebo","cocoa","dadbattle","eggnog","fresh","high","milf",
                 "monster","philly-nice","pico","roses","satin-panties","senpai","south","spookeez",

@@ -9,7 +9,6 @@
     "modFolder": "",
     "playerFileReplacement": "assets/data/characters/darnell-playable.json",
     "playableVerifiactionCheck": false,
-    "isFNF2": false,
 
     "compatibleSongs": ["bopeebo","darnell","fresh","high","lit-up","philly-nice","pico",
                 "south","spookeez","tutorial","ugh"],

@@ -278,6 +278,9 @@ class CompanionSelector extends Module
     FunkinSound.playOnce(Paths.sound('CS_locked')); 
     restarted = false;
     }
+
+    CompanionHelper.currentPlayer = FreeplayState.rememberedCharacterId;
+
     // Save the current freeplay player character so CompanionMode can read it.
     var opts = {};
     try

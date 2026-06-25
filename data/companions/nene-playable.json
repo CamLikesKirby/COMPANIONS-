@@ -9,7 +9,6 @@
     "modFolder": "",
     "playerFileReplacement": "assets/images/charSelect/neneplayerNametag.png",
     "playableVerifiactionCheck": false,
-    "isFNF2": false,
 
     "compatibleSongs": ["bopeebo","spookeez","pico","high","eggnog","senpai","guns","darnell"],
 

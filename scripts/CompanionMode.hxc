@@ -133,22 +133,9 @@ class CompanionMode extends Module
     try { if (PlayState.instance.isStoryMode) return true; } catch (_:Dynamic) {}
     try
     {
-      var savedId     = _readSavedCompanionId();
-      var variation   = PlayState.instance.currentVariation;
-      var difficulty  = PlayState.instance.currentDifficulty;
-      if (variation == null) variation = "default";
-      if (difficulty == null) difficulty = "normal";
-      var diff = PlayState.instance.currentSong.getDifficulty(difficulty, variation);
-      if (diff == null) return false;
-      var chartPlayer:String = "";
-      try { chartPlayer = diff.characters.player; } catch (_:Dynamic) {}
-      var savedRoot = _charRootId(savedId);
-      // Never treat fnf2/bf2 as "same as player" — bf2 is the companion, not the main player.
-      var isFnf2Companion = CompanionHelper.currentCompanionJson.isFNF2;
-      if (!isFnf2Companion && _charRootId(chartPlayer) == savedRoot) return true;
-
-      var variantId = getSelectedCompanionId();
-      if (!isFnf2Companion && chartPlayer == variantId) return true;
+      var companionPlayer = CompanionHelper.currentCompanionJson.freePlayId;
+      var player = CompanionHelper.currentPlayer;
+      if (companionPlayer == player) return true;
     }
     catch (_:Dynamic) {}
     return false;
@@ -265,15 +252,13 @@ class CompanionMode extends Module
         try { chartPlayer = diff.characters.player; } catch (_:Dynamic) {}
         var savedRoot = _charRootId(_readSavedCompanionId());
         var chartRoot = _charRootId(chartPlayer);
-        // Never skip for fnf2/bf2 — bf2 IS the companion character, not the main player.
-        var isFnf2Companion = CompanionHelper.currentCompanionJson.isFNF2;
-        if (!isFnf2Companion && savedRoot != "" && savedRoot == chartRoot)
+
+        var companionPlayer = CompanionHelper.currentCompanionJson.freePlayId;
+        var player = CompanionHelper.currentPlayer;
+        
+        if (companionPlayer == player || CompanionHelper.currentCompanionJson.hideWhenPlayer.contains(chartPlayer))
         {
           trace("[CompanionMode] Companion root matches chart player — skipping spawn.");
-          companionId = "__none__";
-        }
-        else if (!isFnf2Companion && chartPlayer == companionId || CompanionHelper.currentCompanionJson.hideWhenPlayer.contains(chartPlayer))
-        {
           companionId = "__none__";
         }
       }
@@ -361,8 +346,8 @@ class CompanionMode extends Module
       catch (_:Dynamic) { companionChar = null; }
     }
 
-    // If bf2 variant fails (assets not available), try base bf2 or fall back to bf.
-    if (companionChar == null && CompanionHelper.currentCompanionJson.isFNF2)
+    // If char variant fails (assets not available), try base char or fall back to bf.
+    if (companionChar == null)
     {
       try { companionChar = CharacterDataParser.fetchCharacter(CompanionHelper.currentCompanionJson.baseCharacter); } catch (_:Dynamic) {}
       if (companionChar == null)
@@ -557,7 +542,6 @@ class CompanionMode extends Module
                      || chartPlayer.startsWith(compRoot + "-")
                      || chartPlayer.startsWith(compRoot + "train")
                      || (compRoot == CompanionHelper.currentCompanionJson.specificPlayerName && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName))
-                     || (CompanionHelper.currentCompanionJson.isFNF2)
                      || (companionId ==  CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName) && CompanionHelper.currentCompanionJson.playableVerifiactionCheck);
             if (!valid) vd = null;
           } 
@@ -607,7 +591,6 @@ class CompanionMode extends Module
           if (chartPlayer != "" && chartPlayer != companionId
               && !chartPlayerMatchesRoot
               && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train"
-              && !(CompanionHelper.currentCompanionJson.isFNF2)
               && !(companionId ==  CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith( CompanionHelper.currentCompanionJson.specificPlayerName) &&  CompanionHelper.currentCompanionJson.playableVerifiactionCheck))
           {
             diff2 = null;

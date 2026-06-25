@@ -13,6 +13,7 @@ import Std;
 class CompanionHelper
 {
   public static var currentBaseCompanion = "bf";
+  public static var currentPlayer = "bf";
   public static var currentCompanionJson = getCompanionJson("bf");
   
   public static function checkImageExists(id:String):Bool

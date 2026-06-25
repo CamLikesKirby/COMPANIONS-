@@ -9,7 +9,6 @@
     "modFolder": "",
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
-    "isFNF2": false,
     "reSize": false,
 
     "compatibleSongs": ["tutorial", "bopeebo", "dadbattle"],
