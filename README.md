@@ -80,8 +80,6 @@ https://gamebanana.com/mods/685231 - Average Mixes
 
 https://gamebanana.com/mods/668043 - FNF: Gren Mix
 
-https://gamebanana.com/mods/668995 - FNF: Fire In The Hole (Abnormal Mix V SLICE)
-
 Make sure to support the mod creators!
 
 ## TODO
