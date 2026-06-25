@@ -69,4 +69,4 @@ Make sure to support the mod creators!
 
 ## TODO
 
-https://gamebanana.com/mods/684161 - Friday Night Funkin': Beebo Mixes
+https://gamebanana.com/mods/669012 - Friday Night Funkin': Beebo Mixes
