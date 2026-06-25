@@ -68,4 +68,5 @@ https://gamebanana.com/mods/653229 - Friday Night Funkin': Remnants
 Make sure to support the mod creators!
 
 ## TODO
-No requests currently
+
+https://gamebanana.com/mods/684161 - Friday Night Funkin': Beebo Mixes
