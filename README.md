@@ -58,7 +58,7 @@ https://gamebanana.com/mods/643431 - [FNF2 MIX] BF2 Playable Character
 https://gamebanana.com/mods/560777 - PTR X FNF - I SCREAM! ft. PJ & PaRappa
 
 # ONLY FOR GITHUB VERSION
-https://gamebanana.com/mods/682129 - The Baldi-Mix Collection
+https://gamebanana.com/mods/682129 - The Baldi-Mix Collection (By SimoonDoesToons)
 
 https://gamebanana.com/wips/96543 - Bambi Mixes - The FULL "Corny" Mod
 
