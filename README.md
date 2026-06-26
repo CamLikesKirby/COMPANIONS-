@@ -57,8 +57,12 @@ https://gamebanana.com/mods/643431 - [FNF2 MIX] BF2 Playable Character
 
 https://gamebanana.com/mods/560777 - PTR X FNF - I SCREAM! ft. PJ & PaRappa
 
+<<<<<<< Updated upstream
 # ONLY FOR GITHUB VERSION
 https://gamebanana.com/mods/682129 - The Baldi-Mix Collection (By SimoonDoesToons)
+=======
+https://gamebanana.com/mods/682129 - The Baldi-Mix Collection
+>>>>>>> Stashed changes
 
 https://gamebanana.com/wips/96543 - Bambi Mixes - The FULL "Corny" Mod
 
@@ -85,6 +89,9 @@ https://gamebanana.com/mods/671995 - Playable Pelmen (Week 7 remixes) - TECH DEM
 https://gamebanana.com/mods/596021 - Friday Night Funkin': Bren Mix
 
 https://gamebanana.com/mods/596880 - [V-SLICE] FNF: BEETLEJUICE MIX
+
+# ONLY FOR EARLY GITHUB VERSION
+None currently.
 
 Make sure to support the mod creators!
 
