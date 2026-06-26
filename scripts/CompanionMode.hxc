@@ -828,7 +828,6 @@ class CompanionMode extends Module
       if (variation != null && variation != "default")
       {
         candidates.push('-${inst}-${voiceChar}');
-        candidates.push('-${inst}-${inst}');
         if (inst != variation) candidates.push('-${variation}-${voiceChar}');
         candidates.push('-${voiceChar}-${inst}');
         candidates.push('-${voiceChar}-${variation}');
@@ -880,6 +879,8 @@ class CompanionMode extends Module
           }
         }
       }
+
+      candidates.push('-${inst}-${inst}');
 
       var chosen:String = null;
       for (s in candidates)
