@@ -17,6 +17,7 @@ import funkin.play.notes.notekind.NoteKindManager;
 import funkin.save.Save;
 import funkin.util.Constants;
 import funkin.util.GRhythmUtil;
+import funkin.Preferences;
 
 using StringTools;
 
@@ -102,6 +103,22 @@ class CompanionMode extends Module
     _spawnPlaceholderStrumline();
     // Then replace with the real companion strumline after a tick.
     new FlxTimer().start(0.01, (_) -> createCompanion());
+  }
+
+  function onCountdownEnd(event:CountdownScriptEvent)
+  {
+    super.onCountdownEnd(event);
+
+    var playerSL   = PlayState.instance.playerStrumline;
+    var opponentSL = PlayState.instance.opponentStrumline;
+
+    var isDownscroll:Bool = Preferences.downscroll;
+    if (_willBeNone() || !_showCompanionNotes() || !isDownscroll) return;
+  
+      new FlxTimer().start(0.45, function(_) {     
+      playerSL.y = 660;
+      opponentSL.y = 660; 
+    });
   }
 
 
@@ -300,6 +317,7 @@ class CompanionMode extends Module
     {
       var playerSL   = PlayState.instance.playerStrumline;
       var opponentSL = PlayState.instance.opponentStrumline;
+      var isDownscroll:Bool = Preferences.downscroll;
       if (playerSL == null || opponentSL == null || companionStrumline == null) return;
 
       // Zoom the HUD camera out so all 3 strumlines fit side by side.
@@ -311,6 +329,7 @@ class CompanionMode extends Module
       companionStrumline.x = 920;
 
       companionStrumline.y = playerSL.y;
+      if (isDownscroll) companionStrumline.y = 660;
     }
     catch (_:Dynamic) {}
   }
