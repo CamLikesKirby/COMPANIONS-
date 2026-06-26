@@ -1,0 +1,52 @@
+{
+    "baseCharacter": "beetlejuice",
+    "nameTagPath": "charSelect/beetlejuiceNametag",
+    "songVariationName": "beetlejuice",
+    "freePlayId": "beetlejuice",
+    "specificPlayerName": "",
+    "baseGameAndModFile": false,
+    "skipDance": false,
+    "modFolder": "",
+    "playerFileReplacement": "",
+    "playableVerifiactionCheck": false,
+
+    "compatibleSongs": ["tutorial","bopeebo","fresh","dadbattle","spookeez","south","monster","pico","philly-nice","blammed","satin-panties","high","milf","cocoa","eggnog","winter-horrorland","senpai","roses","thorns","ugh","guns","stress","darnell","lit-up","2hot","blazin"],
+
+    "variants": {
+    "songsInOrder": ["spookeez","south","monster","pico","philly-nice","blammed","satin-panties","high","milf","cocoa","eggnog","winter-horrorland","senpai","roses","thorns","stress","blazin"],
+    "variantsInOrder": ["beetlejuice-dark","beetlejuice-dark","beetlejuice-dark","beetlejuice-pico","beetlejuice-pico","beetlejuice-pico","beetlejuice-car","beetlejuice-car","beetlejuice-car","beetlejuice-christmas","beetlejuice-christmas","beetlejuice-christmas","beetlejuice-pixel","beetlejuice-pixel","beetlejuice-pixel","beetlejuice-holding-lydia","beetlejuice-blazin"]
+    },
+
+    "icon": {
+    "normal": "beetlejuice",
+    "hasPixel": true,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 100,
+    "normalY": -25,
+
+    "carX": 0,
+    "carY": 15,
+
+    "pixelX": 0,
+    "pixelY": 15,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 130,
+    "tankmanStageY": 15,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0,
+    
+    "stagesInOrder": ["example"],
+    "xys": [[0,0]]
+    }
+}

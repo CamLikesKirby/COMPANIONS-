@@ -13,18 +13,18 @@
     "compatibleSongs": ["2hot","blammed","blazin","bopeebo","cocoa","dadbattle","darnell","eggnog",
                 "fresh","guns","high","lit-up","milf","philly-nice","pico","roses",
                 "satin-panties","senpai","south","spookeez","stress","thorns","tutorial",
-                "ugh","blissful","conquest","sky","wife-forever","manifest","dani","reoccurance","baffled","contextual"],
+                "ugh","blissful","conquest","sky","wife-forever","manifest","dani","reoccurance","baffled","contextual","bioexorcism"],
 
     "variants": {
     "songsInOrder": ["south","spookeez",
     "cocoa","eggnog","winter-horrorland",
     "roses","senpai","thorns",
-    "blissful", "conquest","stress","contextual"],
+    "blissful", "conquest","stress","contextual","bioexorcism"],
     
     "variantsInOrder": ["pico-dark","pico-dark",
     "pico-christmas","pico-christmas","pico-christmas",
    "pico-pixel","pico-pixel","pico-pixel",
-   "pico-qt","pico-madness","pico-holding-nene","pico-nonsense"]
+   "pico-qt","pico-madness","pico-holding-nene","pico-nonsense","pico-playable-beetlejuice"]
     },
 
     "icon": {

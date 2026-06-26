@@ -1,0 +1,52 @@
+{
+    "baseCharacter": "bren",
+    "nameTagPath": "charSelect/brenNametag",
+    "songVariationName": "bren",
+    "freePlayId": "bren",
+    "specificPlayerName": "",
+    "baseGameAndModFile": false,
+    "skipDance": false,
+    "modFolder": "",
+    "playerFileReplacement": "",
+    "playableVerifiactionCheck": false,
+
+    "compatibleSongs": ["fresh","high","milf"],
+
+    "variants": {
+    "songsInOrder": [],
+    "variantsInOrder": []
+    },
+
+    "icon": {
+    "normal": "bren",
+    "hasPixel": false,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 100,
+    "normalY": 30,
+
+    "carX": 0,
+    "carY": 30,
+
+    "pixelX": 0,
+    "pixelY": -10,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0,
+    
+    "stagesInOrder": ["example"],
+    "xys": [[0,0]]
+    }
+}

@@ -81,8 +81,7 @@ class CompanionMode extends Module
   {
     super.onSongRetry(event);
     cleanup();
-    
-    if (!CompanionSelector.playerThatHasNoJson) CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
+    if (!CompanionSelector.playerThatHasNoJson) CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
     // Immediately spawn a placeholder strumline so 3 are always visible from the start.
     _spawnPlaceholderStrumline();
     pendingSpawn = true;

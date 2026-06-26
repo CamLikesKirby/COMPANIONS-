@@ -80,6 +80,12 @@ https://gamebanana.com/mods/685231 - Average Mixes
 
 https://gamebanana.com/mods/668043 - FNF: Gren Mix
 
+https://gamebanana.com/mods/671995 - Playable Pelmen (Week 7 remixes) - TECH DEMO
+
+https://gamebanana.com/mods/596021 - Friday Night Funkin': Bren Mix
+
+https://gamebanana.com/mods/596880 - [V-SLICE] FNF: BEETLEJUICE MIX
+
 Make sure to support the mod creators!
 
 ## TODO
