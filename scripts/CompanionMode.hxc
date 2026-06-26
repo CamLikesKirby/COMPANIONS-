@@ -435,7 +435,7 @@ class CompanionMode extends Module
       extraXoffset = xNy[0];
       extraYoffset = xNy[1];
      } else {
-
+   try {
     if (pixelSongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.pixelX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.pixelY;
@@ -465,11 +465,18 @@ class CompanionMode extends Module
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.spookyX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.spookyY;
     }
+  } catch (_:Dynamic) {trace("offsets returned null: " + _);}
   }
 
-    var xOffset:Float = (christmasSongs.contains(currentSongId) ? 10 : 0) + CompanionHelper.currentCompanionJson.offsets.normalX + extraXoffset;
+    var normalX:Float = 0;
+    var normalY:Float = 0;
+    try {
+      normalX = CompanionHelper.currentCompanionJson.offsets.normalX;
+      normalY = CompanionHelper.currentCompanionJson.offsets.normalY;
+    } catch (_:Dynamic) {trace("normal offsets returned null: " + _);}
 
-    var yOffset:Float = CompanionHelper.currentCompanionJson.offsets.normalY + extraYoffset;
+    var xOffset:Float = (christmasSongs.contains(currentSongId) ? 10 : 0) + normalX + extraXoffset;
+    var yOffset:Float = normalY + extraYoffset;
 
     companionChar.x = stageCharData.position[0] - companionChar.characterOrigin.x + 240 + xOffset;
     companionChar.y = stageCharData.position[1] - companionChar.characterOrigin.y + yOffset;
@@ -834,6 +841,7 @@ class CompanionMode extends Module
         candidates.push('-${inst}');
         candidates.push('-${variation}');
       }
+      candidates.push('-${inst}-${inst}');
       candidates.push('-${voiceChar}');
 
       // For characters whose vocal files use "charName-charName" pattern
@@ -880,13 +888,11 @@ class CompanionMode extends Module
         }
       }
 
-      candidates.push('-${inst}-${inst}');
-
       var chosen:String = null;
       for (s in candidates)
       {
         var p = Paths.voices(songId, s);
-        if (Assets.exists(p)) { chosen = s; break; }
+        if (Assets.exists(p)) { trace(s); chosen = s; break; }
       }
       if (chosen == null) return;
 
