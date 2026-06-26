@@ -93,3 +93,5 @@ Make sure to support the mod creators!
 ## TODO
 
 No requests currently.
+
+![GitHub all releases](https://img.shields.io/github/downloads/CamLikesKirby/COMPANIONS-/total)
