@@ -1,5 +1,5 @@
 # COMPANIONS!!!
-why not make it two??? (Created by The_Ghost_FNF)
+why not make it two??? (Created by The_Ghost_FNF/Gurt)
 
 ![GitHub all releases](https://img.shields.io/github/downloads/CamLikesKirby/COMPANIONS-/total)
 
