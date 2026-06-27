@@ -1,7 +1,8 @@
 import funkin.util.FileUtil;
-import funkin.modding.PolymodHandler;
 import openfl.Assets;
 import haxe.Json;
+import funkin.modding.PolymodHandler;
+import funkin.util.SerializerUtil;
 
 import StringTools;
 import Std;
@@ -15,9 +16,17 @@ class CompanionHelper
   public static var currentBaseCompanion = "bf";
   public static var currentPlayer = "bf";
   public static var currentCompanionJson = getCompanionJson("bf");
+
+  // This looks familiar 
+   public static var compansForMobile:String<Array> = ["crash-playable","darnell-playable","dave","fnf2","fred","gooey",
+  "hank","henry","kesha","nene-playable","parappa-playable","pico-playable","reimu","sky-playable",
+  "sonic-playable","speakerGirl-playable","spooky-playable","steven","tankman-playable","baldi",
+  "bambi-playable","gfplayer","bf-remnants","pico-remnants-playable","bf","beebo","Dani",
+  "atsukokagari","huggy","joseph","gren-normal-playable","pelmen-playable","bren","beetlejuice"];
   
   public static function checkImageExists(id:String):Bool
   {
+    try {
     if (id == null || id == "" || FileUtil.directoryExists(id)) return false;
 
     var foldersToCheck:Array<String> = ["assets/"];
@@ -31,9 +40,9 @@ class CompanionHelper
           || FileUtil.fileExists(folder + "shared/images/" + id + ".png"))
         return true;
     }
+  } catch (_:Dynamic) {trace("Couldn\'t check image, assuming false");}
     return false;
   }
-
 
   // Checks if a companion's mod is active using openfl.Assets.
   // openfl.Assets only sees files from ACTIVE mods via Polymod,
@@ -58,7 +67,7 @@ class CompanionHelper
     }
     if (companionIdJson.baseGameAndModFile) {
         try { if (Assets.exists("assets/data/players/" + playerId + ".json")) return true; } catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "assets/data/players/" + playerId + ".json Error: " + _);}
-        try { if (funkin.util.FileUtil.fileExists("mods/" + companionIdJson.modFolder + "/data/players/" + playerId + ".json")) return true; } catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "mods/" + companionIdJson.modFolder + "/data/players/" + playerId + ".json Error: " + _);}
+     //   try { if (funkin.util.FileUtil.fileExists("mods/" + companionIdJson.modFolder + "/data/players/" + playerId + ".json")) return true; } catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "mods/" + companionIdJson.modFolder + "/data/players/" + playerId + ".json Error: " + _);}
         trace('Couldn\'t retrive anything from the assets or the mod folder, assuming false.');
         return false;
     }
@@ -83,33 +92,45 @@ class CompanionHelper
   try { 
    var uneditedFileNames:Array<String> = FileUtil.readDir('mods/COMPANIONS!!!/data/companions');
    var editedFileNames:Array<String> = [];
-
     for (file in uneditedFileNames) editedFileNames.push(StringTools.replace(file, ".json", ""));
     
     return editedFileNames; 
     } catch (_:Dynamic) {trace('Couldn\'t get all Companions!: ' + _ );}
-    return ["bf", "pico-playable"]; // on error, go to the two defaults
+    trace('assuming mobile');
+    return compansForMobile; // on error, return the manual array
   }
 
   public static function getCompanionJson(companionId):Dynamic
   {
-  try { 
     var ALL_COMPANIONS:Array<String> = getAllCompanions();
-
-    for (char in ALL_COMPANIONS) 
+    for (char in ALL_COMPANIONS) {
+  try { 
     if (char == companionId) return FileUtil.readJSONFromPath('mods/COMPANIONS!!!/data/companions/' + char + '.json'); 
-    } catch (_:Dynamic) {trace('Couldn\'t Get Companion Json: ' + _);}
-    return FileUtil.readJSONFromPath('mods/COMPANIONS!!!/data/companions/bf.json'); 
+    } catch (_:Dynamic) {trace('Couldn\'t Get Companion Json With FileUtil: ' + _);}
+    try {
+   if (char == companionId) return formJson('data/companions/' + char + '.json'); 
+    } catch (_:Dynamic) {trace('Couldn\'t Get Companion Json With Assets: ' + _);}
+  }
+    return formJson('data/companions/bf.json'); 
   } 
 
   public static function getGlobalData():Dynamic
   {
   try { 
-   return FileUtil.readJSONFromPath('mods/COMPANIONS!!!/data/global.json'); 
-    } catch (_:Dynamic) {trace('Couldn\'t Get Global Json: ' + _);}
-    return {}; 
+  return FileUtil.readJSONFromPath('mods/COMPANIONS!!!/data/global.json'); 
+  } catch (_:Dynamic) {trace('Couldn\'t Get Global Json With FileUtil: ' + _);}
+  try { 
+  return formJson('data/global.json'); 
+  } catch (_:Dynamic) {trace('Couldn\'t Get Global Json With Assets: ' + _);}
+  return {}; 
   } 
 
+  public static function formJson(json:Dynamic):Dynamic
+  {
+  try { return SerializerUtil.fromJSON(Assets.getText(json)); } catch (_:Dynamic) {trace(_);}
+  throw "Couldn\'t form json"; 
+  } 
+  
   public static function stringToIndices(string:String):Array<Int>
   {
     if (string == null) return [];

@@ -113,11 +113,11 @@ class CompanionMode extends Module
     var opponentSL = PlayState.instance.opponentStrumline;
 
     var isDownscroll:Bool = Preferences.downscroll;
-    if (_willBeNone() || !_showCompanionNotes() || !isDownscroll) return;
+    if (_willBeNone() || !_showCompanionNotes() || !isDownscroll && !FlxG.onMobile) return;
   
       new FlxTimer().start(0.45, function(_) {     
-      playerSL.y = 660;
-      opponentSL.y = 660; 
+      playerSL.y = 560;
+      if (isDownscroll) opponentSL.y = 660; 
     });
   }
 
@@ -184,10 +184,12 @@ class CompanionMode extends Module
       try { PlayState.instance.camHUD.scroll.y = 0; } catch (_:Dynamic) {}
       try
       {
+        if (!FlxG.onMobile) {
         var playerSL   = PlayState.instance.playerStrumline;
         var opponentSL = PlayState.instance.opponentStrumline;
         if (playerSL != null)   playerSL.x   = FlxG.width - playerSL.width - 50;
         if (opponentSL != null) opponentSL.x = 50;
+        }
       }
       catch (_:Dynamic) {}
       return;
@@ -319,16 +321,34 @@ class CompanionMode extends Module
       var opponentSL = PlayState.instance.opponentStrumline;
       var isDownscroll:Bool = Preferences.downscroll;
       if (playerSL == null || opponentSL == null || companionStrumline == null) return;
-
+      if (!FlxG.onMobile) {
       // Zoom the HUD camera out so all 3 strumlines fit side by side.
       try { PlayState.instance.camHUD.zoom = 0.85; } catch (_:Dynamic) {}
 
       // At 0.85 zoom the visible HUD area is ~1506px wide.
+  
       opponentSL.x         = -80;
       playerSL.x           = 420;
       companionStrumline.x = 920;
-
       companionStrumline.y = playerSL.y;
+      } else {
+      companionStrumline.x = opponentSL.x + 980;
+      companionStrumline.y = opponentSL.y;
+      companionStrumline.scale.x = 0.3;
+      companionStrumline.scale.y = 0.3;
+      companionStrumline.setNoteSpacing(0.45);
+      
+
+      companionStrumline.notes.visible = false;
+      companionStrumline.notes.alpha = 0;
+
+      companionStrumline.holdNotes.visible = false;
+      companionStrumline.holdNotes.alpha = 0;
+
+      companionStrumline.noteHoldCovers.visible = false;
+      companionStrumline.noteHoldCovers.alpha = 0;
+      
+      }
       if (isDownscroll) companionStrumline.y = 660;
     }
     catch (_:Dynamic) {}
@@ -1363,8 +1383,10 @@ class CompanionMode extends Module
       {
         var playerSL   = PlayState.instance.playerStrumline;
         var opponentSL = PlayState.instance.opponentStrumline;
+        if (!FlxG.onMobile) {
         if (playerSL != null)   playerSL.x   = FlxG.width - playerSL.width - 50;
         if (opponentSL != null) opponentSL.x = 50;
+        }
       }
       catch (_:Dynamic) {}
 
