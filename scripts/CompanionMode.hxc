@@ -116,7 +116,8 @@ class CompanionMode extends Module
     if (_willBeNone() || !_showCompanionNotes() || !isDownscroll && !FlxG.onMobile) return;
   
       new FlxTimer().start(0.45, function(_) {     
-      playerSL.y = 560;
+      playerSL.y = 600;
+      if (isDownscroll) playerSL.y = 660;
       if (isDownscroll) opponentSL.y = 660; 
     });
   }
@@ -250,7 +251,7 @@ class CompanionMode extends Module
   // ── Companion creation ────────────────────────────────────────────────────
 
   function createCompanion()
-  {
+  {    
     if (PlayState.instance?.currentStage == null
         || PlayState.instance?.currentSong  == null || CompanionHelper.currentCompanionJson == null) return;
 
@@ -277,7 +278,9 @@ class CompanionMode extends Module
       return;
     }
 
-    _spawnCharacter(companionId);
+    var opts = Save.instance.getModOptions("COMPANION-2P");
+
+    if (opts.companionVisible) _spawnCharacter(companionId);
     _spawnStrumlineAndVocals(companionId);
     _spawnHealthIcon();
     // Cache values used every frame so we never hit Save.instance in onUpdate.
@@ -378,7 +381,7 @@ class CompanionMode extends Module
       if (companionChar == null)
         try { companionChar = CharacterDataParser.fetchCharacter("bf"); } catch (_:Dynamic) {}
     }
-
+    
     if (companionChar == null) return;
 
     var stage        = PlayState.instance.currentStage;
@@ -942,6 +945,16 @@ class CompanionMode extends Module
     if (PlayState.instance == null)          return;
     if (PlayState.instance.isInCutscene)     return;
     if (PlayState.instance.subState != null) return;
+    var opts = Save.instance.getModOptions("COMPANION-2P");
+    if (!opts.companionVisible && companionStrumline != null) {
+    try
+    {
+      var targetZoom:Float = _cachedShowNotes ? 0.85 : 1.0;
+      if (PlayState.instance.camHUD.zoom != targetZoom)
+        PlayState.instance.camHUD.zoom = targetZoom;
+    }
+    catch (_:Dynamic) {}
+    }
     if (companionChar == null || companionStrumline == null) return;
     if (companionStrumline.notes?.members == null)          return;
      
@@ -956,9 +969,8 @@ class CompanionMode extends Module
     // Use cached playerChar reference — getBoyfriend() traverses a map every call.
     if (_cachedPlayerChar == null)
       try { _cachedPlayerChar = PlayState.instance.currentStage.getBoyfriend(); } catch (_:Dynamic) {}
-
     // Color/transform sync every 2 frames — imperceptible at 60fps.
-    if (companionChar != null && _cachedPlayerChar != null && _agcFrame % 4 == 0)
+    if (companionChar != null && _cachedPlayerChar != null && _agcFrame % 4 == 0 && opts.applyShader)
     {
       companionChar.color = _cachedPlayerChar.color;
 
@@ -1105,6 +1117,7 @@ class CompanionMode extends Module
     var _songPos:Float = companionStrumline.conductorInUse.songPosition;
 
     // ── Botplay ─────────────────────────────────────────────────────────
+    if (opts.companionAnimations) {
     for (note in companionStrumline.notes.members)
     {
       if (note == null || !note.alive) continue;
@@ -1190,6 +1203,7 @@ class CompanionMode extends Module
       // Once all events are done, null the array so we stop iterating it.
       if (allDone) companionEvents = null;
     }
+  }
 
     // Note: color/colorTransform mirroring removed — it was causing the player
     // character to get stuck in sing poses by sharing object references.
@@ -1245,7 +1259,8 @@ class CompanionMode extends Module
 
   function _applyStageShaderToCompanion()
   {
-    if (companionChar == null || _shaderApplied) return;
+    var opts = Save.instance.getModOptions("COMPANION-2P");
+    if (companionChar == null || _shaderApplied || !opts.applyShader) return;
     try
     {
       var playerChar = PlayState.instance.currentStage.getBoyfriend();

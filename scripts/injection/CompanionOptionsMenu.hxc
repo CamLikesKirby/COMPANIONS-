@@ -79,13 +79,20 @@ class CompanionOptionsMenu extends Module
     }
     catch (_:Dynamic) {trace(_);}
 
-    // ── Show Companion Notes ──────────────────────────────────────────────
+    // ── Options ──────────────────────────────────────────────
     var currentNotes:Bool = true;
     var switchDefault:Bool = true;
+    var applyShader:Bool = true;
+    var companionAnimations:Bool = true;
+    var companionVisible:Bool = true;
+
     try
     {
       if (Save.instance.getModOptions("COMPANION-2P").showCompanionNotes != null) currentNotes = Save.instance.getModOptions("COMPANION-2P").showCompanionNotes == true;
       if (Save.instance.getModOptions("COMPANION-2P").switchToDefault != null) switchDefault = Save.instance.getModOptions("COMPANION-2P").switchToDefault == true;
+      if (Save.instance.getModOptions("COMPANION-2P").applyShader != null) applyShader = Save.instance.getModOptions("COMPANION-2P").applyShader == true;
+      if (Save.instance.getModOptions("COMPANION-2P").companionAnimations != null) companionAnimations = Save.instance.getModOptions("COMPANION-2P").companionAnimations == true;
+      if (Save.instance.getModOptions("COMPANION-2P").companionVisible != null) companionVisible = Save.instance.getModOptions("COMPANION-2P").companionVisible == true;
     }
     catch (_:Dynamic) {trace(_);}
 
@@ -120,6 +127,48 @@ class CompanionOptionsMenu extends Module
         switchDefault
       );
 
+        companionsPage.createPrefItemCheckbox(
+        'Shade Companion',
+        'If enabled, will try to apply the current shader being used on to the companion every second',
+        function(value:Bool)
+        {
+          var opts = Save.instance.getModOptions("COMPANION-2P");
+          if (opts == null) opts = {};
+          opts.applyShader = value;
+          Save.instance.setModOptions("COMPANION-2P", opts);
+          Save.instance.flush();
+        },
+        applyShader
+      );
+
+      companionsPage.createPrefItemCheckbox(
+        'Companion Animations',
+        'If disabled, the companion will only idle (only turn this off if you have severe lag).',
+        function(value:Bool)
+        {
+          var opts = Save.instance.getModOptions("COMPANION-2P");
+          if (opts == null) opts = {};
+          opts.companionAnimations = value;
+          Save.instance.setModOptions("COMPANION-2P", opts);
+          Save.instance.flush();
+        },
+        companionAnimations
+      );
+
+      companionsPage.createPrefItemCheckbox(
+        'Companion Visible',
+        'If disabled, the companion will not be visible but the strumline and vocals will still be on (only turn this off if you have severe lag).',
+        function(value:Bool)
+        {
+          var opts = Save.instance.getModOptions("COMPANION-2P");
+          if (opts == null) opts = {};
+          opts.companionVisible = value;
+          Save.instance.setModOptions("COMPANION-2P", opts);
+          Save.instance.flush();
+        },
+        companionVisible
+      );
+
     }
     catch (_:Dynamic) {trace(_);}
 
@@ -133,11 +182,24 @@ function saveShit() {
     var dirty = false;
     var showNotes:Dynamic = null;
     var switchToDefault:Dynamic = null;
+    var applyShader:Dynamic = null;
+    var companionAnimations:Dynamic = null;
+    var companionVisible:Dynamic = null;
+    
     try { switchToDefault = opts.switchToDefault; } catch (_:Dynamic) {trace(_);}
     if (switchToDefault == null) { opts.switchToDefault = true; dirty = true; }
 
     try { showNotes = opts.showCompanionNotes; } catch (_:Dynamic) {trace(_);}
     if (showNotes == null) { opts.showCompanionNotes = true; dirty = true; }
+
+    try { applyShader = opts.applyShader; } catch (_:Dynamic) {trace(_);}
+    if (applyShader == null) { opts.applyShader = true; dirty = true; }
+
+    try { companionAnimations = opts.companionAnimations; } catch (_:Dynamic) {trace(_);}
+    if (companionAnimations == null) { opts.companionAnimations = true; dirty = true; }
+
+    try { companionVisible = opts.companionVisible; } catch (_:Dynamic) {trace(_);}
+    if (companionVisible == null) { opts.companionVisible = true; dirty = true; }
 
     if (dirty) { Save.instance.setModOptions("COMPANION-2P", opts); Save.instance.flush(); }
 }
