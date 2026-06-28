@@ -19,6 +19,7 @@ import funkin.util.Constants;
 import funkin.util.GRhythmUtil;
 import funkin.Preferences;
 import funkin.play.GameOverSubState;
+import funkin.modding.module.ModuleHandler;
 
 using StringTools;
 
@@ -969,9 +970,9 @@ class CompanionMode extends Module
     // Poll every frame until BF has a shader, then copy it to the companion.
     if (!_shaderApplied) _applyStageShaderToCompanion();
 
-
-
-
+    // try to match the players scroll speed with the companions so their notes look more natural with the others
+    try {var playerSL = PlayState.instance.playerStrumline; 
+    companionStrumline.scrollSpeed = playerSL.scrollSpeed;} catch (_:Dynamic) {}
 
     // Mirror player colour and colorTransform AFTER all animation calls.
     // Use cached playerChar reference — getBoyfriend() traverses a map every call.
@@ -1195,19 +1196,42 @@ class CompanionMode extends Module
           if (!ev.activated) allDone = false;
           if (ev.activated) continue;
           var evAge:Float = sp - ev.time;
+          trace(ev);
           if (evAge >= 0)
           {
             if (ev.eventKind == "PlayAnimation")
             {
               var target = ev.getString("target");
-              if (target == "boyfriend" || target == "bf" || target == "_companion")
-                companionChar.playAnimation(ev.getString("anim"), ev.getBool("force"), ev.getBool("force"));
+              if (target == "boyfriend" || target == "bf" || target == "_companion" || target == CompanionHelper.currentCompanionJson.freeplayId)
+                companionChar.playAnimation(ev.getString("anim"), true, true);
+            }
+            if (ev.eventKind == "SkillCheck")
+            {
+              var target = ev.getString("target");
+              
+              if (target == "boyfriend" || target == "bf" || target == "_companion" || target == CompanionHelper.currentCompanionJson.freeplayId) {
+              var goodAnim = ev.getString('good anim');
+              var badAnim = ev.getString('bad anim');
+              var skillRate:Int = ev.getInt('skill');
+
+              var nonsenseModule:Module;
+              nonsenseModule = ModuleHandler.getModule('nonsense-module');
+              var curSkill:Int = nonsenseModule.scriptCall('skillCheckCalculation');
+
+              if (curSkill >= skillRate && goodAnim != '') {
+              trace('Playing good animation $goodAnim on target $target.');
+              companionChar.playAnimation(goodAnim, true, true);
+              } else if (badAnim != '') {
+              trace('Playing bad animation $badAnim on target $target.');
+              companionChar.playAnimation(badAnim, true, true);
+              }
+              }
             }
             ev.activated = true;
           }
         }
       }
-      catch (_:Dynamic) {}
+      catch (_:Dynamic) {trace(_);}
       // Once all events are done, null the array so we stop iterating it.
       if (allDone) companionEvents = null;
     }

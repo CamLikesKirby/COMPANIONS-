@@ -18,7 +18,7 @@ class CompanionHelper
   public static var currentCompanionJson = getCompanionJson("bf");
 
   // This looks familiar 
-   public static var compansForMobile:String<Array> = ["crash-playable","darnell-playable","dave","fnf2","fred","gooey",
+  public static var compansForMobile:String<Array> = ["crash-playable","darnell-playable","dave","fnf2","fred","gooey",
   "hank","henry","kesha","nene-playable","parappa-playable","pico-playable","reimu","sky-playable",
   "sonic-playable","speakerGirl-playable","spooky-playable","steven","tankman-playable","baldi",
   "bambi-playable","gfplayer","bf-remnants","pico-remnants-playable","bf","beebo","Dani",
