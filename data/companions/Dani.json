@@ -3,18 +3,9 @@
     "nameTagPath": "charSelect/daniNametag",
     "songVariationName": "dani",
     "freePlayId": "dani",
-    "specificPlayerName": "dani",
-    "baseGameAndModFile": false,
     "skipDance": true,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
     "defaultVocalVolume": 0.55,
-
-    "variants": {
-    "songsInOrder": ["satin-panties","high","eggnog","senpai"],
-    "variantsInOrder": ["Dani-Car","Dani-Car","Dani-Christmas","Dani-Pixel"]
-    },
 
     "icon": {
     "normal": "Dani",

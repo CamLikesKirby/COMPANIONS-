@@ -3,17 +3,8 @@
     "nameTagPath": "charSelect/pelmenNametag",
     "songVariationName": "pelmen",
     "freePlayId": "pelmen",
-    "specificPlayerName": "pelmen",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [],
-    "variantsInOrder": []
-    },
 
     "icon": {
     "normal": "pelmen",

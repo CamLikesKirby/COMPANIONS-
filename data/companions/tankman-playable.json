@@ -3,58 +3,8 @@
     "nameTagPath": "charSelect/tankmanNametag",
     "songVariationName": "tankman",
     "freePlayId": "tankman",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "assets/data/characters/tankman-playable.json",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-    "blammed",            
-    "bopeebo",            
-    "cocoa",              
-    "dadbattle",         
-    "eggnog",             
-    "fresh",              
-    "high",               
-    "milf",               
-    "monster",            
-    "philly-nice",        
-    "pico",               
-    "roses",              
-    "satin-panties",     
-    "senpai",            
-    "south",             
-    "spookeez",           
-    "thorns",            
-    "tutorial",          
-    "winter-horrorland"  
-  ],
-    
-    "variantsInOrder": [
-    "tankman-playable",
-    "tankman-playable",
-    "tankman-festive",
-    "tankman-playable",
-    "tankman-festive",
-    "tankman-playable",
-    "tankman-playable",
-    "tankman-playable",
-    "tankman-homeless",
-    "tankman-playable",
-    "tankman-playable",
-    "tankman-pixel",
-    "tankman-playable",
-    "tankman-pixel",
-    "tankman-homeless",
-    "tankman-homeless",
-    "tankman-pixel",
-    "tankman-playable",
-    "tankman-festive"
-  ]
-    },
 
     "icon": {
     "normal": "tankman",

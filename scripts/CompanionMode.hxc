@@ -83,6 +83,8 @@ class CompanionMode extends Module
     super.onStateChangeBegin(event);
     // If transitioning to GameOverSubState, play companion death sound first.
     cleanup();
+    // TODO: Fix Companion background from stacking
+    try { Preferences.strumlineBackgroundOpacity = 0; } catch (_:Dynamic) {} // Tem
   }
 
   override function onSongRetry(event)
@@ -179,6 +181,7 @@ class CompanionMode extends Module
     // Remove existing placeholder if any.
     if (companionStrumline != null)
     {
+      
       try { PlayState.instance.remove(companionStrumline); } catch (_:Dynamic) {}
       companionStrumline.destroy();
       companionStrumline = null;
@@ -585,8 +588,7 @@ class CompanionMode extends Module
                      || chartPlayer == compRoot
                      || chartPlayer.startsWith(compRoot + "-")
                      || chartPlayer.startsWith(compRoot + "train")
-                     || (compRoot == CompanionHelper.currentCompanionJson.specificPlayerName && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName))
-                     || (companionId ==  CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName) && CompanionHelper.currentCompanionJson.playableVerifiactionCheck);
+                     || (compRoot == CompanionHelper.currentCompanionJson.specificPlayerName && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName));
             if (!valid) vd = null;
           } 
         }
@@ -634,8 +636,7 @@ class CompanionMode extends Module
               || chartPlayer.startsWith(compRoot + "-");
           if (chartPlayer != "" && chartPlayer != companionId
               && !chartPlayerMatchesRoot
-              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train"
-              && !(companionId ==  CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith( CompanionHelper.currentCompanionJson.specificPlayerName) &&  CompanionHelper.currentCompanionJson.playableVerifiactionCheck))
+              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train")
           {
             diff2 = null;
           }
@@ -1197,7 +1198,7 @@ class CompanionMode extends Module
           if (!ev.activated) allDone = false;
           if (ev.activated) continue;
           var evAge:Float = sp - ev.time;
-          trace(ev);
+
           if (evAge >= 0)
           {
             if (ev.eventKind == "PlayAnimation")

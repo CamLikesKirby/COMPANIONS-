@@ -3,46 +3,8 @@
     "nameTagPath": "charSelect/neneplayerNametag",
     "songVariationName": "nene",
     "freePlayId": "neneplayer",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "assets/images/charSelect/neneplayerNametag.png",
-    "playableVerifiactionCheck": false,
-    
-    "variants": {
-    "songsInOrder": [
-    "bopeebo",            
-    "cocoa",              
-    "darnell",           
-    "eggnog",            
-    "guns",              
-    "high",              
-    "pico",               
-    "roses",              
-    "senpai",             
-    "south",              
-    "spookeez",          
-    "thorns",            
-    "winter-horrorland"  
-  ],
-    
-    "variantsInOrder": [
-    "nene-playable",
-    "nene-playable-xmas",
-    "nene-playable",
-    "nene-playable-xmas",
-    "nene-playable",
-    "nene-playable-car",
-    "nene-playable",
-    "nene-playable-pixel",
-    "nene-playable-pixel",
-    "nene-playable-dark",
-    "nene-playable-dark",
-    "nene-playable-pixel",
-    "nene-playable-xmas"
-    ]
-    },
 
     "icon": {
     "normal": "nene-playble",

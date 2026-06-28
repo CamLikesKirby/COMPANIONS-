@@ -3,44 +3,8 @@
     "nameTagPath": "charSelect/darnellNametag",
     "songVariationName": "darnell",
     "freePlayId": "darnell",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "assets/data/characters/darnell-playable.json",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-    "blazin",      
-    "bopeebo",          
-    "darnell",            
-    "fresh",              
-    "high",               
-    "lit-up",             
-    "philly-nice",        
-    "pico",               
-    "south",              
-    "spookeez",           
-    "tutorial",          
-    "ugh"              
-  ],
-    
-    "variantsInOrder": [
-    "darnell-blazin",
-    "darnell-playable",
-    "darnell-playable",
-    "darnell-keytar",
-    "darnell-car",
-    "darnell-playable",
-    "darnell-playable",
-    "darnell-playable",
-    "darnell-dark",
-    "darnell-dark",
-    "darnell-playable",
-    "darnell-playable"
-  ]
-},
 
     "icon": {
     "normal": "darnell",

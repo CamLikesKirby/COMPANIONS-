@@ -3,20 +3,8 @@
     "nameTagPath": "charSelect/crashNametag",
     "songVariationName": "crash",
     "freePlayId": "crash",
-    "specificPlayerName": "crash",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-    
-    "variants": {
-    "songsInOrder": [            
-  ],
-    
-    "variantsInOrder": [
-  ]
-},
 
     "icon": {
     "normal": "crash",

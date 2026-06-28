@@ -71,20 +71,64 @@ class CompanionVariantSwitcher extends Module
 
   function resolveVariant(companionId:String, songId:String):String
   {
-     var songs:Map<String, String> = [];
-  
-     var companionIdJson = CompanionHelper.getCompanionJson(companionId);
-
-    for (i in 0...companionIdJson.variants.songsInOrder.length) {
-        songs.set(companionIdJson.variants.songsInOrder[i], companionIdJson.variants.variantsInOrder[i]);
-    }
-
       var globalData = CompanionHelper.getGlobalData();
       var sid:String = PlayState.instance.currentStageId;
       var darkSongWithBF = globalData.isDarkStage.contains(sid);
 
-      var v = songs.get(songId);
-      return v != null && !darkSongWithBF ? v : companionIdJson.baseCharacter;
+      var v = getChartCharacter();
+      return v != null && !darkSongWithBF ? v : CompanionHelper.currentCompanionJson.baseCharacter;
+  }
+
+  function getChartCharacter():Dynamic 
+  {
+      var daSong  = PlayState.instance.currentSong;
+      var curSongVariation:String = "default";
+      var variation:String = CompanionHelper.currentCompanionJson.songVariationName;
+      var curDiff = PlayState.instance.currentDifficulty;
+      var diffFallbacks = [curDiff, "hard", "normal", "easy"];
+
+      try { curSongVariation = daSong.curVariation; } catch (_:Dynamic) {}
+      if (curSongVariation == null) curSongVariation = "default";
+
+      var curVarIsOtherCompanion = (curSongVariation != "default")
+          && (curSongVariation != variation)
+          && (CompanionHelper.currentCompanionJson.songVariationName != curSongVariation);
+      if (curVarIsOtherCompanion) curSongVariation = "default";
+      var variationFallbacks:Array<String> = [CompanionHelper.currentCompanionJson.songVariationName];
+      if (curSongVariation != variation && curSongVariation != "default")
+        variationFallbacks.push(curSongVariation);
+      variationFallbacks.push("default");
+      
+      if (variation == "" && CompanionHelper.currentBaseCompanion == "bf") variationFallbacks.push("bf");
+      for (tryVariation in variationFallbacks)
+      {
+        if (tryVariation == null) continue;
+        var diff2:Dynamic = null;
+        for (tryDiff in diffFallbacks)
+        {
+          diff2 = daSong.getDifficulty(tryDiff, tryVariation);
+          if (diff2 != null) break;
+        }
+        if (diff2 == null) continue;
+
+        // Verify the chart player actually belongs to this companion.
+        try
+        {
+          var chartPlayer:String = Std.string(diff2.characters.player ?? "");
+          var compRoot = CompanionHelper.currentBaseCompanion.split("-")[0];
+          var chartPlayerMatchesRoot = (chartPlayer == compRoot)
+              || chartPlayer.startsWith(compRoot + "-");
+          if (chartPlayer != "" && chartPlayer != CompanionHelper.currentBaseCompanion
+              && !chartPlayerMatchesRoot
+              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train")
+          {
+            diff2 = null;
+          }
+          return diff2 != null ? diff2.characters.player : CompanionHelper.currentCompanionJson.baseCharacter;
+        }
+        catch (_:Dynamic) {}
+      }
+      return CompanionHelper.currentCompanionJson.baseCharacter;
   }
 
   function readSavedCompanion():String

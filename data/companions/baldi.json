@@ -3,19 +3,9 @@
     "nameTagPath": "charSelect/baldiNametag",
     "songVariationName": "baldi",
     "freePlayId": "baldi",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
     "reSize": false,
-    
-    "variants": {
-    "songsInOrder": [],
-    
-    "variantsInOrder": []
-    },
 
     "icon": {
     "normal": "baldi",

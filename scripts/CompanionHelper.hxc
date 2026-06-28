@@ -61,28 +61,20 @@ class CompanionHelper
     }
 
     // Mod companions — check their player file.
-    var playerId:String = companionId;
-    if (companionIdJson.specificPlayerName != "" && companionIdJson.specificPlayerName != null) {
-      playerId = companionIdJson.specificPlayerName;
-    }
-    if (companionIdJson.baseGameAndModFile) {
-        try { if (Assets.exists("assets/data/players/" + playerId + ".json")) return true; } catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "assets/data/players/" + playerId + ".json Error: " + _);}
-     //   try { if (funkin.util.FileUtil.fileExists("mods/" + companionIdJson.modFolder + "/data/players/" + playerId + ".json")) return true; } catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "mods/" + companionIdJson.modFolder + "/data/players/" + playerId + ".json Error: " + _);}
-        trace('Couldn\'t retrive anything from the assets or the mod folder, assuming false.');
-        return false;
-    }
-
+    var ids:Array<String> = [companionId,companionIdJson.freeplayId];
+    for (id in ids) {
     try
     {
-      if (Assets.exists("assets/data/players/" + playerId + ".json")) return true;
+      if (Assets.exists("assets/data/players/" + id + ".json")) return true;
     }
-    catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "assets/data/players/" + playerId + ".json Error: " + _);}
+    catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "assets/data/players/" + id + ".json Error: " + _);}
     // Fallback: check directly in mods root (some mods have no subfolder)
     try
     {
-      if (funkin.util.FileUtil.fileExists("mods/" + playerId + "/data/players/" + playerId + ".json")) return true;
+      if (funkin.util.FileUtil.fileExists("mods/" + id + "/data/players/" + id + ".json")) return true;
     }
-    catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "mods/" + playerId + "/data/players/" + playerId + ".json Error: " + _);}
+    catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "mods/" + id + "/data/players/" + id + ".json Error: " + _);}
+    }
     trace('Couldn\'t find player ID, assuming the mod isn\'t active');
     return false;
   }

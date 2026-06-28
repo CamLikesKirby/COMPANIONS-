@@ -3,17 +3,8 @@
     "nameTagPath": "charSelect/averageNametag",
     "songVariationName": "average",
     "freePlayId": "average",
-    "specificPlayerName": "average",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": ["spookeez","satin-panties","high","ugh","guns","darnell"],
-    "variantsInOrder": ["bruce","rose-car","rose-car","chuck-playable","chuck-playable","gerald"]
-    },
 
     "icon": {
     "normal": "joseph",

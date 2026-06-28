@@ -3,18 +3,9 @@
     "nameTagPath": "charSelect/grenNametag",
     "songVariationName": "gren",
     "freePlayId": "gren",
-    "specificPlayerName": "gren",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
     "reSize": false,
-
-    "variants": {
-    "songsInOrder": ["spookeez","south","satin-panties","high","milf","cocoa","eggnog","senpai","roses","thorns"],
-    "variantsInOrder": ["gren-week2-dark","gren-week2-dark","gren-car","gren-car","gren-car","gren-xmas","gren-xmas","gren-pixel","gren-pixel","gren-pixel"]
-    },
 
     "icon": {
     "normal": "grenn",

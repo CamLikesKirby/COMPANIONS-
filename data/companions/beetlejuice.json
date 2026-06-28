@@ -3,17 +3,8 @@
     "nameTagPath": "charSelect/beetlejuiceNametag",
     "songVariationName": "beetlejuice",
     "freePlayId": "beetlejuice",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": ["spookeez","south","monster","pico","philly-nice","blammed","satin-panties","high","milf","cocoa","eggnog","winter-horrorland","senpai","roses","thorns","stress","blazin"],
-    "variantsInOrder": ["beetlejuice-dark","beetlejuice-dark","beetlejuice-dark","beetlejuice-pico","beetlejuice-pico","beetlejuice-pico","beetlejuice-car","beetlejuice-car","beetlejuice-car","beetlejuice-christmas","beetlejuice-christmas","beetlejuice-christmas","beetlejuice-pixel","beetlejuice-pixel","beetlejuice-pixel","beetlejuice-holding-lydia","beetlejuice-blazin"]
-    },
 
     "icon": {
     "normal": "beetlejuice",

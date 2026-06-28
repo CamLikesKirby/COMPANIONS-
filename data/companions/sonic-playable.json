@@ -3,44 +3,8 @@
     "nameTagPath": "charSelect/sonicNametag",
     "songVariationName": "sonic",
     "freePlayId": "sonic",
-    "specificPlayerName": "sonic",
-    "baseGameAndModFile": false,
     "skipDance": true,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-    "bopeebo",      
-    "cocoa",        
-    "darnell",      
-    "eggnog",      
-    "fresh",         
-    "high",             
-    "philly-nice",    
-    "pico",          
-    "satin-panties",     
-    "south",           
-    "spookeez",      
-    "ugh"           
-    ], 
-    
-    "variantsInOrder": [
-    "sonic-playable",  
-    "sonic-christmas", 
-    "sonic-playable",  
-    "sonic-christmas", 
-    "sonic-playable",  
-    "sonic-car",       
-    "sonic-playable",  
-    "sonic-playable",  
-    "sonic-car",      
-    "sonic-playable",  
-    "sonic-playable",  
-    "sonic-playable"
-  ]
-},
 
     "icon": {
     "normal": "sonic",

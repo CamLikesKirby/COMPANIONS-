@@ -2,38 +2,10 @@
     "baseCharacter": "henry",
     "nameTagPath": "charSelect/henryNametag",
     "songVariationName": "henry",
-    "freePlayId": "neneplayer",
-    "specificPlayerName": "henry",
-    "baseGameAndModFile": false,
+    "freePlayId": "henry",
     "skipDance": true,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-    "south",     
-    "spookeez",  
-    "cocoa",     
-    "eggnog",    
-    "tutorial",  
-    "dadbattle", 
-    "philly-nice", 
-    "ugh"       
-  ],
-    
-    "variantsInOrder": [
-    "henry-dark",
-    "henry-dark",
-    "henryjolly",
-    "henryjollyalt",
-    "henry",
-    "henryalt",
-    "henryalt",
-    "henryalt"
-    ]
-    },
-
+  
     "icon": {
     "normal": "henry",
     "hasPixel": false,

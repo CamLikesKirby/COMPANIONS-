@@ -2,22 +2,9 @@
     "baseCharacter": "speakerGirl-playable",
     "nameTagPath": "charSelect/speakerGirlNametag",
     "songVariationName": "speaker",
-    "freePlayId": "speakergirl",
-    "specificPlayerName": "speakerGirl",
-    "baseGameAndModFile": false,
+    "freePlayId": "speakerGirl",
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-         
-  ],
-    
-    "variantsInOrder": [
-  ]
-},
 
     "icon": {
     "normal": "speakerGirl",

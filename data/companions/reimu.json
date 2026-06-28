@@ -3,22 +3,8 @@
     "nameTagPath": "charSelect/reimuNametag",
     "songVariationName": "reimu",
     "freePlayId": "reimu",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-     "satin-panties"
-  ],
-    
-    "variantsInOrder": [
-    "reimu-hairblow"
-  ]
-},
 
     "icon": {
     "normal": "reimu",

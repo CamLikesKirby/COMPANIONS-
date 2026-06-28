@@ -3,17 +3,8 @@
     "nameTagPath": "charSelect/huggyNametag",
     "songVariationName": "huggy",
     "freePlayId": "huggy",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": ["spookeez","south","cocoa","eggnog","winter-horrorland","roses","thorns","blazin"],
-    "variantsInOrder": ["huggy-dark","huggy-dark","huggy-christmas","huggy-christmas","huggy-christmas","huggy-pixel","huggy-pixel","huggy-blazin"]
-    },
 
     "icon": {
     "normal": "huggy",

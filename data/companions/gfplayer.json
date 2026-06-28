@@ -3,17 +3,8 @@
     "nameTagPath": "charSelect/GirlfriendNametag",
     "songVariationName": "gf",
     "freePlayId": "Girlfriend",
-    "specificPlayerName": "Girlfriend",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": ["spookeez","south","cocoa","eggnog","senpai","roses","thorns","stress"],
-    "variantsInOrder": ["gfplayer-dark","gfplayer-dark","gfplayer-christmas","gfplayer-christmas","gfplayerpixel","gfplayerpixel","gfplayerpixel","gfholdbf"]
-    },
 
     "icon": {
     "normal": "gfplayer",

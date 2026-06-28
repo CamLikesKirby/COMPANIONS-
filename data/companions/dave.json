@@ -3,30 +3,8 @@
     "nameTagPath": "charSelect/daveNametag",
     "songVariationName": "dave",
     "freePlayId": "dave",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-    
-    "variants": {
-    "songsInOrder": [
-    "cocoa",        
-    "roses",         
-    "satin-panties", 
-    "senpai",       
-    "south"          
-  ],
-    
-    "variantsInOrder": [
-    "dave-christmas",
-    "dave-pixel",
-    "dave-car",
-    "dave-pixel",
-    "dave-dark"
-  ]
-},
 
     "icon": {
     "normal": "dave",

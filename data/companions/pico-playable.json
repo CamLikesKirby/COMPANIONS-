@@ -3,24 +3,8 @@
     "nameTagPath": "companionTags/pico-playable",
     "songVariationName": "pico",
     "freePlayId": "pico",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": ["south","spookeez",
-    "cocoa","eggnog","winter-horrorland",
-    "roses","senpai","thorns",
-    "blissful", "conquest","stress","contextual","bioexorcism","baffled"],
-    
-    "variantsInOrder": ["pico-dark","pico-dark",
-    "pico-christmas","pico-christmas","pico-christmas",
-   "pico-pixel","pico-pixel","pico-pixel",
-   "pico-qt","pico-madness","pico-holding-nene","pico-nonsense","pico-playable-beetlejuice","pico-nonsense"]
-    },
 
     "icon": {
     "normal": "pico",

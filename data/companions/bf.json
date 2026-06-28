@@ -3,26 +3,8 @@
     "nameTagPath": "companionTags/bf",
     "songVariationName": "",
     "freePlayId": "bf",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": ["south","spookeez",
-    "cocoa","eggnog","winter-horrorland",
-    "satin-panties","high","milf",
-    "roses","senpai","thorns",
-    "blissful","blissful-2021","obliterated","stress","bioexorcism","contextual","baffled","reoccurance"],
-    
-    "variantsInOrder": ["bf-dark","bf-dark",
-    "bf-christmas","bf-christmas","bf-christmas",
-    "bf-car","bf-car","bf-car",
-   "bf-pixel","bf-pixel","bf-pixel",
-   "bf-qt","bf-qt","bf-qt","bf-holding-gf","bf-beetlejuice","bf-nonsense","bf-nonsense","bf-nonsense"]
-    },
 
     "icon": {
     "normal": "bf",

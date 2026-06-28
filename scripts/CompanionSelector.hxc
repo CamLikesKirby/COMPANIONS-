@@ -170,8 +170,7 @@ class CompanionSelector extends Module
                      || chartPlayer == compRoot
                      || chartPlayer.startsWith(compRoot + "-")
                      || chartPlayer.startsWith(compRoot + "train")
-                     || (compRoot == CompanionHelper.currentCompanionJson.specificPlayerName && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName))
-                     || (CompanionHelper.currentBaseCompanion == CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName) && CompanionHelper.currentCompanionJson.playableVerifiactionCheck);
+                     || (compRoot == CompanionHelper.currentCompanionJson.specificPlayerName && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName));
             if (valid) return valid;
           } 
       }
@@ -218,8 +217,7 @@ class CompanionSelector extends Module
               || chartPlayer.startsWith(compRoot + "-");
           if (chartPlayer != "" && chartPlayer != CompanionHelper.currentBaseCompanion
               && !chartPlayerMatchesRoot
-              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train"
-              && !(CompanionHelper.currentBaseCompanion == CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName) &&  CompanionHelper.currentCompanionJson.playableVerifiactionCheck))
+              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train")
           {
             diff2 = null;
           }

@@ -3,28 +3,8 @@
     "nameTagPath": "charSelect/fredNametag",
     "songVariationName": "fred",
     "freePlayId": "fred",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-    "eggnog",
-    "high",      
-    "senpai",   
-    "spookeez"       
-  ],
-    
-    "variantsInOrder": [
-    "fred-christmas",
-    "fred-car",
-    "fred-pixel",
-    "fred-spookyDark"
-  ]
-},
 
     "icon": {
     "normal": "fred",

@@ -3,18 +3,8 @@
     "nameTagPath": "charSelect/pico-remnantsNametag",
     "songVariationName": "remnants",
     "freePlayId": "pico-remnants",
-    "specificPlayerName": "pico-remnants",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-    
-    "variants": {
-    "songsInOrder": ["blazin"],
-    
-    "variantsInOrder": ["pico-remnants-blazin"]
-    },
 
     "icon": {
     "normal": "pico-remnants",

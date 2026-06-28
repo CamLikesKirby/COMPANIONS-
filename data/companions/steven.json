@@ -3,28 +3,8 @@
     "nameTagPath": "charSelect/stevenNametag",
     "songVariationName": "steven",
     "freePlayId": "steven",
-    "specificPlayerName": "steven",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-    "cocoa",        
-    "eggnog",      
-    "south",        
-    "spookeez"          
-  ],
-    
-    "variantsInOrder": [
-    "steven-winter",
-    "steven-winter",
-    "steven-dark",
-    "steven-dark"
-  ]
-},
 
     "icon": {
     "normal": "steven",

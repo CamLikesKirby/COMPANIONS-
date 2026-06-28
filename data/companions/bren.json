@@ -3,17 +3,8 @@
     "nameTagPath": "charSelect/brenNametag",
     "songVariationName": "bren",
     "freePlayId": "bren",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [],
-    "variantsInOrder": []
-    },
 
     "icon": {
     "normal": "bren",

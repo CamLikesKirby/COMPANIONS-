@@ -3,34 +3,8 @@
     "nameTagPath": "charSelect/hankNametag",
     "songVariationName": "hank",
     "freePlayId": "hank",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [ 
-    "south",
-    "spookeez",
-    "roses",   
-    "senpai",    
-    "thorns",    
-    "conquest",          
-    "improbable-outset"
-  ],
-    
-    "variantsInOrder": [
-    "hank-dark",
-    "hank-dark",
-    "hank-pixel",
-    "hank-pixel",
-    "hank-pixel",
-    "hank-train",
-    "hank-train"
-  ]
-},
 
     "icon": {
     "normal": "hank",

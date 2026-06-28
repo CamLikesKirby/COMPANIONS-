@@ -3,38 +3,8 @@
     "nameTagPath": "charSelect/skyNametag",
     "songVariationName": "sky",
     "freePlayId": "sky",
-    "specificPlayerName": "sky",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": [
-    "cocoa",
-    "high",   
-    "milf",    
-    "south",  
-    "roses",  
-    "senpai",  
-    "thorns",  
-    "blazin", 
-    "stress" 
-  ],
-    
-    "variantsInOrder": [
-    "sky-christmas",
-    "sky-car",
-    "sky-car",
-    "sky-dark",
-    "sky-pixel",
-    "sky-pixel",
-    "sky-pixel",
-    "sky-blazin",
-    "sky-plush"
-  ]
-},
 
     "icon": {
     "normal": "sky",

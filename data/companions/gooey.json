@@ -3,26 +3,8 @@
     "nameTagPath": "charSelect/gooeyNametag",
     "songVariationName": "gooey",
     "freePlayId": "gooey",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": true,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-
-    "variants": {
-    "songsInOrder": ["cocoa","eggnog",
-    "high","milf","satin-panties",
-    "south","spookeez","roses",
-    "senpai","thorns","stress",
-    "blissful","drippypop-gooey-mix"],
-    
-    "variantsInOrder": ["gooey-christmas","gooey-christmas",
-    "gooey-car","gooey-car","gooey-car",
-    "gooey-dark","gooey-dark","gooey-pixel",
-   "gooey-pixel","gooey-pixel","gooey-stress",
-   "gooey-qt","gooey-updog"]
-    },
 
     "icon": {
     "normal": "gooey",

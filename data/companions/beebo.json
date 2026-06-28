@@ -3,17 +3,8 @@
     "nameTagPath": "charSelect/beeboNametag",
     "songVariationName": "beebo",
     "freePlayId": "beebo",
-    "specificPlayerName": "",
-    "baseGameAndModFile": false,
     "skipDance": false,
-    "modFolder": "",
     "playerFileReplacement": "",
-    "playableVerifiactionCheck": false,
-    
-    "variants": {
-    "songsInOrder": [],
-    "variantsInOrder": []
-    },
 
     "icon": {
     "normal": "beebo",
