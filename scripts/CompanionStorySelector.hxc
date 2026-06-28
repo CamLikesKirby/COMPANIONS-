@@ -114,6 +114,10 @@ class CompanionStorySelector extends Module
     rightArrow.updateHitbox();
     storyState.add(rightArrow);
 
+    if (FlxG.onMobile) {
+      rightArrow.visible = false;
+      leftArrow.visible = false;
+    }
     tagSprite = new FunkinSprite();
     _loadNametag(COMPANIONS[currentIndex]);
     storyState.add(tagSprite);
@@ -197,9 +201,7 @@ class CompanionStorySelector extends Module
       {
         if (!touch.justPressed) continue;
         var tp = touch.getPosition();
-        if (leftArrow != null && leftArrow.overlapsPoint(tp, true))
-        { inputCooldown = 10; switchCompanion(-1); break; }
-        if (rightArrow != null && rightArrow.overlapsPoint(tp, true))
+        if (tagSprite != null && tagSprite.overlapsPoint(tp, true))
         { inputCooldown = 10; switchCompanion(1); break; }
       }
     }
