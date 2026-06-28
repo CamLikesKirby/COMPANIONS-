@@ -49,6 +49,7 @@ class CompanionMode extends Module
   var gnormalblueBallSuffix:String = null;
 
   var vocalsVolume:Float = 1.0;
+  var inAnimation:Bool = false;
 
   // ── Auto Gain Control ─────────────────────────────────────────────────────
   // Tracks ratio of reference-to-companion amplitude via a single EMA,
@@ -1204,6 +1205,12 @@ class CompanionMode extends Module
               var target = ev.getString("target");
               if (target == "boyfriend" || target == "bf" || target == "_companion" || target == CompanionHelper.currentCompanionJson.freeplayId)
                 companionChar.playAnimation(ev.getString("anim"), true, true);
+              inAnimation = true;
+              companionChar.animation.finishCallback = (animationName:String)->{
+                if (animationName == ev.getString("anim")) {
+                  inAnimation = false;
+                }
+              }
             }
             if (ev.eventKind == "SkillCheck")
             {
@@ -1217,13 +1224,18 @@ class CompanionMode extends Module
               var nonsenseModule:Module;
               nonsenseModule = ModuleHandler.getModule('nonsense-module');
               var curSkill:Int = nonsenseModule.scriptCall('skillCheckCalculation');
-
+              inAnimation = true;
               if (curSkill >= skillRate && goodAnim != '') {
               trace('Playing good animation $goodAnim on target $target.');
               companionChar.playAnimation(goodAnim, true, true);
               } else if (badAnim != '') {
               trace('Playing bad animation $badAnim on target $target.');
               companionChar.playAnimation(badAnim, true, true);
+              }
+                companionChar.animation.finishCallback = (animationName:String)->{
+                if (animationName == ev.getString('good anim') || animationName == ev.getString('bad anim')) {
+                  inAnimation = false;
+                }
               }
               }
             }
@@ -1258,7 +1270,7 @@ class CompanionMode extends Module
       try
       {
         var skipDance = CompanionHelper.currentCompanionJson.skipDance;
-        if (!skipDance)
+        if (!skipDance && !inAnimation)
         {
           if (companionChar.hasAnimation("danceLeft") && companionChar.hasAnimation("danceRight"))
             companionChar.playAnimation((event.beat % 2 == 0) ? "danceLeft" : "danceRight", false, false);
