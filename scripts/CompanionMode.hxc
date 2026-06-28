@@ -65,8 +65,6 @@ class CompanionMode extends Module
   public static var lastCompanionId:String = "bf";
   var pendingSpawn:Bool = false;
 
-  var restarted:Bool = false;
-
   // Health-icon pulse state
   var iconPulseTimer:Float = 0.0;
   static inline var ICON_PULSE_DUR:Float = 0.12; // seconds
@@ -85,24 +83,10 @@ class CompanionMode extends Module
     cleanup();
   }
 
-  override function onStateChangeEnd(event:StateChangeScriptEvent)
-  {
-    super.onStateChangeBegin(event);
-     if (PlayState.instance != null) return;
-     restarted = false; 
-  }
-
-    override function onGameOver(event: ScriptEvent):Void
-    {
-      super.onGameOver(event);
-      restarted = true;
-    }
-
   override function onSongRetry(event)
   {
     super.onSongRetry(event);
     cleanup();
-    restarted = true;
     if (!CompanionSelector.playerThatHasNoJson) CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
     // Immediately spawn a placeholder strumline so 3 are always visible from the start.
     _spawnPlaceholderStrumline();
@@ -111,12 +95,6 @@ class CompanionMode extends Module
 
   override function onSongLoaded(event:SongLoadScriptEvent) {
     super.onSongLoaded(event);
-    if (!restarted) {
-    gnormalAnimationSuffix = GameOverSubState.animationSuffix;
-    gnormalMusicSuffix = GameOverSubState.musicSuffix;
-    gnormalblueBallSuffix = GameOverSubState.blueBallSuffix;
-    }
-
     cleanup();
     pendingSpawn = true;
   }
@@ -314,9 +292,6 @@ class CompanionMode extends Module
     _cachedShowNotes   = _showCompanionNotes();
     _cachedCompanionId = companionId;
     try { _cachedIconP1 = PlayState.instance.iconP1; } catch (_:Dynamic) {}
-    trace("AFTER CREATION: " + GameOverSubState.animationSuffix);
-    trace("AFTER CREATION: " + GameOverSubState.musicSuffix);
-    trace("AFTER CREATION: " + GameOverSubState.blueBallSuffix);
   }
 
   function _spawnHiddenStrumline()
@@ -565,7 +540,6 @@ class CompanionMode extends Module
     // Refresh so the stage's named prop lookup finds _bf2 immediately.
     try { stage.refresh(); } catch (_:Dynamic) {}
     stage.refresh();
-
     GameOverSubState.animationSuffix = gnormalAnimationSuffix;
     GameOverSubState.musicSuffix = gnormalMusicSuffix;
     GameOverSubState.blueBallSuffix = gnormalblueBallSuffix;
@@ -1444,10 +1418,15 @@ class CompanionMode extends Module
       companionStrumline = null;
     }
 
+
     if (companionChar != null)
     {
       companionChar.destroy();
       companionChar = null;
+    } else {
+      gnormalAnimationSuffix = GameOverSubState.animationSuffix;
+      gnormalMusicSuffix = GameOverSubState.musicSuffix;
+      gnormalblueBallSuffix = GameOverSubState.blueBallSuffix;
     }
   }
 }

@@ -52,7 +52,7 @@ class CompanionVariantSwitcher extends Module
 
   override function onStateChangeEnd(event:StateChangeScriptEvent)
   {
-    super.onStateChangeBegin(event);
+    super.onStateChangeEnd(event);
      if (PlayState.instance != null) return;
      restarted = false; // FINALLY I FIXED THIS STUPID BUGGGAJEPOFGPDAHFAJOSFJ
   }
