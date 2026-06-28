@@ -235,7 +235,7 @@ class CompanionSelector extends Module
   function _inList(songId:String, daSong:Dynamic, list:Array<String>):Bool
   {
     try {
-    if (vocalCheck(songId,daSong,list) && chartCheck(songId,daSong,list))
+    if (vocalCheck(songId,daSong,list) || chartCheck(songId,daSong,list))
     return true;
     } catch (_:Dynamic) {}
     return false;
