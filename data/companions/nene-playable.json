@@ -3,7 +3,7 @@
     "nameTagPath": "charSelect/neneplayerNametag",
     "songVariationName": "nene",
     "freePlayId": "neneplayer",
-    "skipDance": false,
+    "skipDance": true,
     "playerFileReplacement": "assets/images/charSelect/neneplayerNametag.png",
 
     "icon": {
