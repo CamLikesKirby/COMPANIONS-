@@ -10,12 +10,6 @@
     "playerFileReplacement": "assets/data/characters/tankman-playable.json",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["blammed","bopeebo","cocoa","dadbattle","eggnog","fresh","high","milf",
-                "monster","philly-nice","pico","roses","satin-panties","senpai","south","spookeez",
-                "thorns","tutorial","winter-horrorland"],
-                
-    
-
     "variants": {
     "songsInOrder": [
     "blammed",            
@@ -89,9 +83,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

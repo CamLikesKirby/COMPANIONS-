@@ -142,19 +142,139 @@ class CompanionSelector extends Module
     return companionIdJson.freePlayId;
   }
 
+  function vocalCheck(songId:String, daSong:Dynamic, list:Array<String>):Bool {
+    var vocalVariation:String = CompanionHelper.currentCompanionJson.songVariationName;
+    var curDiff      = FreeplayState.rememberedDifficulty;
+    var diffFallbacks = [curDiff, "hard", "normal", "easy"];
+
+          // ── Vocals: companion variation → erect (only for erect-native chars) → default
+      var allowErectFallback = (vocalVariation == "erect" || vocalVariation == "default");
+      var vocalFallbacks:Array<String> = allowErectFallback
+        ? [vocalVariation, "erect", "default"]
+        : [vocalVariation, "default"];
+
+      if (vocalVariation == "" && CompanionHelper.currentBaseCompanion == 'bf') vocalFallbacks.push('bf');
+      for (tryVar in vocalFallbacks)
+      {
+        if (tryVar == null) continue;
+        var vd:Dynamic = null;
+        for (d in diffFallbacks) { vd = daSong.getDifficulty(d, tryVar); if (vd != null) break; }
+        if (vd == null) continue;
+        // Same player-verification check for vocals.
+          var chartPlayer:String = "";
+          try { chartPlayer = Std.string(vd.characters.player); } catch(_:Dynamic) {}
+          if (chartPlayer != "" && chartPlayer != "null")
+          {
+            var compRoot = CompanionHelper.currentBaseCompanion.split("-")[0];
+            var valid = (chartPlayer == CompanionHelper.currentBaseCompanion)
+                     || chartPlayer == compRoot
+                     || chartPlayer.startsWith(compRoot + "-")
+                     || chartPlayer.startsWith(compRoot + "train")
+                     || (compRoot == CompanionHelper.currentCompanionJson.specificPlayerName && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName))
+                     || (CompanionHelper.currentBaseCompanion == CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName) && CompanionHelper.currentCompanionJson.playableVerifiactionCheck);
+            if (valid) return valid;
+          } 
+      }
+      return false;
+    }
+
+    function chartCheck(songId:String, daSong:Dynamic, list:Array<String>):Bool {
+
+      var curSongVariation:String = "default";
+      var variation:String = CompanionHelper.currentCompanionJson.songVariationName;
+      var curDiff      = FreeplayState.rememberedDifficulty;
+      var diffFallbacks = [curDiff, "hard", "normal", "easy"];
+
+      try { curSongVariation = daSong.curVariation; } catch (_:Dynamic) {}
+      if (curSongVariation == null) curSongVariation = "default";
+
+      var curVarIsOtherCompanion = (curSongVariation != "default")
+          && (curSongVariation != variation)
+          && (CompanionHelper.currentCompanionJson.songVariationName != curSongVariation);
+      if (curVarIsOtherCompanion) curSongVariation = "default";
+      var variationFallbacks:Array<String> = [CompanionHelper.currentCompanionJson.songVariationName];
+      if (curSongVariation != variation && curSongVariation != "default")
+        variationFallbacks.push(curSongVariation);
+      variationFallbacks.push("default");
+      
+      if (variation == "" && CompanionHelper.currentBaseCompanion == "bf") variationFallbacks.push("bf");
+      for (tryVariation in variationFallbacks)
+      {
+        if (tryVariation == null) continue;
+        var diff2:Dynamic = null;
+        for (tryDiff in diffFallbacks)
+        {
+          diff2 = daSong.getDifficulty(tryDiff, tryVariation);
+          if (diff2 != null) break;
+        }
+        if (diff2 == null) continue;
+
+        // Verify the chart player actually belongs to this companion.
+        try
+        {
+          var chartPlayer:String = Std.string(diff2.characters.player ?? "");
+          var compRoot = CompanionHelper.currentBaseCompanion.split("-")[0];
+          var chartPlayerMatchesRoot = (chartPlayer == compRoot)
+              || chartPlayer.startsWith(compRoot + "-");
+          if (chartPlayer != "" && chartPlayer != CompanionHelper.currentBaseCompanion
+              && !chartPlayerMatchesRoot
+              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train"
+              && !(CompanionHelper.currentBaseCompanion == CompanionHelper.currentCompanionJson.baseCharacter && chartPlayer.startsWith(CompanionHelper.currentCompanionJson.specificPlayerName) &&  CompanionHelper.currentCompanionJson.playableVerifiactionCheck))
+          {
+            diff2 = null;
+          }
+          return diff2 != null;
+        }
+        catch (_:Dynamic) {}
+    }
+    return false;
+  }
   // Songs each companion is compatible with. bf = null → all songs ok.
   // Song lists per companion — checked via indexOf in isSongCompatibleForCompanion.
   // bf has no entry = compatible with all songs.
-  function _inList(songId:String, list:Array<String>):Bool
+  function _inList(songId:String, daSong:Dynamic, list:Array<String>):Bool
   {
-    for (s in list) if (s == songId) return true;
+    try {
+    if (vocalCheck(songId,daSong,list) && chartCheck(songId,daSong,list))
+    return true;
+    } catch (_:Dynamic) {}
     return false;
   }
 
   function isSongInList(songId:String, companionId:String):Bool
   {
-    var companionIdJson = CompanionHelper.getCompanionJson(companionId);
-    if (companionId == 'bf' || (playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return true; else return _inList(songId, companionIdJson.compatibleSongs);
+      if (playerThatHasNoJson && companionId == CompanionHelper.currentPlayer) return true;
+
+      var caps:Dynamic = null;
+      var songs:Array<String> = [];
+      var daSong:Dynamic = null;
+      try { caps = state.grpCapsules?.members; } catch (_:Dynamic) {}
+      if (caps == null) try { caps = state.capsuleGroup?.members; } catch (_:Dynamic) {}
+      if (caps == null) return _inList(songId, []);
+
+      for (i in 0...caps.length)
+      {
+        var cap:Dynamic = caps[i];
+        if (cap == null) continue;
+
+        var id:String = null;
+        for (getter in [
+          function() return cap.freeplayData?.data?.id,
+          function() return cap.songId,
+          function() return cap.song?.id,
+          function() return cap.data?.id,
+          function() return cap.freeplayData?.songId
+        ])
+        {
+          try { id = getter(); } catch (_:Dynamic) {}
+          if (id != null) break;
+        }
+        if (id == null) continue;
+        id = id.toLowerCase().trim();
+        if (id == songId) daSong = cap.freeplayData.data;
+        songs.push(id);
+      }
+    return _inList(songId, daSong, songs);
   }
   // ─────────────────────────────────────────────────────────────────────────
 

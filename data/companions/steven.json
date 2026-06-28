@@ -10,12 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["2hot","8xm","amethyst","blammed","bopeebo","cocoa","dadbattle",
-                "darnell","eggnog","fresh","guns","high","lit-up","milf","out-4-pizzas",
-                "philly-nice","satin-panties","south","spookeez"],
-
-    
-
     "variants": {
     "songsInOrder": [
     "cocoa",        
@@ -59,9 +53,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

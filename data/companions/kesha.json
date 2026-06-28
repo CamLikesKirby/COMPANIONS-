@@ -9,12 +9,7 @@
     "modFolder": "",
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
-
-    "compatibleSongs": ["blammed","bopeebo","dadbattle","darnell","fresh","milf",
-                "philly-nice","pico","satin-panties","south","spookeez","ugh"],
-
     
-
     "variants": {
     "songsInOrder": [
     "milf",          
@@ -58,9 +53,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

@@ -455,47 +455,47 @@ class CompanionMode extends Module
      
     var companionIdJson = CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion);
 
-    for (i in 0...companionIdJson.offsets.stagesInOrder.length) {
-        stages.set(companionIdJson.offsets.stagesInOrder[i], companionIdJson.offsets.xys[i]);
-    }
-
-     if (stages.get(sid) != null && stages.get(sid) != "") {
-      var xNy = stages.get(sid);
-      extraXoffset = xNy[0];
-      extraYoffset = xNy[1];
-     } else {
    try {
     if (pixelSongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.pixelX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.pixelY;
     }
+    } catch (_:Dynamic) {trace("pixel offsets returned null: " + _);}
 
+    try {
     if (carSongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.carX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.carY;
     }
+    } catch (_:Dynamic) {trace("car offsets returned null: " + _);}
 
+    try {
     if (picoStageSongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.picoStageX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.picoStageY;
     }
+    } catch (_:Dynamic) {trace("pico offsets returned null: " + _);}
 
+    try {
     if (tankmanStageSongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.tankmanStageX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.tankmanStageY;
     }
+    } catch (_:Dynamic) {trace("tankman stage offsets returned null: " + _);}
 
+    try {
     if (christmasSongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.christmasX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.christmasY;
     }
+    } catch (_:Dynamic) {trace("christmas offsets returned null: " + _);}
 
+    try {
     if (spookySongs.contains(currentSongId)) {
       extraXoffset = CompanionHelper.currentCompanionJson.offsets.spookyX;
       extraYoffset = CompanionHelper.currentCompanionJson.offsets.spookyY;
     }
-  } catch (_:Dynamic) {trace("offsets returned null: " + _);}
-  }
+  } catch (_:Dynamic) {trace("spooky offsets returned null: " + _);}
 
     var normalX:Float = 0;
     var normalY:Float = 0;

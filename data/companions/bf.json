@@ -10,8 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": [],
-
     "variants": {
     "songsInOrder": ["south","spookeez",
     "cocoa","eggnog","winter-horrorland",
@@ -53,9 +51,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

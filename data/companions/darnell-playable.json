@@ -10,11 +10,6 @@
     "playerFileReplacement": "assets/data/characters/darnell-playable.json",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["bopeebo","darnell","fresh","high","lit-up","philly-nice","pico",
-                "south","spookeez","tutorial","ugh"],
-
-    
-
     "variants": {
     "songsInOrder": [
     "blazin",      
@@ -74,9 +69,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

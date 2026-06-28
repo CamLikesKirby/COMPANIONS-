@@ -10,11 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["bopeebo","cocoa","dadbattle","darnell","eggnog","fresh","philly-nice",
-                "pico","south","spookeez","tutorial","ugh"],
-
-    
-
     "variants": {
     "songsInOrder": [
     "south",     
@@ -73,9 +68,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

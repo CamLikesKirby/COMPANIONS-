@@ -10,11 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["2hot","blammed","blazin","bopeebo","cocoa","dadbattle","darnell","eggnog",
-                "fresh","guns","high","lit-up","milf","philly-nice","pico","roses",
-                "satin-panties","senpai","south","spookeez","stress","thorns","tutorial",
-                "ugh","blissful","conquest","sky","wife-forever","manifest","dani","reoccurance","baffled","contextual","bioexorcism"],
-
     "variants": {
     "songsInOrder": ["south","spookeez",
     "cocoa","eggnog","winter-horrorland",
@@ -54,9 +49,6 @@
     "christmasY": 15,
 
     "spookyX": 0,
-    "spookyY": 38,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 38
     }
 }

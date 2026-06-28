@@ -9,11 +9,7 @@
     "modFolder": "",
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
-
-    "compatibleSongs": ["darnell","lit-up","2hot","blazin"],
-
     
-
     "variants": {
     "songsInOrder": ["blazin"],
     
@@ -47,9 +43,6 @@
     "christmasY": 0,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

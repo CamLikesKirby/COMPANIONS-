@@ -11,8 +11,6 @@
     "playableVerifiactionCheck": false,
     "reSize": false,
 
-    "compatibleSongs": ["blammed","bopeebo","cocoa","dadbattle","eggnog","fresh","high","milf","philly-nice","pico","roses","satin-panties","senpai","south","spookeez","thorns","tutorial"],
-
     "variants": {
     "songsInOrder": ["spookeez","south","satin-panties","high","milf","cocoa","eggnog","senpai","roses","thorns"],
     "variantsInOrder": ["gren-week2-dark","gren-week2-dark","gren-car","gren-car","gren-car","gren-xmas","gren-xmas","gren-pixel","gren-pixel","gren-pixel"]
@@ -45,9 +43,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": -30,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": -30
     }
 }

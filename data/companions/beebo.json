@@ -9,9 +9,7 @@
     "modFolder": "",
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
-
-    "compatibleSongs": ["dadbattle","pico","blammed","ugh","darnell"],
-
+    
     "variants": {
     "songsInOrder": [],
     "variantsInOrder": []
@@ -44,9 +42,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

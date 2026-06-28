@@ -10,11 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["bopeebo","cocoa","dadbattle","darnell","fresh","guns",
-                "high","pico","roses","spookeez","stress","thorns"],
-
-    
-
     "variants": {
     "songsInOrder": [
     "cocoa",    
@@ -64,9 +59,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

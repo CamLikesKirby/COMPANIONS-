@@ -9,11 +9,7 @@
     "modFolder": "",
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
-
-    "compatibleSongs": ["bopeebo","dadbattle","darnell","fresh","pico","south"],
-
     
-
     "variants": {
     "songsInOrder": [
    "south"       
@@ -51,9 +47,6 @@
     "christmasY": 10,
 
     "spookyX": 70,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

@@ -10,8 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["tutorial","bopeebo","fresh","dadbattle","spookeez","south","pico","philly-nice","blammed","high","cocoa","eggnog","winter-horrorland","roses","thorns","ugh","darnell","lit-up","blazin"],
-
     "variants": {
     "songsInOrder": ["spookeez","south","cocoa","eggnog","winter-horrorland","roses","thorns","blazin"],
     "variantsInOrder": ["huggy-dark","huggy-dark","huggy-christmas","huggy-christmas","huggy-christmas","huggy-pixel","huggy-pixel","huggy-blazin"]
@@ -45,9 +43,6 @@
     "christmasY": -10,
 
     "spookyX": 0,
-    "spookyY": 70,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 70
     }
 }

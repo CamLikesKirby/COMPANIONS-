@@ -10,13 +10,6 @@
     "playerFileReplacement": "assets/images/charSelect/spookymodNametag.png",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["2hot","blammed","blazin","bopeebo","cocoa","dadbattle","darnell","eggnog",
-                "fresh","guns","high","lit-up","milf","monster","philly-nice","pico","roses",
-                "satin-panties","senpai","south","spookeez","stress","thorns","tutorial",
-                "ugh","winter-horrorland"],
- 
-                    
-
     "variants": {
     "songsInOrder": [
     "2hot",               
@@ -104,9 +97,6 @@
     "christmasY": 20,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

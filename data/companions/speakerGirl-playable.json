@@ -10,10 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["blammed","darnell","h0tbx","high","no-lif3","pico","satin-panties"],
-
-    
-
     "variants": {
     "songsInOrder": [
          
@@ -50,9 +46,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

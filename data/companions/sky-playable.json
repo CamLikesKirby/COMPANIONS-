@@ -10,12 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["2hot","blammed","blazin","blissful","bopeebo","cocoa","dadbattle",
-                "darnell","fresh","guns","high","lit-up","milf","moderato","philly-nice","pico",
-                "roses","senpai","south","stress","thorns","tutorial","ugh"],
-
-    
-
     "variants": {
     "songsInOrder": [
     "cocoa",
@@ -69,9 +63,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

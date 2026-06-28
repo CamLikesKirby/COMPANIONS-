@@ -11,8 +11,6 @@
     "playableVerifiactionCheck": false,
     "defaultVocalVolume": 0.55,
 
-    "compatibleSongs": ["tutorial","fresh","pico","satin-panties","high","eggnog","senpai","ugh","guns","darnell"],
-
     "variants": {
     "songsInOrder": ["satin-panties","high","eggnog","senpai"],
     "variantsInOrder": ["Dani-Car","Dani-Car","Dani-Christmas","Dani-Pixel"]
@@ -45,9 +43,6 @@
     "christmasY": 0,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

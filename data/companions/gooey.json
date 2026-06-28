@@ -10,12 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["blammed","blissful","bopeebo","cocoa","dadbattle","eggnog",
-                "fresh","guns","high","milf","philly-nice","pico","roses","satin-panties",
-                "senpai","south","spookeez","stress","thorns","drippypop-gooey-mix","mixd-up"],
-
-    
-
     "variants": {
     "songsInOrder": ["cocoa","eggnog",
     "high","milf","satin-panties",
@@ -57,9 +51,6 @@
     "christmasY": 0,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

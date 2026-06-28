@@ -9,11 +9,7 @@
     "modFolder": "",
     "playerFileReplacement": "assets/images/charSelect/neneplayerNametag.png",
     "playableVerifiactionCheck": false,
-
-    "compatibleSongs": ["bopeebo","spookeez","pico","high","eggnog","senpai","guns","darnell"],
-
     
-
     "variants": {
     "songsInOrder": [
     "bopeebo",            
@@ -75,9 +71,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

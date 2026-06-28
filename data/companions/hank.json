@@ -10,11 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["conquest","improbable-outset","lit-up","philly-nice","pico",
-                "roses","senpai","south","thorns"],
-
-    
-
     "variants": {
     "songsInOrder": [ 
     "south",
@@ -64,9 +59,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }

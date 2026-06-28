@@ -10,8 +10,6 @@
     "playerFileReplacement": "",
     "playableVerifiactionCheck": false,
 
-    "compatibleSongs": ["tutorial", "bopeebo","fresh","dadbattle","spookeez","satin-panties","high","ugh","guns","darnell"],
-
     "variants": {
     "songsInOrder": ["spookeez","satin-panties","high","ugh","guns","darnell"],
     "variantsInOrder": ["bruce","rose-car","rose-car","chuck-playable","chuck-playable","gerald"]
@@ -44,9 +42,6 @@
     "christmasY": 10,
 
     "spookyX": 0,
-    "spookyY": 0,
-    
-    "stagesInOrder": ["example"],
-    "xys": [[0,0]]
+    "spookyY": 0
     }
 }
