@@ -106,7 +106,7 @@ class CompanionMode extends Module
   function onCountdownStart(event:CountdownScriptEvent)
   {
     super.onCountdownStart(event);
-    if (!pendingSpawn) return;
+    if (!pendingSpawn || (CompanionSelector.playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return;
     pendingSpawn = false;
     // Spawn placeholder immediately so 3 strumlines show from beat 1.
     _spawnPlaceholderStrumline();
@@ -864,8 +864,10 @@ class CompanionMode extends Module
 
       var inst:String = null;
       try { inst = diff2?.characters?.instrumental; } catch (_:Dynamic) {}
+    
       if (inst == null || inst == "") inst = variation;
       var candidates:Array<String> = [];
+  
       if (variation != null && variation != "default")
       {
         candidates.push('-${inst}-${voiceChar}');
@@ -921,6 +923,11 @@ class CompanionMode extends Module
           }
         }
       }
+
+      candidates.push('-${CompanionHelper.currentCompanionJson.baseCharacter}');
+      if (companionChar.characterId.split('-')[0] != companionChar.characterId) 
+      candidates.push('-${CompanionHelper.currentCompanionJson.freePlayId}-${companionChar.characterId.split('-')[1]}
+      -${companionChar.characterId.split('-')[0]}');
 
       var chosen:String = null;
       for (s in candidates)
@@ -1055,7 +1062,7 @@ class CompanionMode extends Module
 
     // Keeps the pixel icon at a normal size
     var muti:Float = 1;
-    if (isPixelStage) muti = 5;
+    if (isPixelStage && CompanionHelper.currentCompanionJson.icon.hasPixel) muti = 5;
     if (isPixelStage && CompanionHelper.currentCompanionJson.icon.muti != null) muti = CompanionHelper.currentCompanionJson.icon.muti;
       // Decay pulse scale back to 1.
       if (iconPulseTimer > 0)

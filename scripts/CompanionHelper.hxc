@@ -22,7 +22,8 @@ class CompanionHelper
   "hank","henry","kesha","nene-playable","parappa-playable","pico-playable","reimu","sky-playable",
   "sonic-playable","speakerGirl-playable","spooky-playable","steven","tankman-playable","baldi",
   "bambi-playable","gfplayer","bf-remnants","pico-remnants-playable","bf","beebo","Dani",
-  "atsukokagari","huggy","joseph","gren-normal-playable","pelmen-playable","bren","beetlejuice"];
+  "atsukokagari","huggy","joseph","gren-normal-playable","pelmen-playable","bren","beetlejuice","expunged-playable","kreek"
+  ,"artuxxplayer"];
   
   public static function checkImageExists(id:String):Bool
   {
@@ -61,7 +62,7 @@ class CompanionHelper
     }
 
     // Mod companions — check their player file.
-    var ids:Array<String> = [companionId,companionIdJson.freeplayId];
+    var ids:Array<String> = [companionId,companionIdJson.freePlayId];
     for (id in ids) {
     try
     {

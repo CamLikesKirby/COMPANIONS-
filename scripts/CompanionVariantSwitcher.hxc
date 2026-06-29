@@ -71,6 +71,8 @@ class CompanionVariantSwitcher extends Module
 
   function resolveVariant(companionId:String, songId:String):String
   {
+      if (CompanionHelper.currentCompanionJson == null) return;
+      
       var globalData = CompanionHelper.getGlobalData();
       var sid:String = PlayState.instance.currentStageId;
       var darkSongWithBF = globalData.isDarkStage.contains(sid);

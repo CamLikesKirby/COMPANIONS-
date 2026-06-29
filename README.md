@@ -87,8 +87,11 @@ https://gamebanana.com/mods/596021 - Friday Night Funkin': Bren Mix
 
 https://gamebanana.com/mods/596880 - [V-SLICE] FNF: BEETLEJUICE MIX
 
-# ONLY FOR EARLY GITHUB VERSION
-None currently.
+https://gamebanana.com/wips/101379 - [Official Ver.] Expunged Mixes (DEMO 1)
+
+https://gamebanana.com/mods/688974 - Playable Is That A Gubby
+
+https://gamebanana.com/mods/689503 - FNF ~ ARTUXX MIX
 
 Make sure to support the mod creators!
 

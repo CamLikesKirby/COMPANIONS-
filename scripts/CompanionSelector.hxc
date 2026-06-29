@@ -35,6 +35,7 @@ class CompanionSelector extends Module
   var dots:FlxTypedSpriteGroup<FunkinSprite>;
   var tagSprite:FunkinSprite;
   var restarted:Bool = false;
+  var greyedOut:Bool = false;
 
   // ── Nametag resolution ────────────────────────────────────────────────────
   // Tries to load the companion's charselect nametag (the same image the
@@ -241,8 +242,8 @@ class CompanionSelector extends Module
 
   function isSongInList(songId:String, companionId:String):Bool
   {
-      if (playerThatHasNoJson && companionId == CompanionHelper.currentPlayer) return true;
-
+      if ((playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return true;
+    
       var caps:Dynamic = null;
       var songs:Array<String> = [];
       var daSong:Dynamic = null;
@@ -332,6 +333,10 @@ class CompanionSelector extends Module
     companionToDot = [];
   }
 
+  override function onDifficultySwitch(event:CapsuleScriptEvent) {
+    greyedOut = false;
+  }
+
   override function onSongSelected(event:CapsuleScriptEvent)
   {
     super.onSongSelected(event);
@@ -413,6 +418,7 @@ class CompanionSelector extends Module
     if (restarted) { 
     FunkinSound.playOnce(Paths.sound('CS_locked')); 
     restarted = false;
+    greyedOut = false;
     }
 
     CompanionHelper.currentPlayer = FreeplayState.rememberedCharacterId;
@@ -590,6 +596,7 @@ class CompanionSelector extends Module
       }
     }
     catch (_:Dynamic) {}
+    greyedOut = true;
   }
 
   function restoreAllCapsules()
@@ -656,7 +663,7 @@ class CompanionSelector extends Module
     _posFrame++;
     if (_posFrame % 3 == 0) updatePositions(false, state);
     // Only re-grey capsules when companion or song selection changes.
-    if (_lastGreyCompanion != currentCompanionId || _lastGreySong != state.curSelected)
+    if (_lastGreyCompanion != currentCompanionId || _lastGreySong != state.curSelected && !greyedOut)
     {
       _lastGreyCompanion = currentCompanionId;
       _lastGreySong      = state.curSelected;
@@ -693,6 +700,7 @@ class CompanionSelector extends Module
   {
     if (COMPANIONS.length == 0) _buildInstalledList();
     if (COMPANIONS.length == 0) return;
+    greyedOut = false;
     currentIndex      = FlxMath.wrap(currentIndex + change, 0, COMPANIONS.length - 1);
     currentCompanionId = COMPANIONS[currentIndex];
     
