@@ -341,6 +341,7 @@ class CompanionSelector extends Module
   {
     super.onSongSelected(event);
 
+    var opts = Save.instance.getModOptions("COMPANION-2P");
     if (!isSongCompatibleForCompanion(getCurrentSongId(FlxG.state.subState), currentCompanionId, FlxG.state.subState) && !FlxG.keys.pressed.SHIFT && !(FlxG.onMobile && opts.playGreyedSongs))
     { 
       // TODO: Make another way to prevent players from entering a song
