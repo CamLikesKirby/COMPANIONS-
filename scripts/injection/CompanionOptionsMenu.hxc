@@ -85,6 +85,7 @@ class CompanionOptionsMenu extends Module
     var applyShader:Bool = true;
     var companionAnimations:Bool = true;
     var companionVisible:Bool = true;
+    var playGreyedSongs:Bool = true;
 
     try
     {
@@ -93,6 +94,7 @@ class CompanionOptionsMenu extends Module
       if (Save.instance.getModOptions("COMPANION-2P").applyShader != null) applyShader = Save.instance.getModOptions("COMPANION-2P").applyShader == true;
       if (Save.instance.getModOptions("COMPANION-2P").companionAnimations != null) companionAnimations = Save.instance.getModOptions("COMPANION-2P").companionAnimations == true;
       if (Save.instance.getModOptions("COMPANION-2P").companionVisible != null) companionVisible = Save.instance.getModOptions("COMPANION-2P").companionVisible == true;
+      if (Save.instance.getModOptions("COMPANION-2P").playGreyedSongs != null && FlxG.onMobile) playGreyedSongs = Save.instance.getModOptions("COMPANION-2P").playGreyedSongs == true;
     }
     catch (_:Dynamic) {trace(_);}
 
@@ -169,6 +171,22 @@ class CompanionOptionsMenu extends Module
         companionVisible
       );
 
+      if (FlxG.onMobile) {
+      companionsPage.createPrefItemCheckbox(
+        'Play Greyed Out Songs',
+        'If enabled, you will have the ability to play greyed/transparent songs.',
+        function(value:Bool)
+        {
+          var opts = Save.instance.getModOptions("COMPANION-2P");
+          if (opts == null) opts = {};
+          opts.playGreyedSongs = value;
+          Save.instance.setModOptions("COMPANION-2P", opts);
+          Save.instance.flush();
+        },
+        playGreyedSongs
+      );
+      }
+
     }
     catch (_:Dynamic) {trace(_);}
 
@@ -185,6 +203,7 @@ function saveShit() {
     var applyShader:Dynamic = null;
     var companionAnimations:Dynamic = null;
     var companionVisible:Dynamic = null;
+    var playGreyedSongs:Dynamic = null;
     
     try { switchToDefault = opts.switchToDefault; } catch (_:Dynamic) {trace(_);}
     if (switchToDefault == null) { opts.switchToDefault = true; dirty = true; }
@@ -198,8 +217,10 @@ function saveShit() {
     try { companionAnimations = opts.companionAnimations; } catch (_:Dynamic) {trace(_);}
     if (companionAnimations == null) { opts.companionAnimations = true; dirty = true; }
 
-    try { companionVisible = opts.companionVisible; } catch (_:Dynamic) {trace(_);}
-    if (companionVisible == null) { opts.companionVisible = true; dirty = true; }
+    if (FlxG.onMobile) {
+    try { playGreyedSongs = opts.playGreyedSongs; } catch (_:Dynamic) {trace(_);}
+    if (playGreyedSongs == null) { opts.playGreyedSongs = true; dirty = true; }
+    }
 
     if (dirty) { Save.instance.setModOptions("COMPANION-2P", opts); Save.instance.flush(); }
 }
