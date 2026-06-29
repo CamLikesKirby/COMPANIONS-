@@ -23,7 +23,7 @@ class CompanionHelper
   "sonic-playable","speakerGirl-playable","spooky-playable","steven","tankman-playable","baldi",
   "bambi-playable","gfplayer","bf-remnants","pico-remnants-playable","bf","beebo","Dani",
   "atsukokagari","huggy","joseph","gren-normal-playable","pelmen-playable","bren","beetlejuice","expunged-playable","kreek"
-  ,"artuxxplayer","kikillus-playable"];
+  ,"artuxxplayer","kikillus-playable","house"];
   
   public static function checkImageExists(id:String):Bool
   {

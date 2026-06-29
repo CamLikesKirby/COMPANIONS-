@@ -345,11 +345,25 @@ class CompanionMode extends Module
       companionStrumline.x = 920;
       companionStrumline.y = playerSL.y;
       } else {
+
+    var isPixelStage:Bool = false;
+      try
+      {
+      var noteStyle:String = PlayState.instance.currentChart.noteStyle;
+      // Matches "pixel", "pixel-fred", "pixel-*" etc.
+      isPixelStage = (noteStyle != null && noteStyle.startsWith("pixel"));
+      }
+      catch (_:Dynamic) {}
+
+      var muti:Float = 1;
+      var sub:Float = 0;
+      if (isPixelStage) { muti = 8; sub = 0.05; }
+
       companionStrumline.x = opponentSL.x + 980;
       companionStrumline.y = opponentSL.y;
-      companionStrumline.scale.x = 0.3;
-      companionStrumline.scale.y = 0.3;
-      companionStrumline.setNoteSpacing(0.45);
+      companionStrumline.scale.x = 0.3 * muti;
+      companionStrumline.scale.y = 0.3 * muti;
+      companionStrumline.setNoteSpacing(0.45 - sub);
       
 
       companionStrumline.notes.visible = false;

@@ -416,10 +416,10 @@ class CompanionSelector extends Module
   function onCreatePost(state, add)
   {
     freeplayState = state;
+    greyedOut = false;
     if (restarted) { 
     FunkinSound.playOnce(Paths.sound('CS_locked')); 
     restarted = false;
-    greyedOut = false;
     }
 
     CompanionHelper.currentPlayer = FreeplayState.rememberedCharacterId;

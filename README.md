@@ -95,6 +95,10 @@ https://gamebanana.com/mods/689503 - FNF ~ ARTUXX MIX
 
 https://gamebanana.com/mods/687864 - FNF: Kikillus N' CO
 
+https://gamebanana.com/mods/627609 - Playable House (V-SLICE UPDATE)
+
+https://gamebanana.com/mods/662131 - ᕈᖾɩꙆꙆყᖇᥱ-ᖴɾᥱ⳽ᖾᥱᑯ
+
 Make sure to support the mod creators!
 
 ## TODO
