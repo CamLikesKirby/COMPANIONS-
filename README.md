@@ -93,6 +93,8 @@ https://gamebanana.com/mods/688974 - Playable Is That A Gubby
 
 https://gamebanana.com/mods/689503 - FNF ~ ARTUXX MIX
 
+https://gamebanana.com/mods/687864 - FNF: Kikillus N' CO
+
 Make sure to support the mod creators!
 
 ## TODO
