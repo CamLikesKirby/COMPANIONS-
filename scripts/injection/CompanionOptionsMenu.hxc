@@ -11,12 +11,32 @@ class CompanionOptionsMenu extends Module
   override function onCreate(event)
   {
     super.onCreate(event);
-    saveShit();
   }
 
   override function onStateChangeEnd(event)
   {
     super.onStateChangeEnd(event);
+    saveShit();
+    
+    // ── Options ──────────────────────────────────────────────
+    var currentNotes:Bool = true;
+    var switchDefault:Bool = true;
+    var applyShader:Bool = true;
+    var companionAnimations:Bool = true;
+    var companionVisible:Bool = true;
+    var playGreyedSongs:Bool = true;
+
+    try
+    {
+      if (Save.instance.getModOptions("COMPANION-2P").showCompanionNotes != null) currentNotes = Save.instance.getModOptions("COMPANION-2P").showCompanionNotes == true;
+      if (Save.instance.getModOptions("COMPANION-2P").switchToDefault != null) switchDefault = Save.instance.getModOptions("COMPANION-2P").switchToDefault == true;
+      if (Save.instance.getModOptions("COMPANION-2P").applyShader != null) applyShader = Save.instance.getModOptions("COMPANION-2P").applyShader == true;
+      if (Save.instance.getModOptions("COMPANION-2P").companionAnimations != null) companionAnimations = Save.instance.getModOptions("COMPANION-2P").companionAnimations == true;
+      if (Save.instance.getModOptions("COMPANION-2P").companionVisible != null) companionVisible = Save.instance.getModOptions("COMPANION-2P").companionVisible == true;
+      if (Save.instance.getModOptions("COMPANION-2P").playGreyedSongs != null && FlxG.onMobile) playGreyedSongs = Save.instance.getModOptions("COMPANION-2P").playGreyedSongs == true;
+    }
+    catch (_:Dynamic) {}
+
     if (!(event.targetState is OptionsState)) return;
 
     var state = event.targetState;
@@ -76,25 +96,6 @@ class CompanionOptionsMenu extends Module
       for (item in companionsPage.preferenceItems) item.destroy();
       companionsPage.items.clear();
       companionsPage.preferenceItems.clear();
-    }
-    catch (_:Dynamic) {trace(_);}
-
-    // ── Options ──────────────────────────────────────────────
-    var currentNotes:Bool = true;
-    var switchDefault:Bool = true;
-    var applyShader:Bool = true;
-    var companionAnimations:Bool = true;
-    var companionVisible:Bool = true;
-    var playGreyedSongs:Bool = true;
-
-    try
-    {
-      if (Save.instance.getModOptions("COMPANION-2P").showCompanionNotes != null) currentNotes = Save.instance.getModOptions("COMPANION-2P").showCompanionNotes == true;
-      if (Save.instance.getModOptions("COMPANION-2P").switchToDefault != null) switchDefault = Save.instance.getModOptions("COMPANION-2P").switchToDefault == true;
-      if (Save.instance.getModOptions("COMPANION-2P").applyShader != null) applyShader = Save.instance.getModOptions("COMPANION-2P").applyShader == true;
-      if (Save.instance.getModOptions("COMPANION-2P").companionAnimations != null) companionAnimations = Save.instance.getModOptions("COMPANION-2P").companionAnimations == true;
-      if (Save.instance.getModOptions("COMPANION-2P").companionVisible != null) companionVisible = Save.instance.getModOptions("COMPANION-2P").companionVisible == true;
-      if (Save.instance.getModOptions("COMPANION-2P").playGreyedSongs != null && FlxG.onMobile) playGreyedSongs = Save.instance.getModOptions("COMPANION-2P").playGreyedSongs == true;
     }
     catch (_:Dynamic) {trace(_);}
 
@@ -197,7 +198,6 @@ function saveShit() {
     var opts = Save.instance.getModOptions("COMPANION-2P");
     if (opts == null) opts = {};
     
-    var dirty = false;
     var showNotes:Dynamic = null;
     var switchToDefault:Dynamic = null;
     var applyShader:Dynamic = null;
@@ -206,22 +206,25 @@ function saveShit() {
     var playGreyedSongs:Dynamic = null;
     
     try { switchToDefault = opts.switchToDefault; } catch (_:Dynamic) {trace(_);}
-    if (switchToDefault == null) { opts.switchToDefault = true; dirty = true; }
+    if (switchToDefault == null) { opts.switchToDefault = true;}
 
     try { showNotes = opts.showCompanionNotes; } catch (_:Dynamic) {trace(_);}
-    if (showNotes == null) { opts.showCompanionNotes = true; dirty = true; }
+    if (showNotes == null) { opts.showCompanionNotes = true;}
 
     try { applyShader = opts.applyShader; } catch (_:Dynamic) {trace(_);}
-    if (applyShader == null) { opts.applyShader = true; dirty = true; }
+    if (applyShader == null) { opts.applyShader = true;}
 
     try { companionAnimations = opts.companionAnimations; } catch (_:Dynamic) {trace(_);}
-    if (companionAnimations == null) { opts.companionAnimations = true; dirty = true; }
+    if (companionAnimations == null) { opts.companionAnimations = true;}
+
+    try { companionVisible = opts.companionVisible; } catch (_:Dynamic) {trace(_);}
+    if (companionVisible == null) { opts.companionVisible = true;}
 
     if (FlxG.onMobile) {
     try { playGreyedSongs = opts.playGreyedSongs; } catch (_:Dynamic) {trace(_);}
-    if (playGreyedSongs == null) { opts.playGreyedSongs = true; dirty = true; }
+    if (playGreyedSongs == null) { opts.playGreyedSongs = true;}
     }
 
-    if (dirty) { Save.instance.setModOptions("COMPANION-2P", opts); Save.instance.flush(); }
+    Save.instance.setModOptions("COMPANION-2P", opts); Save.instance.flush();
 }
 }
