@@ -566,7 +566,6 @@ class CompanionSelector extends Module
       if (curSongVariation != variation && curSongVariation != "default")
         variationFallbacks.push(curSongVariation);
       
-      if (variation == "" && CompanionHelper.currentBaseCompanion == "bf") { variationFallbacks.push("default"); variationFallbacks.push("bf"); }
       for (tryVariation in variationFallbacks)
       {
         if (tryVariation == null) continue;

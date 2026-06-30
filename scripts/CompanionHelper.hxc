@@ -23,7 +23,7 @@ class CompanionHelper
   "sonic-playable","speakerGirl-playable","spooky-playable","steven","tankman-playable","baldi",
   "bambi-playable","gfplayer","bf-remnants","pico-remnants-playable","bf","beebo","Dani",
   "atsukokagari","huggy","joseph","gren-normal-playable","pelmen-playable","bren","beetlejuice","expunged-playable","kreek"
-  ,"artuxxplayer","kikillus-playable","house","tankmanPlayerNC"];
+  ,"artuxxplayer","kikillus-playable","house","tankmanPlayerNC","macy-player"];
   
   public static function checkImageExists(id:String):Bool
   {
@@ -120,8 +120,11 @@ class CompanionHelper
 
   public static function formJson(json:Dynamic):Dynamic
   {
-  try { return SerializerUtil.fromJSON(Assets.getText(json)); } catch (_:Dynamic) {trace(_);}
-  throw "Couldn\'t form json"; 
+  try { return SerializerUtil.fromJSON(Assets.getText(json)); } catch (_:Dynamic) {trace("Couldn\'t form json with SerializerUtil!: " + _);}
+  try { 
+  var rawText:String = Assets.getText(json);
+  return haxe.Json.parse(rawText);
+  } catch (_:Dynamic) {throw "Couldn\'t form json, your device might not be compatible with this mod, error: " + _; }
   } 
   
   public static function stringToIndices(string:String):Array<Int>
@@ -135,4 +138,5 @@ class CompanionHelper
     }
     return indices;
   }
+
 }
