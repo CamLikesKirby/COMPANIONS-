@@ -7,6 +7,7 @@ why not make it two??? (Created by The_Ghost_FNF/Gurt)
 Ever felt so bored of just one player? Well here is a solution! Meet companions! It adds a selector in the freeplay menu to select your COMPAION!!! 
 
 Whenever your in the freeplay menu or storymode press R to cycle right and SHIFT+R to cycle left and pick your companion!
+If a song is greyed out but you still want to play it, hold shift (Go to options if your on mobile)
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/905f0776-7895-4b46-812e-b3f3b771318c" />
 

@@ -59,7 +59,14 @@ class CompanionStorySelector extends Module
     var opts = Save.instance.getModOptions("COMPANION-2P");
     var id:String = null;
     try { id = opts.companionId; } catch (_:Dynamic) {}
-    CompanionHelper.currentCompanionJson = id != null ? CompanionHelper.getCompanionJson(id) : CompanionHelper.getCompanionJson("bf");
+    if (id != null) 
+    {
+      CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(id);
+      CompanionHelper.currentBaseCompanion = id; 
+    } else {
+      CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson("bf");
+      CompanionHelper.currentBaseCompanion = "bf"; 
+    }
     return id != null ? id : "bf";
   }
 
@@ -69,6 +76,14 @@ class CompanionStorySelector extends Module
     if (opts == null) opts = {};
     opts.companionId = id;
     Save.instance.setModOptions("COMPANION-2P", opts);
+    if (id != null) 
+    {
+      CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(id);
+      CompanionHelper.currentBaseCompanion = id; 
+    } else {
+      CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson("bf");
+      CompanionHelper.currentBaseCompanion = "bf"; 
+    }
   }
 
   function _buildInstalledList()
@@ -121,6 +136,15 @@ class CompanionStorySelector extends Module
     tagSprite = new FunkinSprite();
     _loadNametag(COMPANIONS[currentIndex]);
     storyState.add(tagSprite);
+
+    // Dim the tag if this companion IS the current freeplay character.
+    try
+    {
+      var fc  = CompanionHelper.currentPlayer;
+      var mc  = CompanionHelper.currentCompanionJson.freePlayId;
+      tagSprite.alpha = ((mc != "" && fc == mc) || (currentCompanionId == CompanionHelper.currentPlayer && CompanionSelector.playerThatHasNoJson)) ? 0.35 : 1.0;
+    }
+    catch (_:Dynamic) { if (tagSprite != null) tagSprite.alpha = 1.0; }
 
     _updatePositions();
   }
@@ -175,6 +199,16 @@ class CompanionStorySelector extends Module
     _writeSaved(id);
     _loadNametag(id);
     _updatePositions();
+
+    // Dim the tag if this companion IS the current freeplay character.
+    try
+    {
+      var fc  = CompanionHelper.currentPlayer;
+      var mc  = CompanionHelper.currentCompanionJson.freePlayId;
+      tagSprite.alpha = ((mc != "" && fc == mc) || (currentCompanionId == CompanionHelper.currentPlayer && CompanionSelector.playerThatHasNoJson)) ? 0.35 : 1.0;
+    }
+    catch (_:Dynamic) { if (tagSprite != null) tagSprite.alpha = 1.0; }
+    
     try { FunkinSound.playOnce(Paths.sound("scrollMenu")); } catch (_:Dynamic) {}
   }
 

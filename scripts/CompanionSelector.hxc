@@ -159,7 +159,7 @@ class CompanionSelector extends Module
       {
         if (tryVar == null) continue;
         var vd:Dynamic = null;
-        for (d in diffFallbacks) { vd = daSong.getDifficulty(d, tryVar); if (vd != null) break; }
+        for (d in diffFallbacks) { vd = daSong.getDifficulty(d, tryVar,null); if (vd != null) break; }
         if (vd == null) continue;
         // Same player-verification check for vocals.
           var chartPlayer:String = "";
@@ -204,7 +204,7 @@ class CompanionSelector extends Module
         var diff2:Dynamic = null;
         for (tryDiff in diffFallbacks)
         {
-          diff2 = daSong.getDifficulty(tryDiff, tryVariation);
+          diff2 = daSong.getDifficulty(tryDiff, tryVariation,null);
           if (diff2 != null) break;
         }
         if (diff2 == null) continue;
@@ -230,7 +230,6 @@ class CompanionSelector extends Module
   }
   // Songs each companion is compatible with. bf = null → all songs ok.
   // Song lists per companion — checked via indexOf in isSongCompatibleForCompanion.
-  // bf has no entry = compatible with all songs.
   function _inList(songId:String, daSong:Dynamic, list:Array<String>):Bool
   {
     try {
@@ -249,7 +248,7 @@ class CompanionSelector extends Module
       var daSong:Dynamic = null;
       try { caps = state.grpCapsules?.members; } catch (_:Dynamic) {}
       if (caps == null) try { caps = state.capsuleGroup?.members; } catch (_:Dynamic) {}
-      if (caps == null) return _inList(songId, []);
+      if (caps == null) return _inList(songId, null, []);
 
       for (i in 0...caps.length)
       {
@@ -332,8 +331,7 @@ class CompanionSelector extends Module
     tagSprite = null; rightArrow = null; leftArrow = null; dots = null;
     companionToDot = [];
   }
-
-  override function onDifficultySwitch(event:CapsuleScriptEvent) {
+    override function onDifficultySwitch(event:CapsuleScriptEvent) {
     greyedOut = false;
   }
 
@@ -342,7 +340,7 @@ class CompanionSelector extends Module
     super.onSongSelected(event);
 
     var opts = Save.instance.getModOptions("COMPANION-2P");
-    if (!isSongCompatibleForCompanion(getCurrentSongId(FlxG.state.subState), currentCompanionId, FlxG.state.subState) && !FlxG.keys.pressed.SHIFT && !(FlxG.onMobile && opts.playGreyedSongs))
+    if (!isSongCompatibleForCompanion(getCurrentSongId(FlxG.state.subState), currentCompanionId, event.capsule.freeplayData, FlxG.state.subState) && !FlxG.keys.pressed.SHIFT && !(FlxG.onMobile && opts.playGreyedSongs))
     { 
       // TODO: Make another way to prevent players from entering a song
       FlxG.resetState(); 
@@ -389,7 +387,6 @@ class CompanionSelector extends Module
         var idx = COMPANIONS.indexOf(id);
         if (idx >= 0)
         {
-          trace(id);
           currentIndex       = idx;
           currentCompanionId = id;
           CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(currentCompanionId);
@@ -534,7 +531,7 @@ class CompanionSelector extends Module
     return lastValidSongId;
   }
 
-  function isSongCompatibleForCompanion(songId:String, companionId:String, state:Dynamic):Bool
+  function isSongCompatibleForCompanion(songId:String, companionId:String, songData:Dynamic, state:Dynamic):Bool
   {
     if (songId == null) return true;
     // If companion IS the current freeplay character, it's a no-companion situation
@@ -547,6 +544,45 @@ class CompanionSelector extends Module
       if (mc != "" && fc == mc) return true;
     }
     catch (_:Dynamic) {}
+
+  
+  try {
+      var opts = Save.instance.getModOptions("COMPANION-2P");
+      if (opts.checkBPM) {
+      var curSongVariation:String = "default";
+      var variation:String = CompanionHelper.currentCompanionJson.songVariationName;
+      var curDiff      = FreeplayState.rememberedDifficulty;
+      var diffFallbacks = [curDiff, "hard", "normal", "easy"];
+      var diff2:Dynamic = null;
+
+      try { curSongVariation = songData.curVariation; } catch (_:Dynamic) {}
+      if (curSongVariation == null) curSongVariation = "default";
+
+      var curVarIsOtherCompanion = (curSongVariation != "default")
+          && (curSongVariation != variation)
+          && (CompanionHelper.currentCompanionJson.songVariationName != curSongVariation);
+      if (curVarIsOtherCompanion) curSongVariation = "default";
+      var variationFallbacks:Array<String> = [CompanionHelper.currentCompanionJson.songVariationName];
+      if (curSongVariation != variation && curSongVariation != "default")
+        variationFallbacks.push(curSongVariation);
+      variationFallbacks.push("default");
+      
+      if (variation == "" && CompanionHelper.currentBaseCompanion == "bf") variationFallbacks.push("bf");
+      for (tryVariation in variationFallbacks)
+      {
+        if (tryVariation == null) continue;
+        for (tryDiff in diffFallbacks)
+        {
+          diff2 = songData.data.getDifficulty(tryDiff, tryVariation,null);
+          if (diff2 != null) break;
+        }
+        if (diff2 == null) continue;
+      }
+
+    return songData.songStartingBpm == diff2.getStartingBPM() && isSongInList(songId, companionId);
+    }
+    } catch (_:Dynamic) {}
+
 
     return isSongInList(songId, companionId);
   }
@@ -584,7 +620,7 @@ class CompanionSelector extends Module
         if (id == null) continue;
         id = id.toLowerCase().trim();
 
-        if (!isSongCompatibleForCompanion(id, currentCompanionId, state))
+        if (!isSongCompatibleForCompanion(id, currentCompanionId, cap.freeplayData, state))
         {
           try
           {
