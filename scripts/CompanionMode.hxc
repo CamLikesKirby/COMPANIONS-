@@ -21,6 +21,8 @@ import funkin.Preferences;
 import funkin.play.GameOverSubState;
 import funkin.modding.module.ModuleHandler;
 
+import funkin.play.notes.notestyle.NoteStyle;
+
 import funkin.mobile.input.ControlsHandler;
 
 using StringTools;
@@ -319,7 +321,11 @@ class CompanionMode extends Module
   {
     // isPlayer=false matches the opponent strumline — hold notes render as a
     // full trail instead of clipping when not held down.
-    var sl = new Strumline(PlayState.instance.noteStyle, false);
+    var noteStyle:Dynamic = PlayState.instance.noteStyle;
+    if (CompanionHelper.currentCompanionJson.noteStyle != null && CompanionHelper.currentCompanionJson.noteStyle != "")
+    noteStyle = new NoteStyle(CompanionHelper.currentCompanionJson.noteStyle);
+
+    var sl = new Strumline(noteStyle, false);
     sl.visible = true;
     sl.alpha = 1;
     sl.cameras = [PlayState.instance.camHUD];
@@ -353,7 +359,7 @@ class CompanionMode extends Module
       {
       var noteStyle:String = PlayState.instance.currentChart.noteStyle;
       // Matches "pixel", "pixel-fred", "pixel-*" etc.
-      isPixelStage = (noteStyle != null && noteStyle.startsWith("pixel"));
+      isPixelStage = (noteStyle != null && noteStyle.startsWith("pixel")) && (CompanionHelper.currentCompanionJson.noteStyle == null || CompanionHelper.currentCompanionJson.noteStyle == "");
       }
       catch (_:Dynamic) {}
 

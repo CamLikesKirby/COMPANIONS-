@@ -5,6 +5,7 @@
     "freePlayId": "macy",
     "skipDance": false,
     "playerFileReplacement": "",
+    "noteStyle": "macy",
 
     "icon": {
     "normal": "macy",
