@@ -565,12 +565,12 @@ class CompanionSelector extends Module
       var variationFallbacks:Array<String> = [CompanionHelper.currentCompanionJson.songVariationName];
       if (curSongVariation != variation && curSongVariation != "default")
         variationFallbacks.push(curSongVariation);
-      variationFallbacks.push("default");
       
-      if (variation == "" && CompanionHelper.currentBaseCompanion == "bf") variationFallbacks.push("bf");
+      if (variation == "" && CompanionHelper.currentBaseCompanion == "bf") { variationFallbacks.push("default"); variationFallbacks.push("bf"); }
       for (tryVariation in variationFallbacks)
       {
         if (tryVariation == null) continue;
+        trace(tryVariation);
         for (tryDiff in diffFallbacks)
         {
           diff2 = songData.data.getDifficulty(tryDiff, tryVariation,null);
@@ -578,7 +578,7 @@ class CompanionSelector extends Module
         }
         if (diff2 == null) continue;
       }
-
+    //if (songData.songStartingBpm == diff2.getStartingBPM() && isSongInList(songId, companionId)) { trace(songData.songId); trace(songData.songStartingBpm); trace(diff2.getStartingBPM()); }
     return songData.songStartingBpm == diff2.getStartingBPM() && isSongInList(songId, companionId);
     }
     } catch (_:Dynamic) {}
