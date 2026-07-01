@@ -1,0 +1,38 @@
+{
+    "baseCharacter": "bf-the-sequel",
+    "nameTagPath": "charSelect/bfthesequelNametag",
+    "songVariationName": "bf2",
+    "freePlayId": "bfthesequel",
+    "skipDance": false,
+    "playerFileReplacement": "",
+
+    "icon": {
+    "normal": "bf-the-sequel",
+    "hasPixel": "bf2-pixel",
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 150,
+    "normalY": 20,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": 0,
+
+    "picoStageX": 0,
+    "picoStageY": 0,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 0,
+
+    "spookyX": 0,
+    "spookyY": -50
+    }
+}

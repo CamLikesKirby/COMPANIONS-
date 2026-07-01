@@ -1,0 +1,38 @@
+{
+    "baseCharacter": "zoom-playable",
+    "nameTagPath": "charSelect/zoomNametag",
+    "songVariationName": "oomyzoomyTEM",
+    "freePlayId": "zoom",
+    "skipDance": false,
+    "playerFileReplacement": "",
+
+    "icon": {
+    "normal": "zoom",
+    "hasPixel": false,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 0,
+    "normalY": 0,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": 0,
+
+    "picoStageX": 0,
+    "picoStageY": 0,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 0,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}

@@ -1,6 +1,9 @@
 # COMPANIONS!!!
 why not make it two??? (Created by The_Ghost_FNF/Gurt)
 
+### WHEN REPORTING ISSUES!!!!
+Please specify what devices your using!!! If your on a pc/laptop please state if your using windows, mac, linux, or another operating system. For mobile, please specify if your using android or ios. This helps us see what devices have the most issues with the mod.
+
 ![GitHub all releases](https://img.shields.io/github/downloads/CamLikesKirby/COMPANIONS-/total)
 
 # Description
@@ -15,7 +18,7 @@ If a song is greyed out but you still want to play it, hold shift (Go to options
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c024975f-2d6e-4db4-87c6-6f9a91c0aa6f" />
 
-# WARNING!!!
+### WARNING!!!
 I do not claim to own or own any of the mods shown in the images or videos!
 None of the mods in the images or videos are included in the mod! You need to download them separately.
 I am using no assets from their mods they are simply compatible with my mod!
@@ -99,6 +102,18 @@ https://gamebanana.com/mods/687864 - FNF: Kikillus N' CO
 https://gamebanana.com/mods/627609 - Playable House (V-SLICE UPDATE)
 
 https://gamebanana.com/mods/662131 - ᕈᖾɩꙆꙆყᖇᥱ-ᖴɾᥱ⳽ᖾᥱᑯ
+
+https://gamebanana.com/mods/596107 - Cerulean Symphony v1.5 - MACY VS. THE WORLD
+
+https://gamebanana.com/mods/671395 - Playable Dearest DEMO 2
+
+https://gamebanana.com/mods/669708 - BF2 Mixes (but a different one)
+
+https://gamebanana.com/mods/665796 - [ABSOLUTE JOKE] DP MIXES
+
+https://gamebanana.com/mods/184272 - Pipoca Mix
+
+https://gamebanana.com/mods/668995 - FNF: Fire In The Hole (Abnormal Mix V SLICE)
 
 Make sure to support the mod creators!
 

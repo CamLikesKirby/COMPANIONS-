@@ -1,0 +1,38 @@
+{
+    "baseCharacter": "senpai-playable",
+    "nameTagPath": "charSelect/senpaiNametag",
+    "songVariationName": "senpai",
+    "freePlayId": "senpai",
+    "skipDance": false,
+    "playerFileReplacement": "",
+
+    "icon": {
+    "normal": "senpai-playable",
+    "hasPixel": "senpai",
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 0,
+    "normalY": 0,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": 0,
+
+    "picoStageX": 0,
+    "picoStageY": 0,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 0,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}

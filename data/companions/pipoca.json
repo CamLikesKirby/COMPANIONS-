@@ -1,0 +1,39 @@
+{
+    "baseCharacter": "pipoca",
+    "nameTagPath": "charSelect/pipocamixNametag",
+    "songVariationName": "pipocamix",
+    "freePlayId": "pipocamix",
+    "skipDance": false,
+    "playerFileReplacement": "",
+    "reSize": false,
+
+    "icon": {
+    "normal": "pi",
+    "hasPixel": true,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 100,
+    "normalY": -15,
+
+    "carX": 0,
+    "carY": 30,
+
+    "pixelX": 0,
+    "pixelY": -10,
+
+    "picoStageX": 0,
+    "picoStageY": -20,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}

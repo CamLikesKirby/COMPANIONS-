@@ -1,0 +1,39 @@
+{
+    "baseCharacter": "abnormal-playable",
+    "nameTagPath": "charSelect/abnormalNametag",
+    "songVariationName": "abnormal",
+    "freePlayId": "abnormal",
+    "skipDance": false,
+    "playerFileReplacement": "",
+    "reSize": false,
+
+    "icon": {
+    "normal": "normal-face",
+    "hasPixel": false,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 450,
+    "normalY": 40,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": 0,
+
+    "picoStageX": 0,
+    "picoStageY": 0,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 0,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}
