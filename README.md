@@ -1,10 +1,10 @@
 # COMPANIONS!!!
 why not make it two??? (Created by The_Ghost_FNF/Gurt)
 
+![GitHub all releases](https://img.shields.io/github/downloads/CamLikesKirby/COMPANIONS-/total)
+
 ### WHEN REPORTING ISSUES!!!!
 Please specify what devices your using!!! If your on a pc/laptop please state if your using windows, mac, linux, or another operating system. For mobile, please specify if your using android or ios. This helps us see what devices have the most issues with the mod.
-
-![GitHub all releases](https://img.shields.io/github/downloads/CamLikesKirby/COMPANIONS-/total)
 
 # Description
 Ever felt so bored of just one player? Well here is a solution! Meet companions! It adds a selector in the freeplay menu to select your COMPAION!!! 
