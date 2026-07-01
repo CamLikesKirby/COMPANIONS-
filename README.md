@@ -3,10 +3,10 @@ why not make it two??? (Created by The_Ghost_FNF/Gurt)
 
 ![GitHub all releases](https://img.shields.io/github/downloads/CamLikesKirby/COMPANIONS-/total)
 
-### WHEN REPORTING ISSUES!!!!
+# WHEN REPORTING ISSUES!!!!
 Please specify what devices your using!!! If your on a pc/laptop please state if your using windows, mac, linux, or another operating system. For mobile, please specify if your using android or ios. This helps us see what devices have the most issues with the mod.
 
-# Description
+## Description
 Ever felt so bored of just one player? Well here is a solution! Meet companions! It adds a selector in the freeplay menu to select your COMPAION!!! 
 
 Whenever your in the freeplay menu or storymode press R to cycle right and SHIFT+R to cycle left and pick your companion!
@@ -18,12 +18,12 @@ If a song is greyed out but you still want to play it, hold shift (Go to options
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c024975f-2d6e-4db4-87c6-6f9a91c0aa6f" />
 
-### WARNING!!!
+# WARNING!!!
 I do not claim to own or own any of the mods shown in the images or videos!
 None of the mods in the images or videos are included in the mod! You need to download them separately.
 I am using no assets from their mods they are simply compatible with my mod!
 
-# Compatible Mods
+## Compatible Mods
 
 https://gamebanana.com/mods/614615 - Philly Mix
 
