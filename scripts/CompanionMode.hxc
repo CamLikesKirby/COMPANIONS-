@@ -889,6 +889,8 @@ class CompanionMode extends Module
     
       if (inst == null || inst == "") inst = variation;
       var candidates:Array<String> = [];
+
+      candidates.push('-${CompanionHelper.currentCompanionJson.baseCharacter}');
   
       if (variation != null && variation != "default")
       {
@@ -899,9 +901,9 @@ class CompanionMode extends Module
         candidates.push('-${inst}');
         candidates.push('-${variation}');
       }
+      candidates.push('-${CompanionHelper.currentCompanionJson.baseCharacter}-${CompanionHelper.currentCompanionJson.songVariationName}');
       candidates.push('-${inst}-${inst}');
       candidates.push('-${voiceChar}');
-
       // For characters whose vocal files use "charName-charName" pattern
       // (e.g. Voices-hank-hank.ogg), add that as an explicit candidate.
       candidates.push('-${voiceChar}-${voiceChar}');
