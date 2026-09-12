@@ -5,7 +5,7 @@
     { "name": "Gurt" },
     { "name": "CamlikesKirby" }
   ],
-  "api_version": "0.8.5",
-  "mod_version": "3.3.5",
+  "api_version": "0.8.6",
+  "mod_version": "3.3.6",
   "license": "Apache-2.0"
 }
