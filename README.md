@@ -115,6 +115,10 @@ https://gamebanana.com/mods/184272 - Pipoca Mix
 
 https://gamebanana.com/mods/668995 - FNF: Fire In The Hole (Abnormal Mix V SLICE)
 
+https://gamebanana.com/mods/704990 - JostCompanion
+
+https://gamebanana.com/mods/711896 - FNF': 8R MIXES
+
 Make sure to support the mod creators!
 
 ## TODO
