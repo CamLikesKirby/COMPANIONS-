@@ -9,6 +9,7 @@ import funkin.modding.module.Module;
 import funkin.save.Save;
 import funkin.ui.freeplay.FreeplayState;
 import funkin.util.MathUtil;
+import funkin.util.ReflectUtil;
 
 import funkin.util.FileUtil;
 
@@ -298,6 +299,8 @@ class CompanionSelector extends Module
   override function onSubStateOpenBegin(event)
   {
     super.onSubStateOpenBegin(event);
+    if (ReflectUtil.getClassNameOf(event.targetState) != "funkin.ui.freeplay.FreeplayState") return;
+    
     addedObjects = false;
     freeplayState = null;
     greyedCapsules = [];
@@ -313,14 +316,15 @@ class CompanionSelector extends Module
   override function onSubStateCloseEnd(event)
   {
     super.onSubStateCloseEnd(event);
+    if (ReflectUtil.getClassNameOf(event.targetState) != "funkin.ui.freeplay.FreeplayState") return;
+
     restoreAllCapsules();
     addedObjects = false;
     freeplayState = null;
     try
     {
       var sub = FlxG.state.subState;
-      if (sub != null)
-      {
+      if (sub != null) {
         sub.remove(tagSprite);
         sub.remove(dots);
         sub.remove(leftArrow);
@@ -435,7 +439,6 @@ class CompanionSelector extends Module
     _buildInstalledList();
 
     playerThatHasNoJson = playerCheck(CompanionHelper.currentPlayer);
-    trace("playerThatHasNoJson: " + playerThatHasNoJson);
     if (playerThatHasNoJson) COMPANIONS.push(CompanionHelper.currentPlayer);
 
     loadSavedSelection();

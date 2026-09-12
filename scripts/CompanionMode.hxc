@@ -85,15 +85,15 @@ class CompanionMode extends Module
   override function onStateChangeBegin(event)
   {
     super.onStateChangeBegin(event);
+    if (PlayState.instance.isMinimalMode) return;
     // If transitioning to GameOverSubState, play companion death sound first.
     cleanup();
-    // TODO: Fix Companion background from stacking
-    try { Preferences.strumlineBackgroundOpacity = 0; } catch (_:Dynamic) {} // Tem
   }
 
   override function onSongRetry(event)
   {
     super.onSongRetry(event);
+    if (PlayState.instance.isMinimalMode) return;
     cleanup();
     if (!CompanionSelector.playerThatHasNoJson) CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
     // Immediately spawn a placeholder strumline so 3 are always visible from the start.
@@ -103,6 +103,7 @@ class CompanionMode extends Module
 
   override function onSongLoaded(event:SongLoadScriptEvent) {
     super.onSongLoaded(event);
+    if (PlayState.instance.isMinimalMode) return;
     cleanup();
     pendingSpawn = true;
   }
@@ -110,18 +111,21 @@ class CompanionMode extends Module
   function onCountdownStart(event:CountdownScriptEvent)
   {
     super.onCountdownStart(event);
+    try {
     if (!pendingSpawn || (CompanionSelector.playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return;
     pendingSpawn = false;
     // Spawn placeholder immediately so 3 strumlines show from beat 1.
     _spawnPlaceholderStrumline();
     // Then replace with the real companion strumline after a tick.
     new FlxTimer().start(0.01, (_) -> createCompanion());
+    } catch (_:Dyanmic) {}
   }
 
   function onCountdownEnd(event:CountdownScriptEvent)
   {
     super.onCountdownEnd(event);
-
+    if (PlayState.instance.isMinimalMode) return;
+    
     var playerSL   = PlayState.instance.playerStrumline;
     var opponentSL = PlayState.instance.opponentStrumline;
 
@@ -138,16 +142,12 @@ class CompanionMode extends Module
 
   function _showCompanionNotes():Bool
   {
-    try
-    {
       var opts = Save.instance.getModOptions("COMPANION-2P");
       if (opts != null)
       {
         var val:Dynamic = opts.showCompanionNotes;
         if (val != null) return val == true;
       }
-    }
-    catch (_:Dynamic) {}
     return true; // default on
   }
 
@@ -160,7 +160,7 @@ class CompanionMode extends Module
   function _willBeNone():Bool
   {
     // In story mode, always act as if companion == player (no companion strumline).
-    try { if (PlayState.instance.isStoryMode) return true; } catch (_:Dynamic) {}
+    if (PlayState.instance.isStoryMode) return true; 
     try
     {
       var companionPlayer = CompanionHelper.currentCompanionJson.freePlayId;
@@ -213,6 +213,7 @@ class CompanionMode extends Module
     try
     {
       companionStrumline = _makeVisibleStrumline();
+      companionStrumline.background.alpha = 0;
       PlayState.instance.add(companionStrumline);
       _repositionStrumlines();
       try { PlayState.instance.camHUD.zoom = 0.85; } catch (_:Dynamic) {}

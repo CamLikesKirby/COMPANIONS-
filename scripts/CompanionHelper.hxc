@@ -58,7 +58,7 @@ class CompanionHelper
 
     // Base game companions that have no player file — check character JSON instead.
     if (companionIdJson.playerFileReplacement != "" && companionIdJson.playerFileReplacement != null) {
-        try { return Assets.exists(companionIdJson.playerFileReplacement); } catch(_:Dynamic) {trace('Couldn\'t return the playerFileReplacement!: ' + _);}
+        try { return Assets.exists(companionIdJson.playerFileReplacement); } catch(_:Dynamic) {/*trace('Couldn\'t return the playerFileReplacement!: ' + _);*/}
         return false;
     }
 
@@ -69,15 +69,15 @@ class CompanionHelper
     {
       if (Assets.exists("assets/data/players/" + id + ".json")) return true;
     }
-    catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "assets/data/players/" + id + ".json Error: " + _);}
+    catch (_:Dynamic) {/*trace('Couldn\'t find the player ID in ' + "assets/data/players/" + id + ".json Error: " + _);*/}
     // Fallback: check directly in mods root (some mods have no subfolder)
     try
     {
       if (funkin.util.FileUtil.fileExists("mods/" + id + "/data/players/" + id + ".json")) return true;
     }
-    catch (_:Dynamic) {trace('Couldn\'t find the player ID in ' + "mods/" + id + "/data/players/" + id + ".json Error: " + _);}
+    catch (_:Dynamic) {/*trace('Couldn\'t find the player ID in ' + "mods/" + id + "/data/players/" + id + ".json Error: " + _);*/}
     }
-    trace('Couldn\'t find player ID, assuming the mod isn\'t active');
+    /*trace('Couldn\'t find player ID, assuming the mod isn\'t active');*/
     return false;
   }
 

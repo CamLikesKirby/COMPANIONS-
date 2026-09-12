@@ -27,17 +27,13 @@ class CompanionOptionsMenu extends Module
     var checkBPM:Bool = true;
     var playGreyedSongs:Bool = true;
 
-    try
-    {
-      if (Save.instance.getModOptions("COMPANION-2P").showCompanionNotes != null) currentNotes = Save.instance.getModOptions("COMPANION-2P").showCompanionNotes == true;
-      if (Save.instance.getModOptions("COMPANION-2P").switchToDefault != null) switchDefault = Save.instance.getModOptions("COMPANION-2P").switchToDefault == true;
-      if (Save.instance.getModOptions("COMPANION-2P").applyShader != null) applyShader = Save.instance.getModOptions("COMPANION-2P").applyShader == true;
-      if (Save.instance.getModOptions("COMPANION-2P").companionAnimations != null) companionAnimations = Save.instance.getModOptions("COMPANION-2P").companionAnimations == true;
-      if (Save.instance.getModOptions("COMPANION-2P").companionVisible != null) companionVisible = Save.instance.getModOptions("COMPANION-2P").companionVisible == true;
-      if (Save.instance.getModOptions("COMPANION-2P").checkBPM != null) checkBPM = Save.instance.getModOptions("COMPANION-2P").checkBPM == true;
-      if (Save.instance.getModOptions("COMPANION-2P").playGreyedSongs != null && FlxG.onMobile) playGreyedSongs = Save.instance.getModOptions("COMPANION-2P").playGreyedSongs == true;
-    }
-    catch (_:Dynamic) {}
+    if (Save.instance.getModOptions("COMPANION-2P").showCompanionNotes != null) currentNotes = Save.instance.getModOptions("COMPANION-2P").showCompanionNotes == true;
+    if (Save.instance.getModOptions("COMPANION-2P").switchToDefault != null) switchDefault = Save.instance.getModOptions("COMPANION-2P").switchToDefault == true;
+    if (Save.instance.getModOptions("COMPANION-2P").applyShader != null) applyShader = Save.instance.getModOptions("COMPANION-2P").applyShader == true;
+    if (Save.instance.getModOptions("COMPANION-2P").companionAnimations != null) companionAnimations = Save.instance.getModOptions("COMPANION-2P").companionAnimations == true;
+    if (Save.instance.getModOptions("COMPANION-2P").companionVisible != null) companionVisible = Save.instance.getModOptions("COMPANION-2P").companionVisible == true;
+    if (Save.instance.getModOptions("COMPANION-2P").checkBPM != null) checkBPM = Save.instance.getModOptions("COMPANION-2P").checkBPM == true;
+    if (Save.instance.getModOptions("COMPANION-2P").playGreyedSongs != null && FlxG.onMobile) playGreyedSongs = Save.instance.getModOptions("COMPANION-2P").playGreyedSongs == true;
 
     if (!(event.targetState is OptionsState)) return;
 
@@ -45,11 +41,9 @@ class CompanionOptionsMenu extends Module
 
     // ── Add "COMPANIONS!!!" entry below Preferences ───────────────────────
     var optionsPage:Dynamic = null;
-    try { optionsPage = state.optionsCodex.pages.get('options'); } catch (_:Dynamic) {trace(_);}
+    optionsPage = state.optionsCodex.pages.get('options');
     if (optionsPage == null) return;
 
-    try
-    {
       var members = optionsPage.items.members;
       var prefIdx:Int = -1;
       var spacing:Float = 75;
@@ -58,8 +52,8 @@ class CompanionOptionsMenu extends Module
       for (i in 0...members.length)
       {
         var lbl:String = "";
-        try { lbl = (members[i].label?.text ?? "").toLowerCase(); } catch (_:Dynamic) {trace(_);}
-        if (lbl == "") try { lbl = (members[i].text ?? "").toLowerCase(); } catch (_:Dynamic) {trace(_);}
+        lbl = (members[i].label?.text ?? "").toLowerCase(); 
+        if (lbl == "") lbl = (members[i].text ?? "").toLowerCase();
         if (lbl == "preferences") { prefIdx = i; break; }
       }
 
@@ -80,29 +74,18 @@ class CompanionOptionsMenu extends Module
         optionsPage.items.members.remove(btn);
         optionsPage.items.members.insert(prefIdx + 1, btn);
       }
-    }
-    catch (_:Dynamic) {trace(_);}
 
     // ── Create the COMPANIONS!!! page ─────────────────────────────────────
     var companionsPage:Dynamic = null;
-    try { companionsPage = state.optionsCodex.addPage('companions', new PreferencesMenu()); }
-    catch (_:Dynamic) {trace(_);}
+    companionsPage = state.optionsCodex.addPage('companions', new PreferencesMenu()); 
     if (companionsPage == null) return;
 
     // Clear defaults
-    try
-    {
       companionsPage.preferenceDesc = [];
       companionsPage.onExit.add(function() { state.optionsCodex.switchPage('options'); });
       for (item in companionsPage.items) item.destroy();
       for (item in companionsPage.preferenceItems) item.destroy();
       companionsPage.items.clear();
-      companionsPage.preferenceItems.clear();
-    }
-    catch (_:Dynamic) {trace(_);}
-
-    try
-    {
 
       companionsPage.createPrefItemCheckbox(
         'Show Companion Notes',
@@ -204,9 +187,6 @@ class CompanionOptionsMenu extends Module
       );
       }
 
-    }
-    catch (_:Dynamic) {trace(_);}
-
   }
 
 
@@ -222,26 +202,26 @@ function saveShit() {
     var checkBPM:Dynamic = null;
     var playGreyedSongs:Dynamic = null;
     
-    try { switchToDefault = opts.switchToDefault; } catch (_:Dynamic) {trace(_);}
+    switchToDefault = opts.switchToDefault; 
     if (switchToDefault == null) { opts.switchToDefault = true;}
 
-    try { showNotes = opts.showCompanionNotes; } catch (_:Dynamic) {trace(_);}
+    showNotes = opts.showCompanionNotes; 
     if (showNotes == null) { opts.showCompanionNotes = true;}
 
-    try { applyShader = opts.applyShader; } catch (_:Dynamic) {trace(_);}
+     applyShader = opts.applyShader; 
     if (applyShader == null) { opts.applyShader = true;}
 
-    try { companionAnimations = opts.companionAnimations; } catch (_:Dynamic) {trace(_);}
+    companionAnimations = opts.companionAnimations; 
     if (companionAnimations == null) { opts.companionAnimations = true;}
 
-    try { checkBPM = opts.checkBPM; } catch (_:Dynamic) {trace(_);}
+    checkBPM = opts.checkBPM; 
     if (checkBPM == null) { opts.checkBPM = true;}
 
-    try { companionVisible = opts.companionVisible; } catch (_:Dynamic) {trace(_);}
+    companionVisible = opts.companionVisible; 
     if (companionVisible == null) { opts.companionVisible = true;}
 
     if (FlxG.onMobile) {
-    try { playGreyedSongs = opts.playGreyedSongs; } catch (_:Dynamic) {trace(_);}
+    playGreyedSongs = opts.playGreyedSongs; 
     if (playGreyedSongs == null) { opts.playGreyedSongs = true;}
     }
 

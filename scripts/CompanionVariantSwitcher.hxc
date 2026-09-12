@@ -29,6 +29,7 @@ class CompanionVariantSwitcher extends Module
   override function onSongLoaded(event:SongLoadScriptEvent)
   {
     super.onSongLoaded(event);
+    try {
     if (restarted) return; 
     baseCompanionId = readSavedCompanion();
 
@@ -37,12 +38,13 @@ class CompanionVariantSwitcher extends Module
 
     var variantId = resolveVariant(baseCompanionId, songId);
     writeSavedCompanion(variantId);
+    } catch (_:Dynamic) {}
   }
 
   override function onStateChangeBegin(event:StateChangeScriptEvent)
   {
     super.onStateChangeBegin(event);
-    
+
     if (baseCompanionId != null)
     {
       writeSavedCompanion(baseCompanionId);
@@ -61,7 +63,7 @@ class CompanionVariantSwitcher extends Module
   {
     super.onSongRetry(event);
     restarted = true;
-    if (baseCompanionId == null) return;
+    if (baseCompanionId == null || PlayState.instance.isMinimalMode) return;
     var songId:String = null;
     try { songId = PlayState.instance.currentSong.id.toLowerCase(); } catch (_:Dynamic) {trace(_);}
     if (songId == null) return;
