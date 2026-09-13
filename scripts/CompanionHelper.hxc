@@ -136,7 +136,8 @@ class CompanionHelper
       {
         if (tryVar == null) continue;
         var vd:Dynamic = null;
-        for (d in diffFallbacks) { vd = daSong.getDifficulty(d, tryVar,null); if (vd != null) break; }
+        for (d in diffFallbacks) { vd = daSong.getDifficulty(d, tryVar); if (vd != null) break; }
+        
         if (vd == null) continue;
         // Same player-verification check for vocals.
           var chartPlayer:String = "";
@@ -183,7 +184,6 @@ class CompanionHelper
         variationFallbacks.push(curSongVariation);
       variationFallbacks.push("default");
 
-      trace(variationFallbacks);
       for (tryVariation in variationFallbacks)
       {
         if (tryVariation == null) continue;

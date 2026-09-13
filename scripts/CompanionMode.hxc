@@ -1,7 +1,5 @@
 import flixel.FlxG;
 import flixel.util.FlxTimer;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
 
 import funkin.Conductor;
 import funkin.graphics.shaders.DropShadowShader;
@@ -20,6 +18,7 @@ import funkin.util.GRhythmUtil;
 import funkin.Preferences;
 import funkin.play.GameOverSubState;
 import funkin.modding.module.ModuleHandler;
+import funkin.graphics.FunkinSprite;
 
 import funkin.play.notes.notestyle.NoteStyle;
 
@@ -653,23 +652,24 @@ class CompanionMode extends Module
     // ── 3. Find a valid image and load it ────────────────────────────────
     // Paths.image() throws if the asset doesn't exist (V-Slice calls Assets.exists internally).
     // We rely on that throw to move to the next fallback.
-    var spr:funkin.graphics.FunkinSprite = null;
+    var spr:FunkinSprite = null;
     var loadedId:String = null;
+
 
     for (tryId in tryIds)
     {
       if (tryId == null || tryId == "") continue;
       try
       {
-        var testSpr = new funkin.graphics.FunkinSprite(0, 0);
+        var testSpr = new FunkinSprite();
         testSpr.loadGraphic(Paths.image("icons/icon-" + tryId));
-        if (testSpr.frameWidth < 8) continue;
         spr = testSpr;
         loadedId = tryId;
         break;
       }
       catch (_:Dynamic) {}
     }
+
     if (spr == null || loadedId == null) return;
 
     // ── 4. Slice into two frames: [0]=normal, [1]=losing ─────────────────
@@ -726,6 +726,7 @@ class CompanionMode extends Module
     companionHealthIcon = spr;
     try { PlayState.instance.add(companionHealthIcon); } catch (_:Dynamic) { companionHealthIcon = null; return; }
     try { PlayState.instance.refresh(); } catch (_:Dynamic) {}
+  
     _updateCompanionIconPos();
   }
 
