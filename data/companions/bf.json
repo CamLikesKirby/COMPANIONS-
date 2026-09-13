@@ -1,5 +1,6 @@
 {
     "baseCharacter": "bf",
+    "aliases": ["BfLil", "BfLilErect"],
     "nameTagPath": "companionTags/bf",
     "songVariationName": "",
     "freePlayId": "bf",

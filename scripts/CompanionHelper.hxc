@@ -141,6 +141,10 @@ class CompanionHelper
         // Same player-verification check for vocals.
           var chartPlayer:String = "";
           try { chartPlayer = Std.string(vd.characters.player); } catch(_:Dynamic) {}
+
+          var aliases:Array<String> = [];
+          if (currentCompanionJson.aliases != null) aliases = currentCompanionJson.aliases;
+ 
           if (chartPlayer != "" && chartPlayer != "null")
           {
             var compRoot = currentBaseCompanion.split("-")[0];
@@ -148,7 +152,8 @@ class CompanionHelper
                      || chartPlayer == compRoot
                      || chartPlayer.startsWith(compRoot + "-")
                      || chartPlayer.startsWith(compRoot + "train")
-                     || (compRoot == currentCompanionJson.specificPlayerName && chartPlayer.startsWith(currentCompanionJson.specificPlayerName));
+                     || (compRoot == currentCompanionJson.specificPlayerName && chartPlayer.startsWith(currentCompanionJson.specificPlayerName))
+                     || aliases.contains(chartPlayer);
             if (valid) return [valid, tryVar, vd];
           } 
       }

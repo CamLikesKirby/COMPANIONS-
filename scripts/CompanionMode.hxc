@@ -578,22 +578,15 @@ class CompanionMode extends Module
     var noteData:Array<Dynamic> = [];
     var variation          = companionToVariation(companionId);
     var vocalVariation:String = variation;
-    var gotVariationChart  = false;
     var song = PlayState.instance.currentSong;
 
    try {
     vocals = CompanionHelper.vocalCheck(song,PlayState.instance.currentDifficulty);
     chart = CompanionHelper.chartCheck(song,PlayState.instance.currentDifficulty);
 
-      //if (vocals[0] == true) continue;
+    loadCompanionVocals(vocals[2], vocals[1]);
 
-      loadCompanionVocals(vocals[2], vocals[1]);
-      vocalDone = true; 
-
-     // if (chart[0] == false) continue;
-
-        gotVariationChart  = true;
-        companionEvents    = chart[1].events;
+    companionEvents = chart[1].events;
 
         var noteDiff2 = song.getDifficulty(PlayState.instance.currentDifficulty, chart[2]) ?? chart[1];
         for (songNote in noteDiff2.notes)
@@ -627,8 +620,7 @@ class CompanionMode extends Module
 
     if (PlayState.instance.playerStrumline == null) return;
 
-    if (gotVariationChart)
-      companionStrumline.applyNoteData(noteData);
+    companionStrumline.applyNoteData(noteData);
 
     PlayState.instance.add(companionStrumline);
     if (notesOn) _repositionStrumlines();

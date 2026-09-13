@@ -1,5 +1,6 @@
 {
     "baseCharacter": "pico-playable",
+    "aliases": ["PicoLil"],
     "nameTagPath": "companionTags/pico-playable",
     "songVariationName": "pico",
     "freePlayId": "pico",

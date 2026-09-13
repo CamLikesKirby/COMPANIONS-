@@ -119,6 +119,8 @@ https://gamebanana.com/mods/704990 - JostCompanion
 
 https://gamebanana.com/mods/711896 - FNF': 8R MIXES
 
+https://gamebanana.com/mods/529413 - Lil Buddies (V-Slice)
+
 Make sure to support the mod creators!
 
 ## TODO
