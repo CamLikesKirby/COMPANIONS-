@@ -1,0 +1,38 @@
+{
+    "baseCharacter": "darnell-player",
+    "nameTagPath": "charSelect/darnellNametag",
+    "songVariationName": "darnell",
+    "freePlayId": "darnell",
+    "skipDance": false,
+    "playerFileReplacement": "",
+
+    "icon": {
+    "normal": "darnell",
+    "hasPixel": true,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 180,
+    "normalY": 20,
+
+    "carX": -50,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": -10,
+
+    "picoStageX": -100,
+    "picoStageY": 0,
+
+    "tankmanStageX": -30,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": -30,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}

@@ -121,7 +121,11 @@ https://gamebanana.com/mods/711896 - FNF': 8R MIXES
 
 https://gamebanana.com/mods/529413 - Lil Buddies (V-Slice)
 
+https://gamebanana.com/mods/615366 - FNF: Darnell's Mixtape V1
+
 Make sure to support the mod creators!
+
+You can always read the wiki to figure out how to add other custom companions into this mod by pull requesting!
 
 ## TODO
 

@@ -588,7 +588,7 @@ class CompanionMode extends Module
 
     companionEvents = chart[1].events;
 
-        var noteDiff2 = song.getDifficulty(PlayState.instance.currentDifficulty, chart[2]) ?? chart[1];
+        var noteDiff2 = chart[1];
         for (songNote in noteDiff2.notes)
         {
           var strumTime:Float = songNote.time;

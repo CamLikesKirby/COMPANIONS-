@@ -157,6 +157,7 @@ class CompanionHelper
             if (valid) return [valid, tryVar, vd];
           } 
       }
+      trace("Companion Vocals Turned Null");
       return null;
     }
 
@@ -167,7 +168,8 @@ class CompanionHelper
       var variation:String = currentCompanionJson.songVariationName;
       var diffFallbacks = [curDiff, "hard", "normal", "easy"];
 
-      try { curSongVariation = daSong.curVariation; } catch (_:Dynamic) {}
+      try { curSongVariation = daSong.curSongVariation; } catch (_:Dynamic) {}
+
       if (curSongVariation == null) curSongVariation = "default";
       // Skip curSongVariation if it belongs to a different companion
       // (e.g. BF companion + BF2 player gives curSongVariation == "fnf2").
@@ -181,6 +183,7 @@ class CompanionHelper
         variationFallbacks.push(curSongVariation);
       variationFallbacks.push("default");
 
+      trace(variationFallbacks);
       for (tryVariation in variationFallbacks)
       {
         if (tryVariation == null) continue;
@@ -188,10 +191,11 @@ class CompanionHelper
     
         for (tryDiff in diffFallbacks)
         {
-          diff2 = daSong.getDifficulty(tryDiff, tryVariation,null);
-          if (diff2 != null) return [true,diff2,tryVariation];
+          diff2 = daSong.getDifficulty(tryDiff, tryVariation);
+          if (diff2 != null && diff2.notes.length > 0 && diff2.notes != null) return [true,diff2];
         }
     }
+    trace("Companion Chart Turned Null");
     return null;
   }
 
