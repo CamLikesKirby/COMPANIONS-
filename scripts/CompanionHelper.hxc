@@ -14,9 +14,11 @@ using StringTools;
  */
 class CompanionHelper
 {
+  // Checks and Gets Companions
   public static var currentBaseCompanion = "bf";
   public static var currentPlayer = "bf";
   public static var currentCompanionJson = getCompanionJson("bf");
+  public static var playerThatHasNoJson:Bool = false;
 
   // This looks familiar 
   public static var compansForMobile:String<Array> = ["crash-playable","darnell-playable","dave","fnf2","fred","gooey",
@@ -25,7 +27,7 @@ class CompanionHelper
   "bambi-playable","gfplayer","bf-remnants","pico-remnants-playable","bf","beebo","Dani",
   "atsukokagari","huggy","joseph","gren-normal-playable","pelmen-playable","bren","beetlejuice","expunged-playable","kreek"
   ,"artuxxplayer","kikillus-playable","house","tankmanPlayerNC","macy-player","abnormal-playable","bf-the-sequel","dearest",
-  "dp","pipoca","Cvap-playable","zoom-playable"];
+  "dp","pipoca","Cvap-playable","zoom-playable","jost","eighter","darnell-player"];
   
   public static function checkImageExists(id:String):Bool
   {
@@ -120,7 +122,7 @@ class CompanionHelper
   return {}; 
   } 
 
-
+  // Checks if the vocals and chart for the companion are vaild
   public static function vocalCheck(daSong:Dynamic, curDiff:String):Bool {
     var vocalVariation:String = currentCompanionJson.songVariationName;
     var diffFallbacks = [curDiff, "hard", "normal", "easy"];
@@ -191,14 +193,83 @@ class CompanionHelper
     
         for (tryDiff in diffFallbacks)
         {
-          diff2 = daSong.getDifficulty(tryDiff, tryVariation);
-          if (diff2 != null && diff2.notes.length > 0 && diff2.notes != null) return [true,diff2];
+          try { diff2 = daSong.getDifficulty(tryDiff, tryVariation); } catch(_:Dyanmic) {diff2 = daSong.data.getDifficulty(tryDiff, tryVariation);}
+          var notesLength:Bool = true;
+          try {notesLength = diff2.notes.length > 0; } catch(_:Dyanmic) {}
+          
+          if (diff2 != null && notesLength && diff2.notes != null) return [true,diff2];
         }
     }
     trace("Companion Chart Turned Null");
     return null;
   }
 
+  // For CompanionSelector and CompanionStorySelector
+
+  // Get nameTagPath from here
+  public static function _getNametagPath(companionId:String):String
+  {
+    var companionIdJson = getCompanionJson(companionId);
+    return companionIdJson.nameTagPath;
+  }
+
+  // ── Nametag resolution ────────────────────────────────────────────────────
+  // Tries to load the companion's charselect nametag (the same image the
+  // character select screen uses). Falls back to companionTags/ if not found.
+
+  public static function _applyNametagScale(sprite:FunkinSprite, companionId:String)
+  {
+    var scale:Float = (companionId == "bf" || companionId == "pico-playable") ? 1.0 : 0.7;
+    sprite.scale.set(scale, scale);
+    sprite.updateHitbox();
+  }
+
+  public static function _loadNametag(companionId:String,tagSprite:FunkinSprite)
+  {
+    if (tagSprite == null) return;
+
+    // Always start with the fallback so something is guaranteed to show.
+    tagSprite.visible = false; // no nametag available — hide it
+
+    // Then try to load the real nametag on top.
+    var path = _getNametagPath(companionId);
+    if (playerThatHasNoJson && companionId == CompanionHelper.currentPlayer) path = 'companionTags/NOT_AVAILABLE';
+    if (path == null) return;
+    try
+    {
+      tagSprite.loadGraphic(Paths.image(path));
+      tagSprite.updateHitbox();
+      _applyNametagScale(tagSprite, companionId);
+      tagSprite.visible = true;
+    }
+    catch (_:Dynamic) {}
+
+    return tagSprite;
+  }
+
+  public static function _buildInstalledList(COMPANIONS:Array<String>)
+  {
+    for (id in getAllCompanions())
+    {
+      try
+      {
+        if (checkCompanionActive(id)) COMPANIONS.push(id);
+      }
+      catch (_:Dynamic)
+      {
+        // On error, include base game companions
+        var companionIdJson = getCompanionJson(id);
+
+        if (id == "bf" || id == "pico-playable" || (companionIdJson.playerFileReplacement != "" && companionIdJson.playerFileReplacement != null))
+        COMPANIONS.push(id);
+      }
+    }
+
+    trace('Installed companions: ' + COMPANIONS);
+    return COMPANIONS;
+  }
+
+  // MISC
   public static function formJson(json:Dynamic):Dynamic
   {
   try { return SerializerUtil.fromJSON(Assets.getText(json)); } catch (_:Dynamic) {trace("Couldn\'t form json with SerializerUtil!: " + _);}
@@ -207,17 +278,4 @@ class CompanionHelper
   return haxe.Json.parse(rawText);
   } catch (_:Dynamic) {throw "Couldn\'t form json, your device might not be compatible with this mod, error: " + _; }
   } 
-  
-  public static function stringToIndices(string:String):Array<Int>
-  {
-    if (string == null) return [];
-    var indices:Array<Int> = [];
-    for (token in StringTools.replace(string, " ", "").split(","))
-    {
-      var n = Std.parseInt(token);
-      if (n != null) indices.push(n);
-    }
-    return indices;
-  }
-
 }

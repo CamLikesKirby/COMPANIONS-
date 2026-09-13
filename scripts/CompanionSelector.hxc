@@ -11,8 +11,6 @@ import funkin.ui.freeplay.FreeplayState;
 import funkin.util.MathUtil;
 import funkin.util.ReflectUtil;
 
-import funkin.util.FileUtil;
-
 using StringTools;
 
 /**
@@ -38,45 +36,7 @@ class CompanionSelector extends Module
   var restarted:Bool = false;
   var greyedOut:Bool = false;
 
-  // ── Nametag resolution ────────────────────────────────────────────────────
-  // Tries to load the companion's charselect nametag (the same image the
-  // character select screen uses). Falls back to companionTags/ if not found.
-
-  function _applyNametagScale(sprite:FunkinSprite, companionId:String)
-  {
-    var scale:Float = (companionId == "bf" || companionId == "pico-playable") ? 1.0 : 0.7;
-    sprite.scale.set(scale, scale);
-    sprite.updateHitbox();
-  }
-
-  // Get nameTagPath from here
-  function _getNametagPath(companionId:String):String
-  {
-    var companionIdJson = CompanionHelper.getCompanionJson(companionId);
-    return companionIdJson.nameTagPath;
-  }
-
-  function _loadNametag(companionId:String)
-  {
-    if (tagSprite == null) return;
-
-    // Always start with the fallback so something is guaranteed to show.
-    tagSprite.visible = false; // no nametag available — hide it
-
-    // Then try to load the real nametag on top.
-    var path = _getNametagPath(companionId);
-    if (playerThatHasNoJson && companionId == CompanionHelper.currentPlayer) path = 'companionTags/NOT_AVAILABLE';
-    if (path == null) return;
-    try
-    {
-      tagSprite.loadGraphic(Paths.image(path));
-      tagSprite.updateHitbox();
-      _applyNametagScale(tagSprite, companionId);
-      tagSprite.visible = true;
-    }
-    catch (_:Dynamic) {}
-  }
-
+  var opts = Save.instance.getModOptions("COMPANION-2P");
 
   // Full companion roster — filtered at runtime to only installed mods.
   var ALL_COMPANIONS:Array<String> = CompanionHelper.getAllCompanions();
@@ -84,47 +44,15 @@ class CompanionSelector extends Module
   // Built once in onSubstateOpen from ALL_COMPANIONS filtered to installed mods.
   var COMPANIONS:Array<String> = [];
 
-  public static var playerThatHasNoJson:Bool = false;
-
-  // Returns a unique image path that only exists if the companion's mod is installed.
-  function _isCompanionInstalled(companionId:String):Bool
-  {
-    try { return CompanionHelper.checkCompanionActive(companionId); } catch (_:Dynamic) {}
-    return true; // on error, show rather than hide
-  }
-
   function _getModCheckPath(companionId:String):String
   {
     return null;
   }
 
-  function _buildInstalledList()
-  {
-    COMPANIONS = [];
-    for (id in ALL_COMPANIONS)
-  
-    {
-      try
-      {
-        if (_isCompanionInstalled(id))
-          COMPANIONS.push(id);
-      }
-      catch (_:Dynamic)
-      {
-        // On error, include base game companions
-        var companionIdJson = CompanionHelper.getCompanionJson(companionId);
-
-        if (id == "bf" || id == "pico-playable" || (companionIdJson.playerFileReplacement != "" && companionIdJson.playerFileReplacement != null))
-        COMPANIONS.push(id);
-      }
-    }
-
-    trace('[CompanionSelector] Installed companions: ' + COMPANIONS);
-
-    // If saved companion is no longer installed, reset to bf.
+  function checkSavedCompanion() {
+     // If saved companion is no longer installed, reset to bf.
     try
     {
-      var opts = Save.instance.getModOptions("COMPANION-2P");
       var savedId:String = null;
       try { savedId = opts.companionId; } catch (_:Dynamic) {}
       if (savedId != null && COMPANIONS.indexOf(savedId) < 0)
@@ -158,7 +86,7 @@ class CompanionSelector extends Module
 
   function isSongInList(songId:String, companionId:String):Bool
   {
-      if ((playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return true;
+      if ((CompanionHelper.playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return true;
     
       var caps:Dynamic = null;
       var songs:Array<String> = [];
@@ -259,7 +187,6 @@ class CompanionSelector extends Module
   {
     super.onSongSelected(event);
 
-    var opts = Save.instance.getModOptions("COMPANION-2P");
     if (!isSongCompatibleForCompanion(getCurrentSongId(FlxG.state.subState), currentCompanionId, event.capsule.freeplayData, FlxG.state.subState) && !FlxG.keys.pressed.SHIFT && !(FlxG.onMobile && opts.playGreyedSongs))
     { 
       // TODO: Make another way to prevent players from entering a song
@@ -278,7 +205,7 @@ class CompanionSelector extends Module
     currentIndex = savedIdx >= 0 ? savedIdx : 0;
     currentCompanionId = COMPANIONS[currentIndex];
     CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(currentCompanionId);
-    if (playerThatHasNoJson && currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
+    if (CompanionHelper.playerThatHasNoJson && currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
   }
 
   function saveSelection()
@@ -296,13 +223,13 @@ class CompanionSelector extends Module
   {
     var fc:String = "";
     try { fc = Std.string(state.currentCharacterId ?? "").toLowerCase(); } catch (_:Dynamic) {}
-    if (fc == "" && !playerThatHasNoJson) return;
+    if (fc == "" && !CompanionHelper.playerThatHasNoJson) return;
 
     for (id in COMPANIONS)
     {
       var mc = (_getFreeplayId(id) ?? "").toLowerCase();
 
-      if ((mc == fc) || (playerThatHasNoJson && id == CompanionHelper.currentPlayer))
+      if ((mc == fc) || (CompanionHelper.playerThatHasNoJson && id == CompanionHelper.currentPlayer))
       {
         var idx = COMPANIONS.indexOf(id);
         if (idx >= 0)
@@ -310,7 +237,7 @@ class CompanionSelector extends Module
           currentIndex       = idx;
           currentCompanionId = id;
           CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(currentCompanionId);
-          if (playerThatHasNoJson && state.currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
+          if (CompanionHelper.playerThatHasNoJson && state.currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
           saveSelection();
         }
         return;
@@ -352,10 +279,12 @@ class CompanionSelector extends Module
     catch (_:Dynamic) {}
 
     // Build installed list FIRST before anything uses COMPANIONS.length.
-    _buildInstalledList();
+    COMPANIONS = [];
+    COMPANIONS = CompanionHelper._buildInstalledList(COMPANIONS);
+    checkSavedCompanion();
 
-    playerThatHasNoJson = playerCheck(CompanionHelper.currentPlayer);
-    if (playerThatHasNoJson) COMPANIONS.push(CompanionHelper.currentPlayer);
+    CompanionHelper.playerThatHasNoJson = playerCheck(CompanionHelper.currentPlayer);
+    if (CompanionHelper.playerThatHasNoJson) COMPANIONS.push(CompanionHelper.currentPlayer);
 
     loadSavedSelection();
     if (opts.switchToDefault == null) opts = Save.instance.getModOptions("COMPANION-2P");
@@ -370,7 +299,7 @@ class CompanionSelector extends Module
       arrowStyle = "bf";
 
     tagSprite = new FunkinSprite();
-    _loadNametag(currentCompanionId);
+    CompanionHelper._loadNametag(currentCompanionId,tagSprite);
     add(tagSprite);
 
     leftArrow = new FunkinSprite().loadGraphic(Paths.image("companionArrows/" + arrowStyle));
@@ -466,38 +395,11 @@ class CompanionSelector extends Module
 
   
   try {
-      var opts = Save.instance.getModOptions("COMPANION-2P");
-      if (opts.checkBPM) {
-      var curSongVariation:String = "default";
-      var variation:String = CompanionHelper.currentCompanionJson.songVariationName;
-      var curDiff      = FreeplayState.rememberedDifficulty;
-      var diffFallbacks = [curDiff, "hard", "normal", "easy"];
-      var diff2:Dynamic = null;
-
-      try { curSongVariation = songData.curVariation; } catch (_:Dynamic) {}
-      if (curSongVariation == null) curSongVariation = "default";
-
-      var curVarIsOtherCompanion = (curSongVariation != "default")
-          && (curSongVariation != variation)
-          && (CompanionHelper.currentCompanionJson.songVariationName != curSongVariation);
-      if (curVarIsOtherCompanion) curSongVariation = "default";
-      var variationFallbacks:Array<String> = [CompanionHelper.currentCompanionJson.songVariationName];
-      if (curSongVariation != variation && curSongVariation != "default")
-        variationFallbacks.push(curSongVariation);
-      
-      for (tryVariation in variationFallbacks)
-      {
-        if (tryVariation == null) continue;
-        for (tryDiff in diffFallbacks)
-        {
-          diff2 = songData.data.getDifficulty(tryDiff, tryVariation,null);
-          if (diff2 != null) break;
-        }
-        if (diff2 == null) continue;
-      }
-    return songData.songStartingBpm == diff2.getStartingBPM() && isSongInList(songId, companionId);
+    if (opts.checkBPM) {
+    var chart = CompanionHelper.chartCheck(songData,FreeplayState.rememberedDifficulty);
+    return songData.songStartingBpm == chart[1].getStartingBPM() && isSongInList(songId, companionId);
     }
-    } catch (_:Dynamic) {}
+  } catch (_:Dynamic) {}
 
 
     return isSongInList(songId, companionId);
@@ -651,17 +553,22 @@ class CompanionSelector extends Module
 
   function switchCompanion(change:Int)
   {
-    if (COMPANIONS.length == 0) _buildInstalledList();
+    if (COMPANIONS.length == 0)
+    { 
+    COMPANIONS = [];
+    COMPANIONS = CompanionHelper._buildInstalledList(COMPANIONS);
+    checkSavedCompanion(); 
+    }
     if (COMPANIONS.length == 0) return;
     greyedOut = false;
     currentIndex      = FlxMath.wrap(currentIndex + change, 0, COMPANIONS.length - 1);
     currentCompanionId = COMPANIONS[currentIndex];
     
     CompanionHelper.currentCompanionJson = CompanionHelper.getCompanionJson(currentCompanionId);
-    if (playerThatHasNoJson && currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
+    if (CompanionHelper.playerThatHasNoJson && currentCompanionId == CompanionHelper.currentPlayer) CompanionHelper.currentCompanionJson = null;
     if (tagSprite != null)
     {
-      _loadNametag(currentCompanionId);
+      CompanionHelper._loadNametag(currentCompanionId,tagSprite);
       tagSprite.x -= 50 * change;
     }
 
@@ -679,7 +586,7 @@ class CompanionSelector extends Module
     {
       var fc  = Std.string(freeplayState?.currentCharacterId ?? "");
       var mc  = _getFreeplayId(currentCompanionId);
-      tagSprite.alpha = ((mc != "" && fc == mc) || (currentCompanionId == CompanionHelper.currentPlayer && playerThatHasNoJson)) ? 0.35 : 1.0;
+      tagSprite.alpha = ((mc != "" && fc == mc) || (currentCompanionId == CompanionHelper.currentPlayer && CompanionHelper.playerThatHasNoJson)) ? 0.35 : 1.0;
     }
     catch (_:Dynamic) { if (tagSprite != null) tagSprite.alpha = 1.0; }
 

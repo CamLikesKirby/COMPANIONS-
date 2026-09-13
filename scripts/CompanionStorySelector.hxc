@@ -3,8 +3,6 @@ import funkin.ui.story.StoryMenuState;
 import funkin.save.Save;
 import funkin.graphics.FunkinSprite;
 import flixel.FlxG;
-import flixel.group.FlxTypedSpriteGroup;
-import flixel.util.FlxTimer;
 import flixel.math.FlxMath;
 
 /**
@@ -27,32 +25,6 @@ class CompanionStorySelector extends Module
   var COMPANIONS:Array<String> = CompanionHelper.getAllCompanions();
 
   public function new() { super('CompanionStorySelector'); }
-
-  // ── Nametag path (mirrors CompanionSelector) ──────────────────────────────
-  function _getNametagPath(companionId:String):String
-  {
-    var companionIdJson = CompanionHelper.getCompanionJson(companionId);
-    return companionIdJson.nameTagPath;
-  }
-
-  function _loadNametag(companionId:String)
-  {
-    if (tagSprite == null) return;
-    tagSprite.loadGraphic(Paths.image("companionTags/NOT_AVAILABLE"));
-    tagSprite.scale.set(0.1, 0.1);
-    tagSprite.updateHitbox();
-    var path = _getNametagPath(companionId);
-    if (path == null) return;
-    try
-    {
-      tagSprite.loadGraphic(Paths.image(path));
-      tagSprite.updateHitbox();
-      var sc:Float = (companionId == "bf" || companionId == "pico-playable") ? 1.0 : 0.7;
-      tagSprite.scale.set(sc, sc);
-      tagSprite.updateHitbox();
-    }
-    catch (_:Dynamic) {}
-  }
 
   function _readSaved():String
   {
@@ -86,22 +58,6 @@ class CompanionStorySelector extends Module
     }
   }
 
-  function _buildInstalledList()
-  {
-    var installed:Array<String> = ["bf", "pico-playable"];
-    for (id in COMPANIONS)
-    {
-      if (id == "bf" || id == "pico-playable") continue;
-      try
-      {
-        if (CompanionHelper.checkCompanionActive(id))
-          installed.push(id);
-      }
-      catch (_:Dynamic) { installed.push(id); }
-    }
-    COMPANIONS = installed;
-  }
-
   // ── Lifecycle ──────────────────────────────────────────────────────────────
 
   override function onStateChangeEnd(event)
@@ -112,7 +68,8 @@ class CompanionStorySelector extends Module
     addedObjects = true;
     storyState = event.targetState;
 
-    _buildInstalledList();
+    COMPANIONS = [];
+    COMPANIONS = CompanionHelper._buildInstalledList(COMPANIONS);
 
     // Load saved companion index.
     var savedId = _readSaved();
@@ -134,7 +91,7 @@ class CompanionStorySelector extends Module
       leftArrow.visible = false;
     }
     tagSprite = new FunkinSprite();
-    _loadNametag(COMPANIONS[currentIndex]);
+    tagSprite = CompanionHelper._loadNametag(COMPANIONS[currentIndex],tagSprite);
     storyState.add(tagSprite);
 
     // Dim the tag if this companion IS the current freeplay character.
@@ -197,7 +154,7 @@ class CompanionStorySelector extends Module
     currentIndex = FlxMath.wrap(currentIndex + change, 0, COMPANIONS.length - 1);
     var id = COMPANIONS[currentIndex];
     _writeSaved(id);
-    _loadNametag(id);
+    tagSprite = CompanionHelper._loadNametag(id,tagSprite);
     _updatePositions();
 
     // Dim the tag if this companion IS the current freeplay character.

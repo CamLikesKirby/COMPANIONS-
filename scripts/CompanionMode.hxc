@@ -74,6 +74,8 @@ class CompanionMode extends Module
   var iconPulseTimer:Float = 0.0;
   static inline var ICON_PULSE_DUR:Float = 0.12; // seconds
 
+  var opts = Save.instance.getModOptions("COMPANION-2P");
+
   function new()
   {
     super('CompanionMode', 1000, {state: PlayState});
@@ -94,7 +96,7 @@ class CompanionMode extends Module
     super.onSongRetry(event);
     if (PlayState.instance.isMinimalMode) return;
     cleanup();
-    if (!CompanionSelector.playerThatHasNoJson) CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
+    if (!CompanionHelper.playerThatHasNoJson) CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
     // Immediately spawn a placeholder strumline so 3 are always visible from the start.
     _spawnPlaceholderStrumline();
     pendingSpawn = true;
@@ -111,7 +113,7 @@ class CompanionMode extends Module
   {
     super.onCountdownStart(event);
     try {
-    if (!pendingSpawn || (CompanionSelector.playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return;
+    if (!pendingSpawn || (CompanionHelper.playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return;
     pendingSpawn = false;
     // Spawn placeholder immediately so 3 strumlines show from beat 1.
     _spawnPlaceholderStrumline();
@@ -141,7 +143,6 @@ class CompanionMode extends Module
 
   function _showCompanionNotes():Bool
   {
-      var opts = Save.instance.getModOptions("COMPANION-2P");
       if (opts != null)
       {
         var val:Dynamic = opts.showCompanionNotes;
@@ -291,8 +292,6 @@ class CompanionMode extends Module
       _spawnHiddenStrumline();
       return;
     }
-
-    var opts = Save.instance.getModOptions("COMPANION-2P");
 
     if (opts.companionVisible) _spawnCharacter(companionId);
     _spawnStrumlineAndVocals(companionId);
@@ -904,7 +903,7 @@ class CompanionMode extends Module
     if (PlayState.instance == null)          return;
     if (PlayState.instance.isInCutscene)     return;
     if (PlayState.instance.subState != null) return;
-    var opts = Save.instance.getModOptions("COMPANION-2P");
+
     if (!opts.companionVisible && companionStrumline != null) {
     try
     {
@@ -1252,7 +1251,6 @@ class CompanionMode extends Module
 
   function _applyStageShaderToCompanion()
   {
-    var opts = Save.instance.getModOptions("COMPANION-2P");
     if (companionChar == null || _shaderApplied || !opts.applyShader) return;
     try
     {
