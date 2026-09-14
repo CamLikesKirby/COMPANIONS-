@@ -1,6 +1,7 @@
 import funkin.modding.module.Module;
 import funkin.play.PlayState;
 import funkin.save.Save;
+import StringTools;
 
 using StringTools;
 
@@ -80,7 +81,7 @@ class CompanionVariantSwitcher extends Module
       var darkSongWithBF = globalData.isDarkStage.contains(sid);
 
       var v = getChartCharacter();
-      return v != null && !darkSongWithBF ? v : CompanionHelper.currentCompanionJson.baseCharacter;
+      return v != null && (!darkSongWithBF || !StringTools.contains(v,"-dark")) ? v : CompanionHelper.currentCompanionJson.baseCharacter;
   }
 
   function getChartCharacter():Dynamic 
@@ -115,6 +116,9 @@ class CompanionVariantSwitcher extends Module
         }
         if (diff2 == null) continue;
 
+          var aliases:Array<String> = [];
+          if (CompanionHelper.currentCompanionJson.aliases != null) aliases = CompanionHelper.currentCompanionJson.aliases;
+
         // Verify the chart player actually belongs to this companion.
         try
         {
@@ -124,7 +128,8 @@ class CompanionVariantSwitcher extends Module
               || chartPlayer.startsWith(compRoot + "-");
           if (chartPlayer != "" && chartPlayer != CompanionHelper.currentBaseCompanion
               && !chartPlayerMatchesRoot
-              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train")
+              && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train"
+              && !aliases.contains(chartPlayer))
           {
             diff2 = null;
           }

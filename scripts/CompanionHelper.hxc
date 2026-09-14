@@ -160,7 +160,7 @@ class CompanionHelper
             if (valid) return [valid, tryVar, vd];
           } 
       }
-      trace("Companion Vocals Turned Null");
+     // trace("Companion Vocals Turned Null");
       return null;
     }
 
@@ -200,7 +200,7 @@ class CompanionHelper
           if (diff2 != null && notesLength && diff2.notes != null) return [true,diff2];
         }
     }
-    trace("Companion Chart Turned Null");
+   // trace("Companion Chart Turned Null");
     return null;
   }
 

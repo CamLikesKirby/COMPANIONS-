@@ -1,5 +1,6 @@
 {
     "baseCharacter": "joseph",
+    "aliases": ["bruce","shaun","rose-car","anne","justin-pixel","chuck-playable","gerald"],
     "nameTagPath": "charSelect/averageNametag",
     "songVariationName": "average",
     "freePlayId": "average",
@@ -8,9 +9,9 @@
 
     "icon": {
     "normal": "joseph",
-    "hasPixel": false,
-    "songsInOrder": ["spookeez","satin-panties","high","ugh","guns","darnell"],
-    "uniqueIconsInOrder": ["bruce","rose","rose","chuck-playable","chuck-playable","gerald"]
+    "hasPixel": "justin-pixel",
+    "songsInOrder": ["spookeez","satin-panties","high","ugh","guns","darnell","cocoa","eggnog","pico","philly-nice","blammed","lit-up"],
+    "uniqueIconsInOrder": ["bruce","rose","rose","chuck-playable","chuck-playable","gerald","anne","anne","shaun","shaun","shaun","gerald"]
     },
 
     "offsets": {
@@ -20,17 +21,17 @@
     "carX": 0,
     "carY": 0,
 
-    "pixelX": 0,
+    "pixelX": 100,
     "pixelY": -10,
 
-    "picoStageX": 0,
+    "picoStageX": -100,
     "picoStageY": 10,
 
     "tankmanStageX": 0,
     "tankmanStageY": 0,
 
     "christmasX": 0,
-    "christmasY": 10,
+    "christmasY": 40,
 
     "spookyX": 0,
     "spookyY": 0

@@ -113,7 +113,7 @@ class CompanionMode extends Module
   {
     super.onCountdownStart(event);
     try {
-    if (!pendingSpawn || (CompanionHelper.playerThatHasNoJson && companionId == CompanionHelper.currentPlayer)) return;
+    if (!pendingSpawn || (CompanionHelper.playerThatHasNoJson && CompanionHelper.currentBaseCompanion == CompanionHelper.currentPlayer)) return;
     pendingSpawn = false;
     // Spawn placeholder immediately so 3 strumlines show from beat 1.
     _spawnPlaceholderStrumline();
@@ -1002,7 +1002,7 @@ class CompanionMode extends Module
 
     // Keeps the pixel icon at a normal size
     var muti:Float = 1;
-    if (isPixelStage && CompanionHelper.currentCompanionJson.icon.hasPixel) muti = 5;
+    if (isPixelStage && (CompanionHelper.currentCompanionJson.icon.hasPixel || CompanionHelper.currentCompanionJson.icon.hasPixel != null)) muti = 5;
     if (isPixelStage && CompanionHelper.currentCompanionJson.icon.muti != null) muti = CompanionHelper.currentCompanionJson.icon.muti;
       // Decay pulse scale back to 1.
       if (iconPulseTimer > 0)

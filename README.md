@@ -81,7 +81,7 @@ https://gamebanana.com/mods/621910 - FNF: Huggy Mix
 
 https://gamebanana.com/mods/606077 - Friday Night Funkin: Vs Nonsense (v1.5)
 
-https://gamebanana.com/mods/685231 - Average Mixes
+https://gamebanana.com/mods/685231 - Average Mixes [VOLUME 2]
 
 https://gamebanana.com/mods/668043 - FNF: Gren Mix
 
@@ -122,6 +122,8 @@ https://gamebanana.com/mods/711896 - FNF': 8R MIXES
 https://gamebanana.com/mods/529413 - Lil Buddies (V-Slice)
 
 https://gamebanana.com/mods/615366 - FNF: Darnell's Mixtape V1
+
+https://gamebanana.com/mods/715147 - Tito Mixes DEMO (HELP WANTED, READ DESCRIPTION)
 
 Make sure to support the mod creators!
 
