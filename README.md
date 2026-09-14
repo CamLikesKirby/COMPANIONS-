@@ -115,15 +115,22 @@ https://gamebanana.com/mods/184272 - Pipoca Mix
 
 https://gamebanana.com/mods/668995 - FNF: Fire In The Hole (Abnormal Mix V SLICE)
 
-https://gamebanana.com/mods/704990 - JostCompanion
+https://gamebanana.com/mods/704990 - JostCompanion (It already had support. Just a shout-out.)
 
 https://gamebanana.com/mods/711896 - FNF': 8R MIXES
 
-https://gamebanana.com/mods/529413 - Lil Buddies (V-Slice)
+https://gamebanana.com/mods/529413 - Lil Buddies (V-Slice) (Companion doesn't show up but whatever)
 
 https://gamebanana.com/mods/615366 - FNF: Darnell's Mixtape V1
 
 https://gamebanana.com/mods/715147 - Tito Mixes DEMO (HELP WANTED, READ DESCRIPTION)
+
+https://gamebanana.com/mods/695564 - FNF vaporeon mixes (beta) vslice
+
+https://gamebanana.com/mods/693289 - FNF: B0YFR1END MIXES (Doesn't seperate player and oppoent vocals though. Can't do anything about that.)
+
+https://gamebanana.com/mods/582330 - FNF: Miku Mixes [d1.3.0]
+
 
 Make sure to support the mod creators!
 
