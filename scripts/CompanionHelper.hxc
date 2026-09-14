@@ -27,7 +27,7 @@ class CompanionHelper
   "bambi-playable","gfplayer","bf-remnants","pico-remnants-playable","bf","beebo","Dani",
   "atsukokagari","huggy","joseph","gren-normal-playable","pelmen-playable","bren","beetlejuice","expunged-playable","kreek"
   ,"artuxxplayer","kikillus-playable","house","tankmanPlayerNC","macy-player","abnormal-playable","bf-the-sequel","dearest",
-  "dp","pipoca","Cvap-playable","zoom-playable","jost","eighter","darnell-player","vaporeon","boyf"];
+  "dp","pipoca","Cvap-playable","zoom-playable","jost","eighter","darnell-player","vaporeon","boyf","miku"];
   
   public static function checkImageExists(id:String):Bool
   {
