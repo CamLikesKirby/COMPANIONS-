@@ -396,7 +396,7 @@ class CompanionSelector extends Module
   
   try {
     if (opts.checkBPM && !CompanionHelper.playerThatHasNoJson) {
-    var chart = CompanionHelper.chartCheck(songData,FreeplayState.rememberedDifficulty);
+    var chart = CompanionHelper.chartCheck(songData,FreeplayState.rememberedDifficulty,true);
     return songData.songStartingBpm == chart[1].getStartingBPM() && isSongInList(songId, companionId);
     }
   } catch (_:Dynamic) {}

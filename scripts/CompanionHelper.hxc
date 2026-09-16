@@ -3,9 +3,8 @@ import openfl.Assets;
 import haxe.Json;
 import funkin.modding.PolymodHandler;
 import funkin.util.SerializerUtil;
-import StringTools;
-
 import Std;
+import StringTools;
 
 using StringTools;
 /**
@@ -164,7 +163,7 @@ class CompanionHelper
       return null;
     }
 
-    public static function chartCheck(daSong:Dynamic,curDiff:String):Bool {
+    public static function chartCheck(daSong:Dynamic,curDiff:String, simpleCheck:Bool = false):Bool {
       // ── Notes: companion variation → current song variation → default
       // Also try currentVariation so companions work when e.g. Pico is the freeplay char.
       var curSongVariation:String = "default";
@@ -195,9 +194,13 @@ class CompanionHelper
         {
           try { diff2 = daSong.getDifficulty(tryDiff, tryVariation); } catch(_:Dyanmic) {diff2 = daSong.data.getDifficulty(tryDiff, tryVariation);}
           var notesLength:Bool = true;
+          var notesNotNull:Bool = true;
+          if (!simpleCheck) {
           try {notesLength = diff2.notes.length > 0; } catch(_:Dyanmic) {}
+          try {notesNotNull = diff2.notes > 0; } catch(_:Dyanmic) {}
+          }
           
-          if (diff2 != null && notesLength && diff2.notes != null) return [true,diff2];
+          if (diff2 != null && notesLength && notesNotNull != null) return [true,diff2];
         }
     }
    // trace("Companion Chart Turned Null");
