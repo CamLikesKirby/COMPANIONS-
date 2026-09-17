@@ -55,6 +55,8 @@ class CompanionHelper
   {
     // Only bf and pico are base game — always available.
     var companionIdJson = getCompanionJson(companionId);
+    
+    if (companionIdJson == null) return false;
 
     if (companionId == "bf" || companionId == "pico-playable") return true;
 
@@ -279,6 +281,6 @@ class CompanionHelper
   try { 
   var rawText:String = Assets.getText(json);
   return haxe.Json.parse(rawText);
-  } catch (_:Dynamic) {throw "Couldn\'t form json, your device might not be compatible with this mod, error: " + _; }
+  } catch (_:Dynamic) { trace("Couldn\'t form json, your device might not be compatible with this mod, error: " + _); }
   } 
 }
