@@ -1,0 +1,39 @@
+{
+    "baseCharacter": "Bagira",
+    "nameTagPath": "charSelect/bagiraNametag",
+    "songVariationName": "bagira",
+    "freePlayId": "bagira",
+    "skipDance": false,
+    "reSize": false,
+    "playerFileReplacement": "",
+
+    "icon": {
+    "normal": "Bagira",
+    "hasPixel": "meowp",
+    "songsInOrder": ["stress","senpai"],
+    "uniqueIconsInOrder": ["pushokbagiralove","pushok-pixel"]
+    },
+
+    "offsets": {
+    "normalX": 100,
+    "normalY": 5,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": -10,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}

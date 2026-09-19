@@ -96,7 +96,6 @@ class CompanionMode extends Module
     super.onSongRetry(event);
     if (PlayState.instance.isMinimalMode) return;
     cleanup();
-    if (!CompanionHelper.playerThatHasNoJson) CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion); // To show any changes made to the json without having to exit and re-enter the song
     // Immediately spawn a placeholder strumline so 3 are always visible from the start.
     _spawnPlaceholderStrumline();
     pendingSpawn = true;
@@ -477,8 +476,6 @@ class CompanionMode extends Module
     var extraYoffset:Float = 0;
 
     var stages:Map<String, String> = [];
-     
-    var companionIdJson = CompanionHelper.getCompanionJson(CompanionHelper.currentBaseCompanion);
 
    try {
     if (pixelSongs.contains(currentSongId)) {
@@ -762,9 +759,9 @@ class CompanionMode extends Module
         songsNIcons.set(companionIdJson.icon.songsInOrder[i], companionIdJson.icon.uniqueIconsInOrder[i]);
     }
 
+   if (songsNIcons.get(songId) != null && songsNIcons.get(songId) != "") return songsNIcons.get(songId);
    if (isPixel && CompanionHelper.currentCompanionJson.icon.hasPixel) return CompanionHelper.currentCompanionJson.icon.normal + '-pixel';
    if (isPixel && !(CompanionHelper.currentCompanionJson.icon.hasPixel == false || CompanionHelper.currentCompanionJson.icon.hasPixel == true || CompanionHelper.currentCompanionJson.icon.hasPixel == null)) return CompanionHelper.currentCompanionJson.icon.hasPixel;
-   if (songsNIcons.get(songId) != null && songsNIcons.get(songId) != "") return songsNIcons.get(songId);
    try { return CompanionHelper.currentCompanionJson.icon.normal; } catch (_:Dynamic) {trace('Icon ended up null: ' + _);}
 
     // Final fallback

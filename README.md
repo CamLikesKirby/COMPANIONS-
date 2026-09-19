@@ -131,6 +131,12 @@ https://gamebanana.com/mods/693289 - FNF: B0YFR1END MIXES (Doesn't seperate play
 
 https://gamebanana.com/mods/582330 - FNF: Miku Mixes [d1.3.0]
 
+https://gamebanana.com/mods/712949 - Red Crewmate Mix! [DEMO] (I think it works, the mod only works on mobile and trying to debug on it is HELL.)
+
+https://gamebanana.com/mods/697536 - FNF: Sandler Mix
+
+https://gamebanana.com/mods/672974 - Bagira mix
+
 
 Make sure to support the mod creators!
 
