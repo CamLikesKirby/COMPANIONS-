@@ -246,10 +246,13 @@ class CompanionSelector extends Module
   }
 
   function playerCheck(player:String) {
-    for (id in ALL_COMPANIONS) {
+     for (id in ALL_COMPANIONS) {
     var companionIdJsons = CompanionHelper.getCompanionJson(id);
-    if (companionIdJsons.freePlayId == null) return false;
-    if (companionIdJsons.freePlayId == player) return false;
+    try {
+    if (companionIdJsons.freePlayId == player) {
+    return false;
+    }
+    } catch (_:Dynamic) {return false;}
     }
     return true;
   }
