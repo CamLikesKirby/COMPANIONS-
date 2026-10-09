@@ -137,8 +137,6 @@ https://gamebanana.com/mods/697536 - FNF: Sandler Mix
 
 https://gamebanana.com/mods/672974 - Bagira mix
 
-https://gamebanana.com/mods/719200 - FNF: Haniel Mix (Some songs don't have oppoent and player vocals seperated on some songs)
-
 
 Make sure to support the mod creators!
 
