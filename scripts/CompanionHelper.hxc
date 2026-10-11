@@ -146,8 +146,7 @@ class CompanionHelper
           var chartPlayer:String = "";
           try { chartPlayer = Std.string(vd.characters.player); } catch(_:Dynamic) {}
 
-          var aliases:Array<String> = [];
-          if (currentCompanionJson.aliases != null) aliases = currentCompanionJson.aliases;
+          var aliases:Array<String> = CompanionHelper.currentCompanionJson.aliases != null ? CompanionHelper.currentCompanionJson.aliases : [];
  
           if (chartPlayer != "" && chartPlayer != "null")
           {

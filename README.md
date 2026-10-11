@@ -137,6 +137,13 @@ https://gamebanana.com/mods/697536 - FNF: Sandler Mix
 
 https://gamebanana.com/mods/672974 - Bagira mix
 
+https://gamebanana.com/mods/719200 - FNF: Haniel Mix (Some songs don't have opponent and player vocals seperated on some songs)
+
+https://gamebanana.com/mods/719031 - VS BwMiron
+
+https://gamebanana.com/mods/725130 - hyp mix v0.5
+
+https://gamebanana.com/mods/724876 - FNF: (Lucas Mixes) (only on mobile so really couldn't test)
 
 Make sure to support the mod creators!
 

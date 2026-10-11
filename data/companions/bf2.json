@@ -1,0 +1,39 @@
+{
+    "baseCharacter": "bf2",
+    "aliases": ["bf2","bf2-car","bf2-christmas","bf2-dark","bf2-pixel"],
+    "nameTagPath": "charSelect/boyfriend2Nametag",
+    "songVariationName": "bf2",
+    "freePlayId": "bf2",
+    "skipDance": false,
+    "playerFileReplacement": "",
+
+    "icon": {
+    "normal": "bf2",
+    "hasPixel": true,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 180,
+    "normalY": 20,
+
+    "carX": -50,
+    "carY": 0,
+
+    "pixelX": -30,
+    "pixelY": -30,
+
+    "picoStageX": -20,
+    "picoStageY": 0,
+
+    "tankmanStageX": -30,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}

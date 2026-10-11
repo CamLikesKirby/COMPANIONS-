@@ -1,0 +1,230 @@
+3.3.8 - More Mods #2 and Bug Fixes
+
+New Mods: 
+https://gamebanana.com/mods/719200 - FNF: Haniel Mix (Some songs don't have opponent and player vocals seperated on some songs)
+
+https://gamebanana.com/mods/719031 - VS BwMiron
+
+https://gamebanana.com/mods/725130 - hyp mix v0.5
+
+https://gamebanana.com/mods/724876 - FNF: (Lucas Mixes) (only on mobile so really couldn't test)
+
+
+GO TO https://github.com/CamLikesKirby/COMPANIONS-/blob/main/README.md#compatible-mods BEFORE REQUESTING A MOD
+
+Changes:
+Optimized more code 
+Added text to show the controls
+
+Bug Fixes:
+Actually fixed mac
+ Fixed mods (Companion didn't work):
+ [FNF2 MIX] BF2 Playable Character - https://gamebanana.com/mods/643431
+ BF2 Mixes (but a different one) - https://gamebanana.com/mods/669708
+
+The last "major" update for a while (not until week 8 comes out) still adding mods and bug fixes
+
+3.3.7 - More Mods:
+New Mods:
+https://gamebanana.com/mods/712949 - Red Crewmate Mix! [DEMO] (I think it works, the mod only works on mobile and trying to debug on it is HELL.)
+
+https://gamebanana.com/mods/697536 - FNF: Sandler Mix
+
+https://gamebanana.com/mods/672974 - Bagira mix
+
+3.3.6 - It's Back:
+Added Mods:
+https://gamebanana.com/mods/704990 - JostCompanion (It already had support. Just a shout-out.)
+
+https://gamebanana.com/mods/711896 - FNF': 8R MIXES
+
+https://gamebanana.com/mods/529413 - Lil Buddies (V-Slice) (Companion doesn't show up but whatever)
+
+https://gamebanana.com/mods/615366 - FNF: Darnell's Mixtape V1
+
+https://gamebanana.com/mods/715147 - Tito Mixes DEMO (HELP WANTED, READ DESCRIPTION)
+
+https://gamebanana.com/mods/695564 - FNF vaporeon mixes (beta) vslice
+
+https://gamebanana.com/mods/693289 - FNF: B0YFR1END MIXES (Doesn't seperate player and oppoent vocals though. Can't do anything about that.)
+
+https://gamebanana.com/mods/582330 - FNF: Miku Mixes [d1.3.0]
+
+Changes:
+Cleaned up and remade/refactored some code
+Added the new aliases vaule in companion jsons
+
+Bug Fixes:
+Fixed issues using the mod with the chart editor
+Fixed the companions strumlines background from stacking
+Fixed the mod not working while other sub states in freeplay are open
+Fixed companion icon not showing up
+Fixed pixel icons brought by string becoming small when note hit
+
+3.3.5 - The Untitled Update:
+New Mods:
+https://gamebanana.com/mods/596107 - Cerulean Symphony v1.5 - MACY VS. THE WORLD
+
+https://gamebanana.com/mods/671395 - Playable Dearest DEMO 2
+
+https://gamebanana.com/mods/669708 - BF2 Mixes (but a different one) (buggy)
+
+https://gamebanana.com/mods/665796 - [ABSOLUTE JOKE] DP MIXES
+
+https://gamebanana.com/mods/184272 - Pipoca Mix
+
+https://gamebanana.com/mods/668995 - FNF: Fire In The Hole (Abnormal Mix V SLICE)
+
+Additions:
+New option: Check BPM - If enabled, will check the BPM of the player and companion songs to see if the songs should be greyed out or not.
+
+Added new companion value: noteStyle.
+
+Bug Fixes:
+Fixed playing the mod with a keyboard on mobile.
+
+(Hopefully) Fixed playing the mod with mac.
+
+Fixed some character vocals not playing.
+
+3.3 and hotfix:
+COMPAINIONS SHOULD BE VISIBLE NOWW AHHHHH
+
+https://gamebanana.com/wips/101379 - [Official Ver.] Expunged Mixes (DEMO 1)
+
+https://gamebanana.com/mods/688974 - Playable Is That A Gubby
+
+https://gamebanana.com/mods/689503 - FNF ~ ARTUXX MIX
+
+https://gamebanana.com/mods/687864 - FNF: Kikillus N' CO
+
+https://gamebanana.com/mods/627609 - Playable House (V-SLICE UPDATE)
+
+https://gamebanana.com/mods/662131 - ᕈᖾɩꙆꙆყᖇᥱ-ᖴɾᥱ⳽ᖾᥱᑯ
+
+And every mod with custom bf and pico mixes
+
+Additions:
+Mobile is now Supported. (And support for devices that don't support sys/FileUtil i guess)
+
+Mobile users now tap on the companion tag instead of misplaced arrows in story mode.
+
+Added the Options for optimization: Shade Companion, Companion Animations, and Companion Visible.
+
+Added the Mobile only option: Play greyed out songs (PC players, just hold shift to play greyed out songs)
+
+Added the SkillCheck event (from nonsense) to companions.
+
+The companion now matches scroll speed with the player.
+
+Checking compatible songs is now automatic.
+
+Applying variants is now automatic.
+
+The mod now has its own icon.
+
+Removals:
+Removed the compatibleSongs from companion json.
+
+Removed stagesInOrder and xys from companion json.
+
+Removed the values: playableVerifiactionCheck, basegame, variants, modfolder and specificPlayerName from companion json.
+
+Disabled strumline background (temp, the companions strumline keeps duping and can't be disabled for some reason)
+
+Bug Fixes:
+Fixed downscroll offsets.
+
+Fixed Pico's (and others) vocals being muted.
+
+Fixed Game Over music being the companions instead of the players.
+
+Fixed companions animations not playing or being overrided on events.
+
+Fixed non-pixel icons becoming huge in pixel songs.
+
+Fixed the lag in freeplay.
+
+3.2.1:
+Downscroll Fixed
+
+3.2 More Companions:
+NEW COMPATIBLE MODS!!
+
+https://gamebanana.com/mods/682129 - The Baldi-Mix Collection (By SimoonDoesToons)
+
+https://gamebanana.com/wips/96543 - Bambi Mixes - The FULL "Corny" Mod
+
+https://gamebanana.com/mods/620262 - Girlfriend Mix
+
+https://gamebanana.com/mods/653229 - Friday Night Funkin': Remnants
+
+https://gamebanana.com/mods/669012 - Friday Night Funkin': Beebo Mixes
+
+https://gamebanana.com/mods/632633 - Dani Playable [PRELAUNCH] 1.10
+
+https://gamebanana.com/mods/684324 - [V-SLICE] FNF: WITCH ATSUKO KAGARI MIX
+
+https://gamebanana.com/mods/621910 - FNF: Huggy Mix
+
+https://gamebanana.com/mods/606077 - Friday Night Funkin: Vs Nonsense (v1.5)
+
+https://gamebanana.com/mods/685231 - Average Mixes
+
+https://gamebanana.com/mods/668043 - FNF: Gren Mix
+
+https://gamebanana.com/mods/671995 - Playable Pelmen (Week 7 remixes) - TECH DEMO
+
+https://gamebanana.com/mods/596021 - Friday Night Funkin': Bren Mix
+
+https://gamebanana.com/mods/596880 - [V-SLICE] FNF: BEETLEJUICE MIX
+
+Other Changes:
+Added Spooky Songs in the global.json
+Added nonResizePlayers in global.json
+Removed isFNF2 and hideWhenPlayer values from companions
+New companion values: resize, defaultvocalvolume, flipX and flipXpixel for icons
+
+Non compatible mods can now play alone without a companion
+
+Made it so your unable to play songs that the companion is not compatible with (unless you hold shift)
+
+Made a more simpler way to prevent duplicates
+
+Lots of bug fixes
+
+Next update will focus on mobile support and optimization
+
+3.1:
+Made every companion into a json file
+
+Made the companion not become dark when in the boyfriend spooky stages
+
+fixed pixel icons shrinking
+
+and prob more I just forgot
+
+Inital Github Release
+
+3.0 (Fixed Mobile?):
+Fixed bf using bf2s charts whenever their paired up.
+Added both healthicons next to each other.
+Added mobile with 2 stumlines insted of three.
+Made the companion selecter default to the player whenever you enter the freeplay menu.
+Added the new tankman songs for the playable tankman
+
+2.0:
+Added BF2, parappa, speakergirl
+Fixed dark characters not lighting up whenever the lightning strikes
+Removed the unavailable thing! (???)
+
+1.5.0:
+Added Mobile Support
+
+1.0.1:
+- Fixed Errors
+Removes the dot whenever the mix mod is not present
+Added Steven Mix Support
+
+1.0.0:
+Inital Gamebanana Release

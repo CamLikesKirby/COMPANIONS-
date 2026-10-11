@@ -804,6 +804,7 @@ class CompanionMode extends Module
       var candidates:Array<String> = [];
 
       candidates.push('-${CompanionHelper.currentCompanionJson.baseCharacter}');
+      candidates.push('-${CompanionHelper.currentCompanionJson.baseCharacter}-${CompanionHelper.currentCompanionJson.baseCharacter}'); // please don't break anything
   
       if (variation != null && variation != "default")
       {
@@ -866,18 +867,20 @@ class CompanionMode extends Module
       candidates.push('-${CompanionHelper.currentCompanionJson.freePlayId}-${companionChar.characterId.split('-')[1]}
       -${companionChar.characterId.split('-')[0]}');
 
+      candidates.push('');
+
       var chosen:String = null;
       for (s in candidates)
       {
         var p = Paths.voices(songId, s);
+        trace(p);
         if (Assets.exists(p)) { chosen = s; break; }
       }
       if (chosen == null) return;
 
       var voicePath = Paths.voices(songId, chosen);
    
-      var vol       = (vocalsVolume > 1) ? vocalsVolume - 1.0 : vocalsVolume;
-      if (CompanionHelper.currentCompanionJson.defaultVocalVolume != null) vol = CompanionHelper.currentCompanionJson.defaultVocalVolume;
+      var vol = CompanionHelper.currentCompanionJson.defaultVocalVolume != null ? CompanionHelper.currentCompanionJson.defaultVocalVolume : (vocalsVolume > 1) ? vocalsVolume - 1.0 : vocalsVolume;
       companionVocals = FunkinSound.load(voicePath, vol, false, false, false, false, null, null, true);
       FunkinMemory.cacheSound(voicePath);
       PlayState.instance.vocals.addOpponentVoice(companionVocals);

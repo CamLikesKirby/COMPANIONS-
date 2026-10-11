@@ -1,0 +1,39 @@
+{
+    "baseCharacter": "hyp",
+    "nameTagPath": "charSelect/hypNametag",
+    "songVariationName": "hyp",
+    "freePlayId": "hyp",
+    "skipDance": false,
+    "reSize": false,
+    "playerFileReplacement": "",
+
+    "icon": {
+    "normal": "hyp",
+    "hasPixel": true,
+    "songsInOrder": [],
+    "uniqueIconsInOrder": []
+    },
+
+    "offsets": {
+    "normalX": 100,
+    "normalY": 30,
+
+    "carX": 0,
+    "carY": 0,
+
+    "pixelX": 0,
+    "pixelY": 50,
+
+    "picoStageX": 0,
+    "picoStageY": 10,
+
+    "tankmanStageX": 0,
+    "tankmanStageY": 0,
+
+    "christmasX": 0,
+    "christmasY": 10,
+
+    "spookyX": 0,
+    "spookyY": 0
+    }
+}

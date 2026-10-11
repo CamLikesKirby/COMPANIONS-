@@ -3,9 +3,10 @@
   "description": "ADDS AN EPIC COMPAION NEXT TO YOUR PLAYER WITH VOCALS AND CHARTS!!!!.",
   "contributors": [
     { "name": "Gurt" },
-    { "name": "CamlikesKirby" }
+    { "name": "CamlikesKirby" },
+    { "name": "main_thing" }
   ],
   "api_version": "0.8.8",
-  "mod_version": "3.3.7",
+  "mod_version": "3.3.8",
   "license": "Apache-2.0"
 }

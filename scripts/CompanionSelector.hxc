@@ -2,6 +2,11 @@ import flixel.FlxG;
 import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
 import flixel.group.FlxTypedSpriteGroup;
+import flixel.text.FlxText;
+import flixel.text.FlxTextBorderStyle;
+import flixel.util.FlxColor;
+
+import funkin.mobile.input.ControlsHandler;
 
 import funkin.audio.FunkinSound;
 import funkin.graphics.FunkinSprite;
@@ -33,6 +38,7 @@ class CompanionSelector extends Module
   var rightArrow:FunkinSprite;
   var dots:FlxTypedSpriteGroup<FunkinSprite>;
   var tagSprite:FunkinSprite;
+  var controlsText:FlxText;
   var restarted:Bool = false;
   var greyedOut:Bool = false;
 
@@ -173,10 +179,11 @@ class CompanionSelector extends Module
         sub.remove(dots);
         sub.remove(leftArrow);
         sub.remove(rightArrow);
+        sub.remove(controlsText);
       }
     }
     catch (_:Dynamic) {}
-    tagSprite = null; rightArrow = null; leftArrow = null; dots = null;
+    tagSprite = null; rightArrow = null; leftArrow = null; dots = null; controlsText = null;
     companionToDot = [];
   }
     override function onDifficultySwitch(event:CapsuleScriptEvent) {
@@ -252,7 +259,7 @@ class CompanionSelector extends Module
     if (companionIdJsons.freePlayId == player) {
     return false;
     }
-    } catch (_:Dynamic) {return false;}
+    } catch (_:Dynamic) {return true;}
     }
     return true;
   }
@@ -332,6 +339,15 @@ class CompanionSelector extends Module
     dots.cameras = state.diffSelLeft.cameras;
     dots.y = 200;
     add(dots);
+
+   controlsText = new FlxText(50, 280, 0, "Controls:\nR - Cycles Right\nR + Shift - Cycles Left");
+	 controlsText.setFormat(Paths.font("vcr.ttf"), 20, -1, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+   controlsText.color = FlxColor.WHITE;
+	 controlsText.size = 20;
+   controlsText.borderColor = FlxColor.BLACK;
+	 controlsText.borderStyle = FlxTextBorderStyle.OUTLINE;
+   controlsText.visible = !FlxG.onMobile || ControlsHandler.hasExternalInputDevice;
+   add(controlsText);
 
     // Cache diffSel references so onUpdate never has to read them from state.
     _cachedDiffSelRight = state.diffSelRight;
@@ -491,7 +507,7 @@ class CompanionSelector extends Module
       return;
     }
 
-    if (tagSprite == null || leftArrow == null || rightArrow == null || dots == null) return;
+    if (tagSprite == null || leftArrow == null || rightArrow == null || dots == null || controlsText == null) return;
 
     var dsr = _cachedDiffSelRight;
     var dsl = _cachedDiffSelLeft;
@@ -503,6 +519,7 @@ class CompanionSelector extends Module
       rightArrow.cameras = dsr.cameras;
       leftArrow.cameras  = dsl.cameras;
       tagSprite.cameras  = dsl.cameras;
+      controlsText.cameras  = dsl.cameras;
       _arrowCamerasSet   = true;
     }
 
@@ -514,6 +531,7 @@ class CompanionSelector extends Module
     leftArrow.y        = dsl.y + 135;
     leftArrow.visible  = dsl.visible;
     tagSprite.visible  = leftArrow.visible;
+    controlsText.visible  = tagSprite.visible;
     dots.visible       = leftArrow.visible;
 
     // Lerp tag position every 3 frames — imperceptible at 60fps.

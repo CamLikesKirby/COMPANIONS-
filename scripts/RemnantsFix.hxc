@@ -7,7 +7,7 @@ class RemnantsFix extends Module
 
   override function onStateChangeBegin(event:ScriptEvent):Void
   {
-    // The remants Bumper causes promblems on base/mods, so forcefully turning it off should fix it.
+    // The remants Bumper causes promblems for base/mods, so forcefully turning it off should fix it.
     try { Save.instance.modOptions.set('remnantsBumpers', false); } catch (_:Dynamic) {}
   }
 }

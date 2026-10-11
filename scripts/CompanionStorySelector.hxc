@@ -5,6 +5,12 @@ import funkin.graphics.FunkinSprite;
 import flixel.FlxG;
 import flixel.math.FlxMath;
 
+import flixel.text.FlxText;
+import flixel.text.FlxTextBorderStyle;
+import flixel.util.FlxColor;
+
+import funkin.mobile.input.ControlsHandler;
+
 /**
  * CompanionStorySelector — adds companion switcher arrows to the Story Mode menu.
  * Appears below the difficulty selector. Uses R / SHIFT+R to cycle companions.
@@ -17,6 +23,7 @@ class CompanionStorySelector extends Module
   var leftArrow:FunkinSprite;
   var rightArrow:FunkinSprite;
   var tagSprite:FunkinSprite;
+  var controlsText:FlxText;
 
   var currentIndex:Int = 0;
   var inputCooldown:Int = 0;
@@ -94,6 +101,15 @@ class CompanionStorySelector extends Module
     tagSprite = CompanionHelper._loadNametag(COMPANIONS[currentIndex],tagSprite);
     storyState.add(tagSprite);
 
+    controlsText = new FlxText(50, 500, 0, "Controls:\nR - Cycles Right\nR + Shift - Cycles Left");
+	  controlsText.setFormat(Paths.font("vcr.ttf"), 20, -1, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+    controlsText.color = FlxColor.WHITE;
+	  controlsText.size = 20;
+    controlsText.borderColor = FlxColor.BLACK;
+	  controlsText.borderStyle = FlxTextBorderStyle.OUTLINE;
+    controlsText.visible = !FlxG.onMobile || ControlsHandler.hasExternalInputDevice;
+    storyState.add(controlsText);
+
     // Dim the tag if this companion IS the current freeplay character.
     try
     {
@@ -115,6 +131,7 @@ class CompanionStorySelector extends Module
     leftArrow    = null;
     rightArrow   = null;
     tagSprite    = null;
+    controlsText = null;
     COMPANIONS   = CompanionHelper.getAllCompanions();
   }
 

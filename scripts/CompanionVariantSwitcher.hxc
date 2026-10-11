@@ -18,7 +18,6 @@ using StringTools;
  */
 class CompanionVariantSwitcher extends Module
 {
-  var baseCompanionId:String = null;
   var restarted:Bool = false;
   // ─────────────────────────────────────────────────────────────────────────
 
@@ -32,25 +31,10 @@ class CompanionVariantSwitcher extends Module
     super.onSongLoaded(event);
     try {
     if (restarted) return; 
-    baseCompanionId = readSavedCompanion();
 
-    var songId = PlayState?.instance?.currentSong?.id?.toLowerCase();
-    if (songId == null) return;
-
-    var variantId = resolveVariant(baseCompanionId, songId);
+    var variantId = resolveVariant();
     writeSavedCompanion(variantId);
     } catch (_:Dynamic) {}
-  }
-
-  override function onStateChangeBegin(event:StateChangeScriptEvent)
-  {
-    super.onStateChangeBegin(event);
-
-    if (baseCompanionId != null)
-    {
-      writeSavedCompanion(baseCompanionId);
-      baseCompanionId = null;
-    }
   }
 
   override function onStateChangeEnd(event:StateChangeScriptEvent)
@@ -64,15 +48,12 @@ class CompanionVariantSwitcher extends Module
   {
     super.onSongRetry(event);
     restarted = true;
-    if (baseCompanionId == null || PlayState.instance.isMinimalMode) return;
-    var songId:String = null;
-    try { songId = PlayState.instance.currentSong.id.toLowerCase(); } catch (_:Dynamic) {trace(_);}
-    if (songId == null) return;
+    if (CompanionHelper.currentCompanionJson == null || PlayState.instance.isMinimalMode) return;
 
-    writeSavedCompanion(resolveVariant(baseCompanionId, songId));
+    writeSavedCompanion(resolveVariant());
   }
 
-  function resolveVariant(companionId:String, songId:String):String
+  function resolveVariant():String
   {
       if (CompanionHelper.currentCompanionJson == null) return;
       
@@ -86,43 +67,15 @@ class CompanionVariantSwitcher extends Module
 
   function getChartCharacter():Dynamic 
   {
-      var daSong  = PlayState.instance.currentSong;
-      var curSongVariation:String = "default";
-      var variation:String = CompanionHelper.currentCompanionJson.songVariationName;
-      var curDiff = PlayState.instance.currentDifficulty;
-      var diffFallbacks = [curDiff, "hard", "normal", "easy"];
 
-      try { curSongVariation = daSong.curVariation; } catch (_:Dynamic) {}
-      if (curSongVariation == null) curSongVariation = "default";
+      var chart = CompanionHelper.chartCheck(PlayState.instance.currentSong,PlayState.instance.currentDifficulty);
 
-      var curVarIsOtherCompanion = (curSongVariation != "default")
-          && (curSongVariation != variation)
-          && (CompanionHelper.currentCompanionJson.songVariationName != curSongVariation);
-      if (curVarIsOtherCompanion) curSongVariation = "default";
-      var variationFallbacks:Array<String> = [CompanionHelper.currentCompanionJson.songVariationName];
-      if (curSongVariation != variation && curSongVariation != "default")
-        variationFallbacks.push(curSongVariation);
-      variationFallbacks.push("default");
-      
-      if (variation == "" && CompanionHelper.currentBaseCompanion == "bf") variationFallbacks.push("bf");
-      for (tryVariation in variationFallbacks)
-      {
-        if (tryVariation == null) continue;
-        var diff2:Dynamic = null;
-        for (tryDiff in diffFallbacks)
-        {
-          diff2 = daSong.getDifficulty(tryDiff, tryVariation);
-          if (diff2 != null) break;
-        }
-        if (diff2 == null) continue;
-
-          var aliases:Array<String> = [];
-          if (CompanionHelper.currentCompanionJson.aliases != null) aliases = CompanionHelper.currentCompanionJson.aliases;
+      var aliases:Array<String> = CompanionHelper.currentCompanionJson.aliases != null ? CompanionHelper.currentCompanionJson.aliases : [];
 
         // Verify the chart player actually belongs to this companion.
         try
         {
-          var chartPlayer:String = Std.string(diff2.characters.player ?? "");
+          var chartPlayer:String = Std.string(chart[1].characters.player ?? "");
           var compRoot = CompanionHelper.currentBaseCompanion.split("-")[0];
           var chartPlayerMatchesRoot = (chartPlayer == compRoot)
               || chartPlayer.startsWith(compRoot + "-");
@@ -131,21 +84,13 @@ class CompanionVariantSwitcher extends Module
               && chartPlayer !=  CompanionHelper.currentCompanionJson.specificPlayerName + "-train"
               && !aliases.contains(chartPlayer))
           {
-            diff2 = null;
+            chart = null;
           }
-          return diff2 != null ? diff2.characters.player : CompanionHelper.currentCompanionJson.baseCharacter;
+          return chart != null ? chart[1].characters.player : CompanionHelper.currentCompanionJson.baseCharacter;
         }
         catch (_:Dynamic) {}
-      }
+      
       return CompanionHelper.currentCompanionJson.baseCharacter;
-  }
-
-  function readSavedCompanion():String
-  {
-    var options = Save.instance.getModOptions("COMPANION-2P");
-    var id:String = null;
-    try { id = options.companionId; } catch (_:Dynamic) {trace('Couldn\'t save companion ID!: ' + _);}
-    return id != null ? id : "bf";
   }
 
   function writeSavedCompanion(id:String)

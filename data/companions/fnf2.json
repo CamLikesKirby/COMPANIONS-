@@ -1,5 +1,6 @@
 {
     "baseCharacter": "bf2",
+    "aliases": ["bf2","bf2-car","bf2-christmas","bf2-dark","bf2-pixel"],
     "nameTagPath": "charSelect/fnf2Nametag",
     "songVariationName": "fnf2",
     "freePlayId": "fnf2",
