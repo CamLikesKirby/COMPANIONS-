@@ -17,10 +17,9 @@ Optimized more code
 Added text to show the controls
 
 Bug Fixes:
-Actually fixed mac
  Fixed mods (Companion didn't work):
- [FNF2 MIX] BF2 Playable Character - https://gamebanana.com/mods/643431
- BF2 Mixes (but a different one) - https://gamebanana.com/mods/669708
+  - [FNF2 MIX] BF2 Playable Character - https://gamebanana.com/mods/643431
+  - BF2 Mixes (but a different one) - https://gamebanana.com/mods/669708
 
 The last "major" update for a while (not until week 8 comes out) still adding mods and bug fixes
 
